@@ -1,0 +1,101 @@
+-- table for buyers --
+CREATE TABLE buyers(
+	buyer_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(25) NOT NULL,
+    last_name VARCHAR(25) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    phone_number VARCHAR(25) NOT NULL,
+    country VARCHAR(25) NOT NULL,
+    state VARCHAR(25) NOT NULL,
+    LGA VARCHAR(50) NOT NULL,
+    address VARCHAR(200) NOT NULL,
+    terms VARCHAR(10) NOT NULL, -- accepted (if terms and condition is agreed)
+    status VARCHAR(10) NOT NULL  -- active / disabled
+);
+
+-- table for farmers --
+CREATE TABLE farmers(
+	farmer_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(25) NOT NULL,
+    last_name VARCHAR(25) NOT NULL,
+    farm_name VARCHAR(50) NOT NULL,
+    farm_size VARCHAR(25) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    phone_number VARCHAR(25) NOT NULL,
+    country VARCHAR(25) NOT NULL,
+    state VARCHAR(25) NOT NULL,
+    LGA VARCHAR(50) NOT NULL,
+    address VARCHAR(200) NOT NULL,
+    terms VARCHAR(10) NOT NULL, -- accepted (if terms and condition is agreed)
+    status VARCHAR(10) NOT NULL  -- active / disabled
+);
+
+-- table for admin --
+CREATE TABLE admin(
+	admin_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(25) NOT NULL,
+    last_name VARCHAR(25) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    phone_number VARCHAR(25) NOT NULL,
+    country VARCHAR(25) NOT NULL,
+    state VARCHAR(25) NOT NULL,
+    LGA VARCHAR(50) NOT NULL,
+    address VARCHAR(200) NOT NULL,
+    terms VARCHAR(10) NOT NULL,
+    access_level INT NOT NULL, -- 1 / 2 / 3 (the clearance for admin actions)
+    status VARCHAR(10) NOT NULL -- active / disabled
+);
+
+-- table for admin_log --
+CREATE TABLE admin_log(
+	admin_log_id INT PRIMARY KEY AUTO_INCREMENT,
+    admin_id INT NOT NULL,
+	log_date TIMESTAMP NOT NULL,
+	action TEXT NOT NULL, -- action carried out by admin
+    FOREIGN KEY(admin_id) REFERENCES admin(admin_id) ON DELETE CASCADE
+);
+
+-- table for products --
+CREATE TABLE products(
+	product_id INT PRIMARY KEY AUTO_INCREMENT,
+    farmer_id INT,
+    product_name VARCHAR(25) NOT NULL,
+    product_group VARCHAR(25) NOT NULL,
+    product_class VARCHAR(25) NOT NULL,
+    description TEXT,
+    price DECIMAL(8, 2) NOT NULL,
+    discount DECIMAL(8, 2),
+    status VARCHAR(20) NOT NULL,
+    image_data BLOB NOT NULL,
+    FOREIGN KEY(farmer_id) REFERENCES farmers(farmer_id) ON DELETE CASCADE
+);
+
+-- table for shipping --
+CREATE TABLE shipping(
+	shipping_id INT PRIMARY KEY AUTO_INCREMENT,
+    buyer_id INT NOT NULL,
+    created_at TIMESTAMP NOT NULL,
+    shipping_address TEXT NOT NULL,
+    products_price DECIMAL(8, 2) NOT NULL,
+    delivery_cost DECIMAL(8, 2) NOT NULL,
+    discount DECIMAL(8, 2) NOT NULL,
+    final_price DECIMAL(8, 2),
+    shipping_status VARCHAR(20), -- pending / processed / on the way / delivered
+    FOREIGN KEY(buyer_id) REFERENCES buyers(buyer_id) ON DELETE CASCADE
+);
+
+-- table for shipping_details --
+CREATE TABLE shipping_datails(
+	shipping_details_id INT PRIMARY KEY AUTO_INCREMENT,
+    shipping_id INT NOT NULL,
+    product_id INT NOT NULL,
+    quantity INT NOT NULL,
+    price_per_unit DECIMAL(8, 2) NOT NULL,
+    price DECIMAL(8, 2) NOT NULL,
+    FOREIGN KEY(product_id) REFERENCES products(product_id) ON DELETE CASCADE,
+    FOREIGN KEY(shipping_id) REFERENCES shipping(shipping_id) ON DELETE CASCADE
+);
+
