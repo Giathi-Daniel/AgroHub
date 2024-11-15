@@ -41,7 +41,7 @@ exports.registerFarmer = async (req, res) => {
     //salt - random characters added to the password during the hashing process to make it more secure
 
     //insert the user record to the database
-    const sql = "INSERT INTO farmers (first_name, last_name, farm_name, farm_size, email, password, phone_number, country, state, LGA, address, terms, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    const sql = "INSERT INTO farmers (first_name, last_name, farm_name, farm_size, email, password_hash, phone_number, country, state, LGA, address, terms, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     const value = [first_name, last_name, farm_name, farm_size, email, password_hash, phone_number, country, state, LGA, address, terms, 'Active'];
     await db.execute(sql, value);
     return res.status(201).json({
@@ -105,7 +105,7 @@ exports.loginFarmer = async (req, res) => {
 
     //if user exist
     //proceed to compare password
-    const isMatch = await bcrypt.compare(password, farmer[0].password); //to compare the password
+    const isMatch = await bcrypt.compare(password, farmer[0].password_hash); //to compare the password
 
     if (!isMatch) {
       //if password does not match
@@ -195,7 +195,7 @@ exports.editFarmer = async (req, res) => {
   }
 
   //if no error is present in validation ans user is logged in
-  const { first_name, last_name, farm_name, farm_size, email, phone_number, country, state, LGA, address} = req.body; //fetching the input parameter from the request body
+  const { first_name, last_name, farm_name, farm_size, phone_number, country, state, LGA, address} = req.body; //fetching the input parameter from the request body
 
   try {
     //checking if a user exist in database
@@ -214,8 +214,8 @@ exports.editFarmer = async (req, res) => {
     }
 
     await db.execute(
-      "UPDATE farmers SET first_name = ?, last_name =?, email = ?, phone_number = ?, country = ?, state = ?, LGA =?, address = ? WHERE farmer_id = ?",
-      [first_name, last_name, email, phone_number, country, state, LGA, address, req.session.farmer.farmer_id]
+      "UPDATE farmers SET first_name = ?, last_name =?, farm_name = ?, farm_size = ?, phone_number = ?, country = ?, state = ?, LGA =?, address = ? WHERE farmer_id = ?",
+      [first_name, last_name, farm_name, farm_size, phone_number, country, state, LGA, address, req.session.farmer.farmer_id]
     );
 
     return res.status(200).json({

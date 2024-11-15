@@ -54,7 +54,7 @@ exports.registerAdmin = async (req, res) => {
 
     //insert the user record to the database
     const sql =
-      "INSERT INTO admin (first_name, last_name, email, password, phone_number, country, state, LGA, address, terms, access_level, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+      "INSERT INTO admin (first_name, last_name, email, password_hash, phone_number, country, state, LGA, address, terms, access_level, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     const value = [
       first_name,
       last_name,
@@ -130,7 +130,7 @@ exports.loginAdmin = async (req, res) => {
     }
     //if user exist
     //proceed to compare password
-    const isMatch = await bcrypt.compare(password, admin[0].password); //to compare the password
+    const isMatch = await bcrypt.compare(password, admin[0].password_hash); //to compare the password
 
     if (!isMatch) {
       //if password does not match
@@ -219,16 +219,8 @@ exports.editAdmin = async (req, res) => {
   }
 
   //if no error is present in validation ans user is logged in
-  const {
-    first_name,
-    last_name,
-    email,
-    phone_number,
-    country,
-    state,
-    LGA,
-    address,
-  } = req.body; //fetching the input parameter from the request body
+  const { first_name, last_name, phone_number, country, state, LGA, address } =
+    req.body; //fetching the input parameter from the request body
 
   try {
     //checking if a user exist in database
@@ -247,11 +239,10 @@ exports.editAdmin = async (req, res) => {
     }
 
     await db.execute(
-      "UPDATE admin SET first_name = ?, last_name =?, email = ?, phone_number = ?, country = ?, state = ?, LGA =?, address = ? WHERE admin_id = ?",
+      "UPDATE admin SET first_name = ?, last_name =?, phone_number = ?, country = ?, state = ?, LGA =?, address = ? WHERE admin_id = ?",
       [
         first_name,
         last_name,
-        email,
         phone_number,
         country,
         state,

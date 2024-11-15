@@ -50,7 +50,7 @@ app.use("/agrohub/api/admin", require("./routes/adminRoutes"));
 // app.use("/agrohub/api/req/admin", require("./routes/adminReqRoutes"));
 
 app.get("*", (req, res) => {
-  res.status(200).send('Welcome to AgroHub Backend')
+  res.status(200).send("Welcome to AgroHub Backend");
   // res.sendFile(path.join(__dirname + "../", "public", "index.html"));
 });
 

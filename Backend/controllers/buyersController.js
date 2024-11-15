@@ -53,7 +53,7 @@ exports.registerBuyer = async (req, res) => {
 
     //insert the user record to the database
     const sql =
-      "INSERT INTO buyers (first_name, last_name, email, password, phone_number, country, state, LGA, address, terms, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+      "INSERT INTO buyers (first_name, last_name, email, password_hash, phone_number, country, state, LGA, address, terms, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     const value = [
       first_name,
       last_name,
@@ -129,7 +129,7 @@ exports.loginBuyer = async (req, res) => {
 
     //if user exist
     //proceed to compare password
-    const isMatch = await bcrypt.compare(password, buyer[0].password); //to compare the password
+    const isMatch = await bcrypt.compare(password, buyer[0].password_hash); //to compare the password
 
     if (!isMatch) {
       //if password does not match
@@ -217,16 +217,8 @@ exports.editBuyer = async (req, res) => {
   }
 
   //if no error is present in validation ans user is logged in
-  const {
-    first_name,
-    last_name,
-    email,
-    phone_number,
-    country,
-    state,
-    LGA,
-    address,
-  } = req.body; //fetching the input parameter from the request body
+  const { first_name, last_name, phone_number, country, state, LGA, address } =
+    req.body; //fetching the input parameter from the request body
 
   try {
     //checking if a user exist in database
@@ -246,11 +238,10 @@ exports.editBuyer = async (req, res) => {
     }
 
     await db.execute(
-      "UPDATE buyers SET first_name = ?, last_name =?, email = ?, phone_number = ?, country = ?, state = ?, LGA =?, address = ? WHERE buyer_id = ?",
+      "UPDATE buyers SET first_name = ?, last_name =?, phone_number = ?, country = ?, state = ?, LGA =?, address = ? WHERE buyer_id = ?",
       [
         first_name,
         last_name,
-        email,
         phone_number,
         country,
         state,
