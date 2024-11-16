@@ -1,6 +1,10 @@
 //importing dependencies
 const mysql = require("mysql2");
 require("dotenv").config();
+// const knex = require('knex')
+// const connection = require('../knexfile')
+
+// const database = knex(connection.development)
 
 //create pool connection object
 const db = mysql.createPool({
