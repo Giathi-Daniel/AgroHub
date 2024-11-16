@@ -39,5 +39,5 @@ exports.up = async knex => {
  */
 exports.down = async knex => {
   console.log('dropping admin table...');
-  return await knex.schema.dropTableIfExists('admins');
+  return await knex.schema.dropTableIfExists('admin');
 };

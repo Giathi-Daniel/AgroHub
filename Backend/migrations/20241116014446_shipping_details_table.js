@@ -33,5 +33,5 @@ exports.up = async knex => {
  */
 exports.down = async knex => {
   console.log('dropping shipping_details...');
-  return await knex.schema.dropTableIfExists('shipping_detail');
+  return await knex.schema.dropTableIfExists('shipping_details');
 };
