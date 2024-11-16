@@ -10,6 +10,8 @@ exports.up = async knex => {
       console.log('creating products table...');
       await knex.schema.createTable('products', (table) => {
         table.increments('product_id').primary();
+        table.integer('farmer_id').unsigned().notNullable();
+        table.foreign('farmer_id').references('farmers.farmer_id');
         table.string('product_name', 25).notNullable();
         table.string('product_group', 25).notNullable();
         table.string('product_class', 25).notNullable();
@@ -18,8 +20,6 @@ exports.up = async knex => {
         table.decimal('discount', 8, 2).notNullable();
         table.string('status', 20).notNullable();
         table.binary('image_data').notNullable();
-        table.integer('farmer_id').unsigned().notNullable();
-        table.foreign('farmer_id').references('farmers.farmer_id');
       })
       console.log('products table created successfully');
     } else {
