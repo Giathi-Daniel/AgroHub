@@ -4,7 +4,9 @@
   "description": "**Backend**",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js",
+    "predev": "npx knex migrate:latest"
   },
   "keywords": [],
   "author": "",
@@ -18,5 +20,8 @@
     "express-validator": "^7.2.0",
     "knex": "^3.1.0",
     "mysql2": "^3.11.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
   }
 }
