@@ -1,24 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
-     <!-- ========== ROBOTO FONT ========== -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400;1,500&display=swap" rel="stylesheet">
-    
+    <!-- ========== LATO FONT ========== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ========== FONTAWESOME CDN ========== -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- ========== TAILWINDCSS CDN ========== -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <!-- ========== STYLESHEET ========== -->
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header class="bg-green-500 h-12 shadow-sm">
-        <div class="flex ">
-            <img src="">
-            <h1>AgroHub</h1>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header
+      class="relative w-full bg-green-600 text-white shadow-lg py-4 px-6 flex justify-between items-center"
+    >
+      <!-- logo and site Name -->
+      <div class="flex items-center space-x-2">
+        <img src="images/logo.jpeg" class="h-5 w-5 md:h-9 md:w-9" />
+        <h1 class="md:text-2xl text-md font-bold">AgroHub</h1>
+      </div>
+
+      <!-- Search bar -->
+      <div class="flex-grow md:mx-6 mx-3">
+        <input
+          type="text"
+          name="search"
+          id="search"
+          class="w-full text-gray-400 py-2 px-4 rounded-md focus:outline-none"
+          placeholder="Search Products..."
+        />
+      </div>
+
+      <!-- Auth Buttons and Icons -->
+      <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-4" id="authBtns">
+          <a
+            href="/login"
+            class="bg-orange-500 px-3 py-1 rounded-lg hover:bg-orange-600 transition duration-150 ease-in"
+            >Login</a
+          >
+          <a
+            href="/signup"
+            class="bg-orange-500 px-3 py-1 rounded-lg hover:bg-orange-600 transition duration-150 ease-in"
+            >Sign Up</a
+          >
         </div>
+
+        <!-- Cart Icon -->
+        <a
+          href="/cart"
+          class="relative text-black hover:bg-orange-600 transition duration-150 ease-in"
+        >
+          <i class="fa-solid fa-cart-shopping text-xl"></i>
+          <span
+            class="bg-orange-400 rounded-full absolute flex items-center justify-center w-5 h-5 text-sm text-white top-[-.6rem] left-3"
+            id="cart_msg"
+            >0</span
+          >
+        </a>
+
+        <!-- Menu Icon -->
+        <div class="flex justify-center items-center space-x-2" id="menuToggle">
+          <i
+            class="fa-solid fa-bars text-xl cursor-pointer hover:font-bold transition duration-150 ease-in"
+          ></i>
+          <i
+            class="fa-solid fa-close text-xl cursor-pointer hover:font-bold transition duration-150 ease-in hidden"
+          ></i>
+        </div>
+      </div>
     </header>
-</body>
+  </body>
 </html>
