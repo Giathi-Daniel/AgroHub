@@ -2,14 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    outline: none;
-    text-decoration: none;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  text-decoration: none;
 }
 
 body {
-    font-family: "Roboto", sans-serif;
+  font-family: "Lato", sans-serif;
+}
+
+img {
+  inline-size: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+#menuToggle {
+  display: none;
+}
+
+/* ========== MEDIUM SCREEN ========== */
+@media (max-width: 746px) {
+  #menuToggle {
+    display: inline-block;
+  }
+
+  #authBtns {
+    position: absolute;
+    background: #fff;
+    box-shadow: 0 1rem 1rem rgba(38, 38, 38, 0.1);
+    inline-size: auto;
+    block-size: auto;
+    inset-inline-end: 0.8rem;
+    inset-block-start: 4rem;
+    flex-direction: column;
+    gap: 0.9rem;
+    justify-content: start;
+    padding-inline: 0.5rem;
+    padding-block: 1rem;
+  }
+
+  #authBtns a {
+    inline-size: 100%;
+  }
 }
