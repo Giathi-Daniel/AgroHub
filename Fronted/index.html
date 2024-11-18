@@ -22,6 +22,12 @@
       referrerpolicy="no-referrer"
     />
 
+    <!-- ========== SWIPERJS CDN ========== -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
     <!-- ========== TAILWINDCSS CDN ========== -->
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -95,7 +101,7 @@
     <br />
     <main>
       <!-- ========== PRODUCTS ========== -->
-      <section class="mb-5">
+      <section class="mb-5 mt-5">
         <h1 class="md:text-xl text-md font-bold mx-4 mb-3">
           Our Best Products
         </h1>
@@ -619,7 +625,574 @@
         </div>
       </section>
 
-     
+      <!-- ========== SLIDER ========== -->
+      <section>
+        <h1 class="md:text-xl text-md font-bold mx-4 mb-3">
+          Handpicked For You
+        </h1>
+        <div class="swiper mySwiper w-full h-full">
+          <div class="swiper-wrapper">
+            <div
+              class="swiper-slide text-center bg-white shadow-sm flex justify-center items-center"
+            >
+              <div class="w-20">
+                <img
+                  src="images/img2.jpg"
+                  alt="img2"
+                  class="block w-full h-full"
+                />
+              </div>
+            </div>
+            <div class="swiper-slide">Slide 2</div>
+            <div class="swiper-slide">Slide 3</div>
+            <div class="swiper-slide">Slide 4</div>
+            <div class="swiper-slide">Slide 5</div>
+            <div class="swiper-slide">Slide 6</div>
+            <div class="swiper-slide">Slide 7</div>
+            <div class="swiper-slide">Slide 8</div>
+            <div class="swiper-slide">Slide 9</div>
+          </div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+      </section>
+
+      <!-- ========== PRODUCTS ========== -->
+      <section class="mb-5 mt-5">
+        <h1 class="md:text-xl text-md font-bold mx-4 mb-3">
+          Our Best Products
+        </h1>
+
+        <!-- Product Container -->
+        <div
+          class="flex justify-start items-center gap-3 space-y-1 flex-wrap px-5"
+        >
+          <!-- Product 1 -->
+          <div
+            class="rounded-lg shadow-md bg-white w-[13rem] h-auto hover:shadow-lg transition duration-150 ease-in"
+          >
+            <div class="w-full rounded-lg">
+              <a href="/product-description">
+                <img
+                  src="images/img.jpg"
+                  alt="yam"
+                  id="product-image"
+                  class="w-auto rounded-t-lg hover:curso-pointer"
+                />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-black font-semibold" id="product-name">
+                Yams 5KG
+              </h3>
+              <div class="flex space-x-4 items-center justify-start">
+                <p class="text-orange-500 font-semibold" id="product-price">
+                  $10.50
+                </p>
+                <p class="text-gray-500 line-through" id="product-discount">
+                  $9.47
+                </p>
+              </div>
+              <p
+                class="text-gray-500 text-sm select-none"
+                id="product-description"
+              >
+                Farm-fresh organic yam perfect for your daily meals
+              </p>
+
+              <!-- Add to cart button and success message -->
+              <div class="flex flex-col">
+                <a
+                  href="/cart"
+                  class="text-sm bg-orange-500 py-2 px-4 text-white cursor-pointer hover:bg-orange-600 transition duration-150 ease-out rounded-3xl flex items-center justify-center w-[fit-content] mt-2"
+                  >Add to Cart</a
+                >
+                <p
+                  class="text-sm text-green-600 mt-2 flex items-center"
+                  id="add-to-cart-msg"
+                >
+                  <i
+                    class="fa-solid fa-check bg-green-600 text-white rounded-full w-5 h-5 mr-1 flex items-center justify-center"
+                  ></i>
+                  Added to cart
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="rounded-lg shadow-md bg-white w-[13rem] h-auto hover:shadow-lg transition duration-150 ease-in"
+          >
+            <div class="w-full rounded-lg">
+              <a href="/product-description">
+                <img
+                  src="images/img.jpg"
+                  alt="yam"
+                  id="product-image"
+                  class="w-auto rounded-t-lg hover:curso-pointer"
+                />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-black font-semibold" id="product-name">
+                Yams 5KG
+              </h3>
+              <div class="flex space-x-4 items-center justify-start">
+                <p class="text-orange-500 font-semibold" id="product-price">
+                  $10.50
+                </p>
+                <p class="text-gray-500 line-through" id="product-discount">
+                  $9.47
+                </p>
+              </div>
+              <p
+                class="text-gray-500 text-sm select-none"
+                id="product-description"
+              >
+                Farm-fresh organic yam perfect for your daily meals
+              </p>
+
+              <!-- Add to cart button and success message -->
+              <div class="flex flex-col">
+                <a
+                  href="/cart"
+                  class="text-sm bg-orange-500 py-2 px-4 text-white cursor-pointer hover:bg-orange-600 transition duration-150 ease-out rounded-3xl flex items-center justify-center w-[fit-content] mt-2"
+                  >Add to Cart</a
+                >
+                <p
+                  class="text-sm text-green-600 mt-2 flex items-center"
+                  id="add-to-cart-msg"
+                >
+                  <i
+                    class="fa-solid fa-check bg-green-600 text-white rounded-full w-5 h-5 mr-1 flex items-center justify-center"
+                  ></i>
+                  Added to cart
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="rounded-lg shadow-md bg-white w-[13rem] h-auto hover:shadow-lg transition duration-150 ease-in"
+          >
+            <div class="w-full rounded-lg">
+              <a href="/product-description">
+                <img
+                  src="images/img.jpg"
+                  alt="yam"
+                  id="product-image"
+                  class="w-auto rounded-t-lg hover:curso-pointer"
+                />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-black font-semibold" id="product-name">
+                Yams 5KG
+              </h3>
+              <div class="flex space-x-4 items-center justify-start">
+                <p class="text-orange-500 font-semibold" id="product-price">
+                  $10.50
+                </p>
+                <p class="text-gray-500 line-through" id="product-discount">
+                  $9.47
+                </p>
+              </div>
+              <p
+                class="text-gray-500 text-sm select-none"
+                id="product-description"
+              >
+                Farm-fresh organic yam perfect for your daily meals
+              </p>
+
+              <!-- Add to cart button and success message -->
+              <div class="flex flex-col">
+                <a
+                  href="/cart"
+                  class="text-sm bg-orange-500 py-2 px-4 text-white cursor-pointer hover:bg-orange-600 transition duration-150 ease-out rounded-3xl flex items-center justify-center w-[fit-content] mt-2"
+                  >Add to Cart</a
+                >
+                <p
+                  class="text-sm text-green-600 mt-2 flex items-center"
+                  id="add-to-cart-msg"
+                >
+                  <i
+                    class="fa-solid fa-check bg-green-600 text-white rounded-full w-5 h-5 mr-1 flex items-center justify-center"
+                  ></i>
+                  Added to cart
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="rounded-lg shadow-md bg-white w-[13rem] h-auto hover:shadow-lg transition duration-150 ease-in"
+          >
+            <div class="w-full rounded-lg">
+              <a href="/product-description">
+                <img
+                  src="images/img.jpg"
+                  alt="yam"
+                  id="product-image"
+                  class="w-auto rounded-t-lg hover:curso-pointer"
+                />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-black font-semibold" id="product-name">
+                Yams 5KG
+              </h3>
+              <div class="flex space-x-4 items-center justify-start">
+                <p class="text-orange-500 font-semibold" id="product-price">
+                  $10.50
+                </p>
+                <p class="text-gray-500 line-through" id="product-discount">
+                  $9.47
+                </p>
+              </div>
+              <p
+                class="text-gray-500 text-sm select-none"
+                id="product-description"
+              >
+                Farm-fresh organic yam perfect for your daily meals
+              </p>
+
+              <!-- Add to cart button and success message -->
+              <div class="flex flex-col">
+                <a
+                  href="/cart"
+                  class="text-sm bg-orange-500 py-2 px-4 text-white cursor-pointer hover:bg-orange-600 transition duration-150 ease-out rounded-3xl flex items-center justify-center w-[fit-content] mt-2"
+                  >Add to Cart</a
+                >
+                <p
+                  class="text-sm text-green-600 mt-2 flex items-center"
+                  id="add-to-cart-msg"
+                >
+                  <i
+                    class="fa-solid fa-check bg-green-600 text-white rounded-full w-5 h-5 mr-1 flex items-center justify-center"
+                  ></i>
+                  Added to cart
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="rounded-lg shadow-md bg-white w-[13rem] h-auto hover:shadow-lg transition duration-150 ease-in"
+          >
+            <div class="w-full rounded-lg">
+              <a href="/product-description">
+                <img
+                  src="images/img.jpg"
+                  alt="yam"
+                  id="product-image"
+                  class="w-auto rounded-t-lg hover:curso-pointer"
+                />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-black font-semibold" id="product-name">
+                Yams 5KG
+              </h3>
+              <div class="flex space-x-4 items-center justify-start">
+                <p class="text-orange-500 font-semibold" id="product-price">
+                  $10.50
+                </p>
+                <p class="text-gray-500 line-through" id="product-discount">
+                  $9.47
+                </p>
+              </div>
+              <p
+                class="text-gray-500 text-sm select-none"
+                id="product-description"
+              >
+                Farm-fresh organic yam perfect for your daily meals
+              </p>
+
+              <!-- Add to cart button and success message -->
+              <div class="flex flex-col">
+                <a
+                  href="/cart"
+                  class="text-sm bg-orange-500 py-2 px-4 text-white cursor-pointer hover:bg-orange-600 transition duration-150 ease-out rounded-3xl flex items-center justify-center w-[fit-content] mt-2"
+                  >Add to Cart</a
+                >
+                <p
+                  class="text-sm text-green-600 mt-2 flex items-center"
+                  id="add-to-cart-msg"
+                >
+                  <i
+                    class="fa-solid fa-check bg-green-600 text-white rounded-full w-5 h-5 mr-1 flex items-center justify-center"
+                  ></i>
+                  Added to cart
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="rounded-lg shadow-md bg-white w-[13rem] h-auto hover:shadow-lg transition duration-150 ease-in"
+          >
+            <div class="w-full rounded-lg">
+              <a href="/product-description">
+                <img
+                  src="images/img.jpg"
+                  alt="yam"
+                  id="product-image"
+                  class="w-auto rounded-t-lg hover:curso-pointer"
+                />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-black font-semibold" id="product-name">
+                Yams 5KG
+              </h3>
+              <div class="flex space-x-4 items-center justify-start">
+                <p class="text-orange-500 font-semibold" id="product-price">
+                  $10.50
+                </p>
+                <p class="text-gray-500 line-through" id="product-discount">
+                  $9.47
+                </p>
+              </div>
+              <p
+                class="text-gray-500 text-sm select-none"
+                id="product-description"
+              >
+                Farm-fresh organic yam perfect for your daily meals
+              </p>
+
+              <!-- Add to cart button and success message -->
+              <div class="flex flex-col">
+                <a
+                  href="/cart"
+                  class="text-sm bg-orange-500 py-2 px-4 text-white cursor-pointer hover:bg-orange-600 transition duration-150 ease-out rounded-3xl flex items-center justify-center w-[fit-content] mt-2"
+                  >Add to Cart</a
+                >
+                <p
+                  class="text-sm text-green-600 mt-2 flex items-center"
+                  id="add-to-cart-msg"
+                >
+                  <i
+                    class="fa-solid fa-check bg-green-600 text-white rounded-full w-5 h-5 mr-1 flex items-center justify-center"
+                  ></i>
+                  Added to cart
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="rounded-lg shadow-md bg-white w-[13rem] h-auto hover:shadow-lg transition duration-150 ease-in"
+          >
+            <div class="w-full rounded-lg">
+              <a href="/product-description">
+                <img
+                  src="images/img.jpg"
+                  alt="yam"
+                  id="product-image"
+                  class="w-auto rounded-t-lg hover:curso-pointer"
+                />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-black font-semibold" id="product-name">
+                Yams 5KG
+              </h3>
+              <div class="flex space-x-4 items-center justify-start">
+                <p class="text-orange-500 font-semibold" id="product-price">
+                  $10.50
+                </p>
+                <p class="text-gray-500 line-through" id="product-discount">
+                  $9.47
+                </p>
+              </div>
+              <p
+                class="text-gray-500 text-sm select-none"
+                id="product-description"
+              >
+                Farm-fresh organic yam perfect for your daily meals
+              </p>
+
+              <!-- Add to cart button and success message -->
+              <div class="flex flex-col">
+                <a
+                  href="/cart"
+                  class="text-sm bg-orange-500 py-2 px-4 text-white cursor-pointer hover:bg-orange-600 transition duration-150 ease-out rounded-3xl flex items-center justify-center w-[fit-content] mt-2"
+                  >Add to Cart</a
+                >
+                <p
+                  class="text-sm text-green-600 mt-2 flex items-center"
+                  id="add-to-cart-msg"
+                >
+                  <i
+                    class="fa-solid fa-check bg-green-600 text-white rounded-full w-5 h-5 mr-1 flex items-center justify-center"
+                  ></i>
+                  Added to cart
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="rounded-lg shadow-md bg-white w-[13rem] h-auto hover:shadow-lg transition duration-150 ease-in"
+          >
+            <div class="w-full rounded-lg">
+              <a href="/product-description">
+                <img
+                  src="images/img.jpg"
+                  alt="yam"
+                  id="product-image"
+                  class="w-auto rounded-t-lg hover:curso-pointer"
+                />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-black font-semibold" id="product-name">
+                Yams 5KG
+              </h3>
+              <div class="flex space-x-4 items-center justify-start">
+                <p class="text-orange-500 font-semibold" id="product-price">
+                  $10.50
+                </p>
+                <p class="text-gray-500 line-through" id="product-discount">
+                  $9.47
+                </p>
+              </div>
+              <p
+                class="text-gray-500 text-sm select-none"
+                id="product-description"
+              >
+                Farm-fresh organic yam perfect for your daily meals
+              </p>
+
+              <!-- Add to cart button and success message -->
+              <div class="flex flex-col">
+                <a
+                  href="/cart"
+                  class="text-sm bg-orange-500 py-2 px-4 text-white cursor-pointer hover:bg-orange-600 transition duration-150 ease-out rounded-3xl flex items-center justify-center w-[fit-content] mt-2"
+                  >Add to Cart</a
+                >
+                <p
+                  class="text-sm text-green-600 mt-2 flex items-center"
+                  id="add-to-cart-msg"
+                >
+                  <i
+                    class="fa-solid fa-check bg-green-600 text-white rounded-full w-5 h-5 mr-1 flex items-center justify-center"
+                  ></i>
+                  Added to cart
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="rounded-lg shadow-md bg-white w-[13rem] h-auto hover:shadow-lg transition duration-150 ease-in"
+          >
+            <div class="w-full rounded-lg">
+              <a href="/product-description">
+                <img
+                  src="images/img.jpg"
+                  alt="yam"
+                  id="product-image"
+                  class="w-auto rounded-t-lg hover:curso-pointer"
+                />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-black font-semibold" id="product-name">
+                Yams 5KG
+              </h3>
+              <div class="flex space-x-4 items-center justify-start">
+                <p class="text-orange-500 font-semibold" id="product-price">
+                  $10.50
+                </p>
+                <p class="text-gray-500 line-through" id="product-discount">
+                  $9.47
+                </p>
+              </div>
+              <p
+                class="text-gray-500 text-sm select-none"
+                id="product-description"
+              >
+                Farm-fresh organic yam perfect for your daily meals
+              </p>
+
+              <!-- Add to cart button and success message -->
+              <div class="flex flex-col">
+                <a
+                  href="/cart"
+                  class="text-sm bg-orange-500 py-2 px-4 text-white cursor-pointer hover:bg-orange-600 transition duration-150 ease-out rounded-3xl flex items-center justify-center w-[fit-content] mt-2"
+                  >Add to Cart</a
+                >
+                <p
+                  class="text-sm text-green-600 mt-2 flex items-center"
+                  id="add-to-cart-msg"
+                >
+                  <i
+                    class="fa-solid fa-check bg-green-600 text-white rounded-full w-5 h-5 mr-1 flex items-center justify-center"
+                  ></i>
+                  Added to cart
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="rounded-lg shadow-md bg-white w-[13rem] h-auto hover:shadow-lg transition duration-150 ease-in"
+          >
+            <div class="w-full rounded-lg">
+              <a href="/product-description">
+                <img
+                  src="images/img.jpg"
+                  alt="yam"
+                  id="product-image"
+                  class="w-auto rounded-t-lg hover:curso-pointer"
+                />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-black font-semibold" id="product-name">
+                Yams 5KG
+              </h3>
+              <div class="flex space-x-4 items-center justify-start">
+                <p class="text-orange-500 font-semibold" id="product-price">
+                  $10.50
+                </p>
+                <p class="text-gray-500 line-through" id="product-discount">
+                  $9.47
+                </p>
+              </div>
+              <p
+                class="text-gray-500 text-sm select-none"
+                id="product-description"
+              >
+                Farm-fresh organic yam perfect for your daily meals
+              </p>
+
+              <!-- Add to cart button and success message -->
+              <div class="flex flex-col">
+                <a
+                  href="/cart"
+                  class="text-sm bg-orange-500 py-2 px-4 text-white cursor-pointer hover:bg-orange-600 transition duration-150 ease-out rounded-3xl flex items-center justify-center w-[fit-content] mt-2"
+                  >Add to Cart</a
+                >
+                <p
+                  class="text-sm text-green-600 mt-2 flex items-center"
+                  id="add-to-cart-msg"
+                >
+                  <i
+                    class="fa-solid fa-check bg-green-600 text-white rounded-full w-5 h-5 mr-1 flex items-center justify-center"
+                  ></i>
+                  Added to cart
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
+
+    <!-- ========== SWIPERJS CDN ========== -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    </script>
   </body>
 </html>
