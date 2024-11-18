@@ -6,6 +6,7 @@ const session = require("express-session"); //for session management
 const MySQLStore = require("express-mysql-session")(session); //for storage of session mangement
 const dotenv = require("dotenv"); //manage envionment variables
 const path = require("path");
+const socketio = require("socket.io"); //for interractivity
 
 //configuring dotenv to initialize environmental variables
 dotenv.config();
@@ -14,7 +15,7 @@ dotenv.config();
 const app = express();
 
 //setting up middleware
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "..", "Fronted"))); //ref folder outside __dirname
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -50,11 +51,17 @@ app.use("/agrohub/api/admin", require("./routes/adminRoutes"));
 // app.use("/agrohub/api/req/admin", require("./routes/adminReqRoutes"));
 
 app.get("*", (req, res) => {
-  res.status(200).send("Welcome to AgroHub Backend");
-  // res.sendFile(path.join(__dirname + "../", "public", "index.html"));
+  // res.status(200).send("Welcome to AgroHub Backend");
+  res.sendFile(path.join(__dirname, "..", "Fronted", "index.html"));
 });
 
-//start up the server
-app.listen(process.env.PORT, () => {
+//start up the server and pass to socket.io
+const expressServer = app.listen(process.env.PORT, () => {
   console.log(`Server is listening on http://127.0.0.1:${process.env.PORT}`);
 });
+
+//configure the io variable to hold the connection
+const io = socketio(expressServer, {});
+
+//export io connection
+module.exports = io;

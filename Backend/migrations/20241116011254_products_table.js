@@ -20,6 +20,7 @@ exports.up = async knex => {
         table.decimal('discount', 8, 2).notNullable();
         table.string('status', 20).notNullable();
         table.binary('image_data').notNullable();
+        table.text('image_name')
       })
       console.log('products table created successfully');
     } else {
