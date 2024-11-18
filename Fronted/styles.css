@@ -9,12 +9,19 @@
   outline: none;
   text-decoration: none;
 }
+
 body {
   font-family: "Lato", sans-serif;
 }
 
+img {
+  inline-size: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 #menuToggle {
-    display: none;
+  display: none;
 }
 
 /* ========== MEDIUM SCREEN ========== */
