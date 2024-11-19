@@ -42,7 +42,7 @@ exports.registerFarmer = async (req, res) => {
 
     //insert the user record to the database
     const sql = "INSERT INTO farmers (first_name, last_name, farm_name, farm_size, email, password_hash, phone_number, country, state, LGA, address, terms, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    const value = [first_name, last_name, farm_name, farm_size, email, password_hash, phone_number, country, state, LGA, address, terms, 'Active'];
+    const value = [first_name, last_name, farm_name, farm_size, email, password_hash, phone_number, country, state, LGA, address, terms, 'Pending'];
     await db.execute(sql, value);
     return res.status(201).json({
       status: 201,
