@@ -96,9 +96,94 @@
       </div>
     </header>
 
-    <br />
-    <br />
-    <br />
+    <!-- ========== HERO SECTION ========== -->
+    <section class="relative w-full h-screen overflow-hidden">
+      <div class="swiper-container hero-swiper relative h-full">
+        <div class="swiper-wrapper">
+          <!-- Slide 1 -->
+          <div
+            class="swiper-slide bg-cover bg-center h-full bg-[url('./images/hero1.png')]"
+          >
+            <div
+              class="absolute inset-0 bg-black bg-opacity-40 flex justify-center flex-col items-center text-center"
+            >
+              <div class="text-white space-y-6 px-6 md:px-12">
+                <h1 class="text-xl md:text-6xl font-extrabold leading-tight">
+                  Empowering Agriculture, One Click at a Time
+                </h1>
+                <p class="text-lg md:text-2xl mt-6">
+                  Discover top-quality farming products and solutions for a
+                  sustainable future.
+                </p>
+              </div>
+              <a
+                href="#"
+                class="bg-orange-600 text-white py-3 px-6 rounded-full text-lg font-semibold cursor-pointer hover:bg-orange-700 transition duration-300 ease-in-out mt-8"
+              >
+                Shop Now
+              </a>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div
+            class="swiper-slide bg-cover bg-center h-full bg-[url('./images/hero2.png')]"
+          >
+            <div
+              class="absolute inset-0 bg-black bg-opacity-40 flex justify-center flex-col items-center text-center"
+            >
+              <div class="text-white space-y-6 px-6 md:px-12">
+                <h1 class="text-xl md:text-6xl font-extrabold leading-tight">
+                  Your Trusted Partner in Agriculture
+                </h1>
+                <p class="text-lg md:text-2xl">
+                  From seeds to equipment, find everything you need for your
+                  farm here.
+                </p>
+              </div>
+              <a
+                href="#"
+                class="bg-orange-600 text-white py-3 px-6 rounded-full text-lg font-semibold cursor-pointer hover:bg-orange-700 transition duration-300 ease-in-out mt-8"
+              >
+                Explore Products
+              </a>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div
+            class="swiper-slide bg-cover bg-center h-full bg-[url('./images/hero3.png')]"
+          >
+            <div
+              class="absolute inset-0 bg-black bg-opacity-40 flex justify-center flex-col items-center text-center"
+            >
+              <div class="text-white space-y-6 px-6 md:px-12">
+                <h1 class="text-xl md:text-6xl font-extrabold leading-tight">
+                  Sustainable Farming Starts Here
+                </h1>
+                <p class="text-lg md:text-2xl">
+                  Join us in revolutionizing the agricultural industry with
+                  eco-friendly solutions.
+                </p>
+              </div>
+              <a
+                href="#"
+                class="bg-orange-600 text-white py-3 px-6 rounded-full text-lg font-semibold cursor-pointer hover:bg-orange-700 transition duration-300 ease-in-out mt-8"
+              >
+                Start Shopping</a
+              >
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <!-- Optional overlay for page content -->
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10"
+      ></div>
+    </section>
+
     <main>
       <!-- ========== PRODUCTS ========== -->
       <section class="mb-5 mt-5">
@@ -1511,31 +1596,7 @@
     <!-- ========== SWIPERJS CDN ========== -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    <script>
-      var swiper = new Swiper(".mySwiper", {
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-        breakpoints: {
-          400: {
-            slidesPerView: 2,
-            spaceBetween: 3,
-          },
-          768: {
-            slidesPerView: 3,
-            spaceBetween: 4,
-          },
-          1024: {
-            slidesPerView: 5,
-            spaceBetween: 4,
-          },
-          1200: {
-            slidesPerView: 6,
-            spaceBetween: 6,
-          },
-        },
-      });
-    </script>
+    <!-- ========== SCRIPT JS ========== -->
+    <script src="main.js"></script>
   </body>
 </html>
