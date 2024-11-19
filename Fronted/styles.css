@@ -24,6 +24,14 @@ img {
   display: none;
 }
 
+.product__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(207px, 1fr));
+  place-items: center;
+  padding-inline: 1.3rem;
+  gap: 0.7rem;
+}
+
 /* ========== MEDIUM SCREEN ========== */
 @media (max-width: 746px) {
   #menuToggle {
