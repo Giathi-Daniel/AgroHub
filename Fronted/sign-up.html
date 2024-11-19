@@ -29,61 +29,113 @@
           alt="our-logo"
           class="w-20 h-20 mx-auto mb-4"
         />
-        <h1 class="text-lg font-bold mb-1">Sign In</h1>
-        <h1 class="text-sm font-bold mb-4">Welcome to AgroHub</h1>
+        <h1 class="text-lg font-bold mb-1">Create account</h1>
 
-        <!-- Sign In Form -->
+        <!-- Sign Up Form -->
         <form action="">
-          <label for="email" class="block text-sm mb-2"
-            >Enter your Email Address</label
+          <label for="name" class="block text-sm mb-2">Your name</label>
+          <input
+            type="name"
+            name="name"
+            id="name"
+            placeholder="First and last name"
+            class="w-full border border-gray-300 rounded-md px-3 py-2 mb-4"
+          />
+
+          <label for="phone_number" class="block text-sm mb-2"
+            >Phone Number</label
           >
+          <input
+            type="number"
+            name="phone_number"
+            id="phone_number"
+            placeholder="phone number"
+            class="w-full border border-gray-300 rounded-md px-3 py-2 mb-4"
+          />
+
+          <label for="email" class="block text-sm mb-2">Your email</label>
           <input
             type="email"
             name="email"
             id="email"
+            placeholder="email address"
             class="w-full border border-gray-300 rounded-md px-3 py-2 mb-4"
           />
 
-          <label for="password" class="block text-sm mb-2"
-            >Enter your Password</label
-          >
+          <label for="password" class="block text-sm mb-2">Password</label>
           <input
             type="password"
             name="password"
             id="password"
+            placeholder="At least 6 characters"
             class="w-full border border-gray-300 rounded-md px-3 py-2 mb-4"
           />
 
+          <div class="flex justify-center items-center gap-3">
+            <div>
+              <label for="country" class="block text-sm mb-2">Country</label>
+              <input
+                type="text"
+                name="country"
+                id="country"
+                placeholder="e.g Kenya"
+                class="w-full border border-gray-300 rounded-md px-3 py-2 mb-4"
+              />
+            </div>
+            <div>
+              <label for="state" class="block text-sm mb-2">County/State</label>
+              <input
+                type="text"
+                name="state"
+                id="state"
+                placeholder="e.g. Nairobi"
+                class="w-full border border-gray-300 rounded-md px-3 py-2 mb-4"
+              />
+            </div>
+          </div>
+
+          <label for="LGA/District" class="block text-sm mb-2">LGA</label>
+          <input
+            type="text"
+            name="LGA"
+            id="LGA"
+            placeholder="e.g Karen, Umoja"
+            class="w-full border border-gray-300 rounded-md px-3 py-2 mb-4"
+          />
+
+          <div>
+            <label for="address" class="block text-sm mb-2">Address</label>
+            <input
+              type="text"
+              name="address"
+              id="address"
+              placeholder="e.g 12, Waiyaki Way, Suite"
+              class="w-full border border-gray-300 rounded-md px-3 py-2 mb-4"
+            />
+          </div>
+
           <input
             type="submit"
-            value="Log In"
+            value="Register"
             class="w-full text-white bg-orange-500 rounded-md cursor-pointer hover:bg-orange-600 transition duration-150 ease-out py-2"
           />
         </form>
         <p class="text-sm text-black text-center mt-4">
-          By continuing, you agree to AgroHub's
+          By creating an account, you agree to AgroHub's
           <a href="#" class="underline text-blue-500">Conditions of Use</a> and
           <a href="#" class="underline text-blue-500">Privacy Notice.</a>
         </p>
       </div>
 
-      <div class="flex justify-center items-center mt-3">
-        <div class="flex items-center space-x-2">
-          <div class="border-t border-gray-300 flex-grow"></div>
-          <p class="text-sm mx-4">New to AgroHub?</p>
-          <div class="border-t border-gray-300 flex-grow"></div>
-        </div>
+      <div class="flex justify-center items-center mt-3 mb-4">
+        <p class="text-sm mx-4">Already have an account?</p>
 
         <a
-          href="/sign-up"
+          href="/sign-in"
           class="text-blue-500 text-center block hover:scale-100 transition duration-150 ease-out"
-          >Create account</a
+          >Sign in</a
         >
       </div>
-      <p class="text-sm text-center w-[35%] mt-6 mb-4">
-        For further support, you may visit the Help Center or contact our
-        customer service team.
-      </p>
     </section>
   </body>
 </html>
