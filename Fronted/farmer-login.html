@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgroHub | Contact Us</title>
+
+    <!-- ========== LATO FONT ========== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ========== FONTAWESOME CDN ========== -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- ========== TAILWINDCSS CDN ========== -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- ========== STYLESHEET ========== -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- ========== HEADER ========== -->
+    <div
+      class="flex flex-wrap items-center justify-center w-[30rem] min-h-screen py-10 mx-auto bg-gray-50 sm:flex-nowrap"
+    >
+      <!-- Form Container -->
+      <div class="w-full max-w-3xl p-8 bg-white rounded-lg shadow-lg sm:p-12">
+        <div class="mb-8 text-center">
+          <h1 class="text-3xl font-semibold text-gray-800">Welcome Back!</h1>
+          <p class="mt-2 text-gray-600">Enter your details to login</p>
+        </div>
+
+        <!-- Form -->
+        <form class="flex flex-col gap-6">
+          <div id="section1">
+            <div class="mt-4">
+              <label for="email" class="block text-sm font-medium text-gray-700"
+                >Email Address</label
+              >
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email Address"
+                class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+              />
+            </div>
+
+            <div class="mt-4">
+              <label
+                for="password"
+                class="block text-sm font-medium text-gray-700"
+                >Password</label
+              >
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="At least 6 characters"
+                class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+              />
+            </div>
+
+            <div class="flex items-center justify-between">
+              <div class="flex items-center justify-between gap-3">
+                <input
+                  type="checkbox"
+                  name="remember-me"
+                  id="chkBox"
+                  class="cursor-pointer checked:bg-orange-500"
+                />
+                <p class="text-gray-600">Remember me</p>
+              </div>
+              <button
+                type="submit"
+                class="w-auto px-5 py-2 mt-6 mb-4 text-lg text-white uppercase transition duration-200 bg-orange-500 shadow-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-300"
+              >
+                Log In
+              </button>
+            </div>
+
+            <a
+              href="/forgot-password"
+              class="mt-4 text-center text-orange-600 uppercase transition duration-150 ease-in hover:text-orange-700"
+              >Forgot Password ?</a
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
