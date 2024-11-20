@@ -7,9 +7,14 @@ const MySQLStore = require("express-mysql-session")(session); //for storage of s
 const dotenv = require("dotenv"); //manage envionment variables
 const path = require("path");
 const socketio = require("socket.io"); //for interractivity
+const multer = require('multer') //for upload
 
 //configuring dotenv to initialize environmental variables
 dotenv.config();
+
+//configure multer storage
+const multerStorage = multer.memoryStorage()
+const upload = multer({storage: multerStorage})
 
 //initialize express
 const app = express();

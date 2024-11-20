@@ -23,8 +23,8 @@ router.post(
     check("image_data", "Image is required").not().isEmpty(), //checking that name is not empty
     check("image_name", "Image name is required").not().isEmpty(), //checking that name is not empty
   ],
-  uploadProduct
-);
+  upload.single('image_data'), uploadProduct
+); //confirm if upload.single() parameter will be accepted
 
 router.get('/products', getAllProduct);
 
@@ -38,7 +38,7 @@ router.put('/edit', [
     check("status", "Status is required").not().isEmpty(), //checking that name is not empty
     check("image_data", "Image is required").not().isEmpty(), //checking that name is not empty
     check("image_name", "Image name is required").not().isEmpty(), //checking that name is not empty
-], editProduct
+], upload.single('image_data'), editProduct
 )
 
 router.delete('/delete',[

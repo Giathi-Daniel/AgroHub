@@ -27,8 +27,12 @@ exports.uploadProduct = async (req, res) => {
     });
   }
 
+    //convert file with buffer
+    const image_data = req.file.buffer //get file data as a buffer
+    const image_name = req.file.originalname
+
   //if no error is present in validation
-  const { product_name, product_group, product_class, description, price, discount, status, image_data, image_name } = req.body; //fetching the input parameter from the request body
+  const { product_name, product_group, product_class, description, price, discount, status } = req.body; //fetching the input parameter from the request body
   ;
   try {
     //checking if a product exist in database
@@ -127,8 +131,12 @@ exports.editProduct = async (req, res) => {
     });
   }
 
+     //convert file with buffer
+     const image_data = req.file.buffer //get file data as a buffer
+     const image_name = req.file.originalname
+
   //if no error is present in validation ans user is logged in
-  const {product_id, product_name, product_group, product_class, description, price, discount, status, image_data, image_name} = req.body; //fetching the input parameter from the request body
+  const {product_id, product_name, product_group, product_class, description, price, discount, status} = req.body; //fetching the input parameter from the request body
 
   try {
     //checking if a product exist in database
