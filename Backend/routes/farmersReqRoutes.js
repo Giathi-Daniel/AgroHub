@@ -4,8 +4,7 @@ const {
   uploadProduct,
   getAllProduct,
   editProduct,
-  removeProduct
-  
+  removeProduct,  
 } = require("../controllers/farmersReqController");
 const { check } = require("express-validator"); //for server side validation
 const router = express.Router(); //helps to set up routes

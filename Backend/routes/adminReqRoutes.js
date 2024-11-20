@@ -2,7 +2,9 @@
 const express = require("express");
 const {
   activateFarmer,
-  deactivateFarmer
+  deactivateFarmer,
+  getAllProduct,
+  searchProducts,
 } = require("../controllers/adminReqController");
 const { check } = require("express-validator"); //for server side validation
 const router = express.Router(); //helps to set up routes
@@ -18,3 +20,9 @@ router.put('/deactivate',[
   
 ],
 deactivateFarmer )
+
+router.get('/products', getAllProduct)
+
+router.post('/product/search', [
+  check('product', 'Product is required').not().isEmpty() //checkig if search filed is empty
+], searchProducts)
