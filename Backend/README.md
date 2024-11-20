@@ -4,8 +4,7 @@
 
 ## Project Title: AgroHub: A Comprehensive Agricultural E-Commerce Platform
 
-Overview: AgriHub is an innovative web-based platform designed to revolutionize the agricultural marketplace by seamlessly connecting farmers, buyers, and stakeholders. Tailored to meet the unique demands of the agriculture industry, AgriHub provides a streamlined and efficient solution for purchasing farm products, managing farmer profiles, and fostering a dynamic agricultural ecosystem.
-
+**Overview:** AgriHub is an innovative web-based platform designed to revolutionize the agricultural marketplace by seamlessly connecting farmers, buyers, and stakeholders. Tailored to meet the unique demands of the agriculture industry, AgriHub provides a streamlined and efficient solution for purchasing farm products, managing farmer profiles, and fostering a dynamic agricultural ecosystem.
 
 ## Key Features:
 
@@ -68,23 +67,39 @@ AgriHub is not just a platform—it’s a gateway to modernizing agriculture, em
      - **Update:** Allow farmers or admin(level 1 and 2 only) to update profile information.
      - **Delete:** Implement a feature to deactivate(admin level 1 and 2 only) or delete farmer profiles (both farmers and admin level 1 and 2).
 
+   - **Products:**
+
+     - **Create:** Farmers can upload products.
+     - **Read:** Users and Admin can view all products, Farmers can view their products.
+     - **Update:** Farmers can update product information.
+     - **Delete:** Farmers and admon can delete products.
+
+   - **Cart:**
+
+     - **Create:** Buyers can add items to cart.
+     - **Read:** Buyers can view the items in the cart.
+     - **Update:** Buyers  can remove items from cart.
+     - **Delete:** Buyers can clear cart.
+
+
    - **Shipment:**
+
      - **Create:** Buyers can initiate shipment by selecting a checking out of the cart to finalise purchase.
      - **Read:** Display a list of upcoming shipments for buyers and farmers. Admin can view all shipments.
      - **Update:** Allow admin to be able cancel shipments at buyer's request.
-     - **Delete:** Allow admin to cancel shipments, updating the status to "canceled."
+     - **Delete:** Allow admin to cancel shipments, updating the status to "cancelled."
 
-  - **Admin Management:**
+- **Admin Management:**
 
-    - **Create:** Admin level 1 can register and assign access level to admin.
-    - **Read:** Admin level 1 can view all admin
-    - **Update:** Admin can update their profile
-    - **Delete:** Admin level 1 can disable or delete an admin.
+  - **Create:** Admin level 1 can register and assign access level to admin.
+  - **Read:** Admin level 1 can view all admin
+  - **Update:** Admin can update their profile
+  - **Delete:** Admin level 1 can disable or delete an admin.
 
-  - **Admin action**
+- **Admin action**
 
-    - **Create:** Record every administrative action.
-    - **Read:** Admin can view their actions. Admin level 1 can view all actions.
+  - **Create:** Record every administrative action.
+  - **Read:** Admin can view their actions. Admin level 1 can view all actions.
 
 4. **Interactivity and User Experience:**
    - Provide real-time feedback for form submissions (e.g., success messages, error handling).
