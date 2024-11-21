@@ -7,6 +7,7 @@ const {
   viewCart,
   removeFromCart,
   clearCart,
+  countCart
 } = require("../controllers/buyersReqController");
 const { check } = require("express-validator"); //for server side validation
 const router = express.Router(); //helps to set up routes
@@ -34,3 +35,5 @@ router.post('/remove-item', [
 ], removeFromCart)
 
 router.get('/cart/clear', clearCart)
+
+router.get('/cart/count', countCart)
