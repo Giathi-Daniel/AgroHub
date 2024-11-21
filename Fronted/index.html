@@ -37,21 +37,21 @@
   <body>
     <!-- ========== HEADER ========== -->
     <header
-      class="relative w-full bg-green-600 text-white shadow-lg py-4 px-6 flex justify-between items-center"
+      class="relative flex items-center justify-between w-full px-6 py-4 text-white bg-green-600 shadow-lg"
     >
       <!-- logo and site Name -->
       <div class="flex items-center space-x-2">
-        <img src="images/logo.jpeg" class="h-5 w-5 md:h-9 md:w-9" />
-        <h1 class="md:text-2xl text-md font-bold">AgroHub</h1>
+        <img src="images/logo.jpeg" class="w-5 h-5 md:h-9 md:w-9" />
+        <h1 class="font-bold md:text-2xl text-md">AgroHub</h1>
       </div>
 
       <!-- Search bar -->
-      <div class="flex-grow md:mx-6 mx-3">
+      <div class="flex-grow mx-3 md:mx-6">
         <input
           type="text"
           name="search"
           id="search"
-          class="w-full text-gray-400 py-2 px-4 rounded-md focus:outline-none"
+          class="w-full px-4 py-2 text-gray-400 rounded-md focus:outline-none"
           placeholder="Search Products..."
         />
       </div>
@@ -61,12 +61,12 @@
         <div class="flex items-center space-x-4" id="authBtns">
           <a
             href="/login"
-            class="bg-orange-500 px-3 py-1 rounded-lg hover:bg-orange-600 transition duration-150 ease-in"
+            class="px-3 py-1 transition duration-150 ease-in bg-orange-500 rounded-lg hover:bg-orange-600"
             >Login</a
           >
           <a
             href="/signup"
-            class="bg-orange-500 px-3 py-1 rounded-lg hover:bg-orange-600 transition duration-150 ease-in"
+            class="px-3 py-1 transition duration-150 ease-in bg-orange-500 rounded-lg hover:bg-orange-600"
             >Sign Up</a
           >
         </div>
@@ -74,9 +74,9 @@
         <!-- Cart Icon -->
         <a
           href="/cart"
-          class="relative text-black hover:text-lg transition duration-150 ease-in"
+          class="relative text-black transition duration-150 ease-in hover:text-lg"
         >
-          <i class="fa-solid fa-cart-shopping text-xl"></i>
+          <i class="text-xl fa-solid fa-cart-shopping"></i>
           <span
             class="bg-orange-400 rounded-full absolute flex items-center justify-center w-5 h-5 text-sm text-white top-[-.6rem] left-3"
             id="cart_msg"
@@ -85,12 +85,12 @@
         </a>
 
         <!-- Menu Icon -->
-        <div class="flex justify-center items-center space-x-2" id="menuToggle">
+        <div class="flex items-center justify-center space-x-2" id="menuToggle">
           <i
-            class="fa-solid fa-bars text-xl cursor-pointer hover:font-bold transition duration-150 ease-in"
+            class="text-xl transition duration-150 ease-in cursor-pointer fa-solid fa-bars hover:font-bold"
           ></i>
           <i
-            class="fa-solid fa-close text-xl cursor-pointer hover:font-bold transition duration-150 ease-in hidden"
+            class="hidden text-xl transition duration-150 ease-in cursor-pointer fa-solid fa-close hover:font-bold"
           ></i>
         </div>
       </div>
@@ -98,27 +98,27 @@
 
     <!-- ========== HERO SECTION ========== -->
     <section class="relative w-full h-screen overflow-hidden">
-      <div class="swiper-container hero-swiper relative h-full">
+      <div class="relative h-full swiper-container hero-swiper">
         <div class="swiper-wrapper">
           <!-- Slide 1 -->
           <div
             class="swiper-slide bg-cover bg-center h-full bg-[url('./images/hero1.png')]"
           >
             <div
-              class="absolute inset-0 bg-black bg-opacity-40 flex justify-center flex-col items-center text-center"
+              class="absolute inset-0 flex flex-col items-center justify-center text-center bg-black bg-opacity-40"
             >
-              <div class="text-white space-y-6 px-6 md:px-12">
-                <h1 class="text-xl md:text-6xl font-extrabold leading-tight">
+              <div class="px-6 space-y-6 text-white md:px-12">
+                <h1 class="text-xl font-extrabold leading-tight md:text-6xl">
                   Empowering Agriculture, One Click at a Time
                 </h1>
-                <p class="text-lg md:text-2xl mt-6">
+                <p class="mt-6 text-lg md:text-2xl">
                   Discover top-quality farming products and solutions for a
                   sustainable future.
                 </p>
               </div>
               <a
                 href="#"
-                class="bg-orange-600 text-white py-3 px-6 rounded-full text-lg font-semibold cursor-pointer hover:bg-orange-700 transition duration-300 ease-in-out mt-8"
+                class="px-6 py-3 mt-8 text-lg font-semibold text-white transition duration-300 ease-in-out bg-orange-600 rounded-full cursor-pointer hover:bg-orange-700"
               >
                 Shop Now
               </a>
@@ -130,10 +130,10 @@
             class="swiper-slide bg-cover bg-center h-full bg-[url('./images/hero2.png')]"
           >
             <div
-              class="absolute inset-0 bg-black bg-opacity-40 flex justify-center flex-col items-center text-center"
+              class="absolute inset-0 flex flex-col items-center justify-center text-center bg-black bg-opacity-40"
             >
-              <div class="text-white space-y-6 px-6 md:px-12">
-                <h1 class="text-xl md:text-6xl font-extrabold leading-tight">
+              <div class="px-6 space-y-6 text-white md:px-12">
+                <h1 class="text-xl font-extrabold leading-tight md:text-6xl">
                   Your Trusted Partner in Agriculture
                 </h1>
                 <p class="text-lg md:text-2xl">
@@ -143,7 +143,7 @@
               </div>
               <a
                 href="#"
-                class="bg-orange-600 text-white py-3 px-6 rounded-full text-lg font-semibold cursor-pointer hover:bg-orange-700 transition duration-300 ease-in-out mt-8"
+                class="px-6 py-3 mt-8 text-lg font-semibold text-white transition duration-300 ease-in-out bg-orange-600 rounded-full cursor-pointer hover:bg-orange-700"
               >
                 Explore Products
               </a>
@@ -155,10 +155,10 @@
             class="swiper-slide bg-cover bg-center h-full bg-[url('./images/hero3.png')]"
           >
             <div
-              class="absolute inset-0 bg-black bg-opacity-40 flex justify-center flex-col items-center text-center"
+              class="absolute inset-0 flex flex-col items-center justify-center text-center bg-black bg-opacity-40"
             >
-              <div class="text-white space-y-6 px-6 md:px-12">
-                <h1 class="text-xl md:text-6xl font-extrabold leading-tight">
+              <div class="px-6 space-y-6 text-white md:px-12">
+                <h1 class="text-xl font-extrabold leading-tight md:text-6xl">
                   Sustainable Farming Starts Here
                 </h1>
                 <p class="text-lg md:text-2xl">
@@ -168,7 +168,7 @@
               </div>
               <a
                 href="#"
-                class="bg-orange-600 text-white py-3 px-6 rounded-full text-lg font-semibold cursor-pointer hover:bg-orange-700 transition duration-300 ease-in-out mt-8"
+                class="px-6 py-3 mt-8 text-lg font-semibold text-white transition duration-300 ease-in-out bg-orange-600 rounded-full cursor-pointer hover:bg-orange-700"
               >
                 Start Shopping</a
               >
@@ -180,7 +180,7 @@
 
       <!-- Optional overlay for page content -->
       <div
-        class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10"
+        class="absolute inset-0 z-10 bg-gradient-to-t from-black via-transparent to-transparent"
       ></div>
     </section>
 
@@ -228,14 +228,14 @@
 
     <main>
       <!-- ========== PRODUCTS ========== -->
-      <section class="mb-5 mt-5">
-        <h1 class="md:text-xl text-md font-bold mx-4 mb-3">
+      <section class="mt-5 mb-5 ml-5">
+        <h1 class="mx-4 mb-3 font-bold md:text-xl text-md">
           Our Best Products
         </h1>
 
         <!-- Product Container -->
         <div
-          class="flex justify-start items-center gap-3 space-y-1 flex-wrap px-5"
+          class="flex flex-wrap items-center justify-start gap-3 px-5 space-y-1"
         >
           <!-- Product 1 -->
           <div
@@ -252,11 +252,11 @@
               </a>
             </div>
             <div class="p-3">
-              <h3 class="text-black font-semibold" id="product-name">
+              <h3 class="font-semibold text-black" id="product-name">
                 Yams 5KG
               </h3>
-              <div class="flex space-x-4 items-center justify-start">
-                <p class="text-orange-500 font-semibold" id="product-price">
+              <div class="flex items-center justify-start space-x-4">
+                <p class="font-semibold text-orange-500" id="product-price">
                   $10.50
                 </p>
                 <p class="text-gray-500 line-through" id="product-discount">
@@ -264,7 +264,7 @@
                 </p>
               </div>
               <p
-                class="text-gray-500 text-sm select-none"
+                class="text-sm text-gray-500 select-none"
                 id="product-description"
               >
                 Farm-fresh organic yam perfect for your daily meals
@@ -278,11 +278,11 @@
                   >Add to Cart</a
                 >
                 <p
-                  class="text-sm text-green-600 mt-2 flex items-center"
+                  class="flex items-center mt-2 text-sm text-green-600"
                   id="add-to-cart-msg"
                 >
                   <i
-                    class="fa-solid fa-check bg-green-600 text-white rounded-full w-5 h-5 mr-1 flex items-center justify-center"
+                    class="flex items-center justify-center w-5 h-5 mr-1 text-white bg-green-600 rounded-full fa-solid fa-check"
                   ></i>
                   Added to cart
                 </p>
@@ -304,11 +304,11 @@
               </a>
             </div>
             <div class="p-3">
-              <h3 class="text-black font-semibold" id="product-name">
+              <h3 class="font-semibold text-black" id="product-name">
                 Yams 5KG
               </h3>
-              <div class="flex space-x-4 items-center justify-start">
-                <p class="text-orange-500 font-semibold" id="product-price">
+              <div class="flex items-center justify-start space-x-4">
+                <p class="font-semibold text-orange-500" id="product-price">
                   $10.50
                 </p>
                 <p class="text-gray-500 line-through" id="product-discount">
@@ -316,7 +316,7 @@
                 </p>
               </div>
               <p
-                class="text-gray-500 text-sm select-none"
+                class="text-sm text-gray-500 select-none"
                 id="product-description"
               >
                 Farm-fresh organic yam perfect for your daily meals
@@ -330,11 +330,11 @@
                   >Add to Cart</a
                 >
                 <p
-                  class="text-sm text-green-600 mt-2 flex items-center"
+                  class="flex items-center mt-2 text-sm text-green-600"
                   id="add-to-cart-msg"
                 >
                   <i
-                    class="fa-solid fa-check bg-green-600 text-white rounded-full w-5 h-5 mr-1 flex items-center justify-center"
+                    class="flex items-center justify-center w-5 h-5 mr-1 text-white bg-green-600 rounded-full fa-solid fa-check"
                   ></i>
                   Added to cart
                 </p>
@@ -355,11 +355,11 @@
               </a>
             </div>
             <div class="p-3">
-              <h3 class="text-black font-semibold" id="product-name">
+              <h3 class="font-semibold text-black" id="product-name">
                 Yams 5KG
               </h3>
-              <div class="flex space-x-4 items-center justify-start">
-                <p class="text-orange-500 font-semibold" id="product-price">
+              <div class="flex items-center justify-start space-x-4">
+                <p class="font-semibold text-orange-500" id="product-price">
                   $10.50
                 </p>
                 <p class="text-gray-500 line-through" id="product-discount">
@@ -367,7 +367,7 @@
                 </p>
               </div>
               <p
-                class="text-gray-500 text-sm select-none"
+                class="text-sm text-gray-500 select-none"
                 id="product-description"
               >
                 Farm-fresh organic yam perfect for your daily meals
@@ -381,11 +381,11 @@
                   >Add to Cart</a
                 >
                 <p
-                  class="text-sm text-green-600 mt-2 flex items-center"
+                  class="flex items-center mt-2 text-sm text-green-600"
                   id="add-to-cart-msg"
                 >
                   <i
-                    class="fa-solid fa-check bg-green-600 text-white rounded-full w-5 h-5 mr-1 flex items-center justify-center"
+                    class="flex items-center justify-center w-5 h-5 mr-1 text-white bg-green-600 rounded-full fa-solid fa-check"
                   ></i>
                   Added to cart
                 </p>
@@ -406,11 +406,11 @@
               </a>
             </div>
             <div class="p-3">
-              <h3 class="text-black font-semibold" id="product-name">
+              <h3 class="font-semibold text-black" id="product-name">
                 Yams 5KG
               </h3>
-              <div class="flex space-x-4 items-center justify-start">
-                <p class="text-orange-500 font-semibold" id="product-price">
+              <div class="flex items-center justify-start space-x-4">
+                <p class="font-semibold text-orange-500" id="product-price">
                   $10.50
                 </p>
                 <p class="text-gray-500 line-through" id="product-discount">
@@ -418,7 +418,7 @@
                 </p>
               </div>
               <p
-                class="text-gray-500 text-sm select-none"
+                class="text-sm text-gray-500 select-none"
                 id="product-description"
               >
                 Farm-fresh organic yam perfect for your daily meals
@@ -432,11 +432,11 @@
                   >Add to Cart</a
                 >
                 <p
-                  class="text-sm text-green-600 mt-2 flex items-center"
+                  class="flex items-center mt-2 text-sm text-green-600"
                   id="add-to-cart-msg"
                 >
                   <i
-                    class="fa-solid fa-check bg-green-600 text-white rounded-full w-5 h-5 mr-1 flex items-center justify-center"
+                    class="flex items-center justify-center w-5 h-5 mr-1 text-white bg-green-600 rounded-full fa-solid fa-check"
                   ></i>
                   Added to cart
                 </p>
@@ -457,11 +457,11 @@
               </a>
             </div>
             <div class="p-3">
-              <h3 class="text-black font-semibold" id="product-name">
+              <h3 class="font-semibold text-black" id="product-name">
                 Yams 5KG
               </h3>
-              <div class="flex space-x-4 items-center justify-start">
-                <p class="text-orange-500 font-semibold" id="product-price">
+              <div class="flex items-center justify-start space-x-4">
+                <p class="font-semibold text-orange-500" id="product-price">
                   $10.50
                 </p>
                 <p class="text-gray-500 line-through" id="product-discount">
@@ -469,7 +469,7 @@
                 </p>
               </div>
               <p
-                class="text-gray-500 text-sm select-none"
+                class="text-sm text-gray-500 select-none"
                 id="product-description"
               >
                 Farm-fresh organic yam perfect for your daily meals
@@ -483,11 +483,11 @@
                   >Add to Cart</a
                 >
                 <p
-                  class="text-sm text-green-600 mt-2 flex items-center"
+                  class="flex items-center mt-2 text-sm text-green-600"
                   id="add-to-cart-msg"
                 >
                   <i
-                    class="fa-solid fa-check bg-green-600 text-white rounded-full w-5 h-5 mr-1 flex items-center justify-center"
+                    class="flex items-center justify-center w-5 h-5 mr-1 text-white bg-green-600 rounded-full fa-solid fa-check"
                   ></i>
                   Added to cart
                 </p>
@@ -508,11 +508,11 @@
               </a>
             </div>
             <div class="p-3">
-              <h3 class="text-black font-semibold" id="product-name">
+              <h3 class="font-semibold text-black" id="product-name">
                 Yams 5KG
               </h3>
-              <div class="flex space-x-4 items-center justify-start">
-                <p class="text-orange-500 font-semibold" id="product-price">
+              <div class="flex items-center justify-start space-x-4">
+                <p class="font-semibold text-orange-500" id="product-price">
                   $10.50
                 </p>
                 <p class="text-gray-500 line-through" id="product-discount">
@@ -520,7 +520,7 @@
                 </p>
               </div>
               <p
-                class="text-gray-500 text-sm select-none"
+                class="text-sm text-gray-500 select-none"
                 id="product-description"
               >
                 Farm-fresh organic yam perfect for your daily meals
@@ -534,11 +534,11 @@
                   >Add to Cart</a
                 >
                 <p
-                  class="text-sm text-green-600 mt-2 flex items-center"
+                  class="flex items-center mt-2 text-sm text-green-600"
                   id="add-to-cart-msg"
                 >
                   <i
-                    class="fa-solid fa-check bg-green-600 text-white rounded-full w-5 h-5 mr-1 flex items-center justify-center"
+                    class="flex items-center justify-center w-5 h-5 mr-1 text-white bg-green-600 rounded-full fa-solid fa-check"
                   ></i>
                   Added to cart
                 </p>
@@ -559,11 +559,11 @@
               </a>
             </div>
             <div class="p-3">
-              <h3 class="text-black font-semibold" id="product-name">
+              <h3 class="font-semibold text-black" id="product-name">
                 Yams 5KG
               </h3>
-              <div class="flex space-x-4 items-center justify-start">
-                <p class="text-orange-500 font-semibold" id="product-price">
+              <div class="flex items-center justify-start space-x-4">
+                <p class="font-semibold text-orange-500" id="product-price">
                   $10.50
                 </p>
                 <p class="text-gray-500 line-through" id="product-discount">
@@ -571,7 +571,7 @@
                 </p>
               </div>
               <p
-                class="text-gray-500 text-sm select-none"
+                class="text-sm text-gray-500 select-none"
                 id="product-description"
               >
                 Farm-fresh organic yam perfect for your daily meals
@@ -585,11 +585,11 @@
                   >Add to Cart</a
                 >
                 <p
-                  class="text-sm text-green-600 mt-2 flex items-center"
+                  class="flex items-center mt-2 text-sm text-green-600"
                   id="add-to-cart-msg"
                 >
                   <i
-                    class="fa-solid fa-check bg-green-600 text-white rounded-full w-5 h-5 mr-1 flex items-center justify-center"
+                    class="flex items-center justify-center w-5 h-5 mr-1 text-white bg-green-600 rounded-full fa-solid fa-check"
                   ></i>
                   Added to cart
                 </p>
@@ -610,11 +610,11 @@
               </a>
             </div>
             <div class="p-3">
-              <h3 class="text-black font-semibold" id="product-name">
+              <h3 class="font-semibold text-black" id="product-name">
                 Yams 5KG
               </h3>
-              <div class="flex space-x-4 items-center justify-start">
-                <p class="text-orange-500 font-semibold" id="product-price">
+              <div class="flex items-center justify-start space-x-4">
+                <p class="font-semibold text-orange-500" id="product-price">
                   $10.50
                 </p>
                 <p class="text-gray-500 line-through" id="product-discount">
@@ -622,7 +622,7 @@
                 </p>
               </div>
               <p
-                class="text-gray-500 text-sm select-none"
+                class="text-sm text-gray-500 select-none"
                 id="product-description"
               >
                 Farm-fresh organic yam perfect for your daily meals
@@ -636,11 +636,11 @@
                   >Add to Cart</a
                 >
                 <p
-                  class="text-sm text-green-600 mt-2 flex items-center"
+                  class="flex items-center mt-2 text-sm text-green-600"
                   id="add-to-cart-msg"
                 >
                   <i
-                    class="fa-solid fa-check bg-green-600 text-white rounded-full w-5 h-5 mr-1 flex items-center justify-center"
+                    class="flex items-center justify-center w-5 h-5 mr-1 text-white bg-green-600 rounded-full fa-solid fa-check"
                   ></i>
                   Added to cart
                 </p>
@@ -661,11 +661,11 @@
               </a>
             </div>
             <div class="p-3">
-              <h3 class="text-black font-semibold" id="product-name">
+              <h3 class="font-semibold text-black" id="product-name">
                 Yams 5KG
               </h3>
-              <div class="flex space-x-4 items-center justify-start">
-                <p class="text-orange-500 font-semibold" id="product-price">
+              <div class="flex items-center justify-start space-x-4">
+                <p class="font-semibold text-orange-500" id="product-price">
                   $10.50
                 </p>
                 <p class="text-gray-500 line-through" id="product-discount">
@@ -673,7 +673,7 @@
                 </p>
               </div>
               <p
-                class="text-gray-500 text-sm select-none"
+                class="text-sm text-gray-500 select-none"
                 id="product-description"
               >
                 Farm-fresh organic yam perfect for your daily meals
@@ -687,11 +687,11 @@
                   >Add to Cart</a
                 >
                 <p
-                  class="text-sm text-green-600 mt-2 flex items-center"
+                  class="flex items-center mt-2 text-sm text-green-600"
                   id="add-to-cart-msg"
                 >
                   <i
-                    class="fa-solid fa-check bg-green-600 text-white rounded-full w-5 h-5 mr-1 flex items-center justify-center"
+                    class="flex items-center justify-center w-5 h-5 mr-1 text-white bg-green-600 rounded-full fa-solid fa-check"
                   ></i>
                   Added to cart
                 </p>
@@ -712,11 +712,11 @@
               </a>
             </div>
             <div class="p-3">
-              <h3 class="text-black font-semibold" id="product-name">
+              <h3 class="font-semibold text-black" id="product-name">
                 Yams 5KG
               </h3>
-              <div class="flex space-x-4 items-center justify-start">
-                <p class="text-orange-500 font-semibold" id="product-price">
+              <div class="flex items-center justify-start space-x-4">
+                <p class="font-semibold text-orange-500" id="product-price">
                   $10.50
                 </p>
                 <p class="text-gray-500 line-through" id="product-discount">
@@ -724,7 +724,7 @@
                 </p>
               </div>
               <p
-                class="text-gray-500 text-sm select-none"
+                class="text-sm text-gray-500 select-none"
                 id="product-description"
               >
                 Farm-fresh organic yam perfect for your daily meals
@@ -738,11 +738,11 @@
                   >Add to Cart</a
                 >
                 <p
-                  class="text-sm text-green-600 mt-2 flex items-center"
+                  class="flex items-center mt-2 text-sm text-green-600"
                   id="add-to-cart-msg"
                 >
                   <i
-                    class="fa-solid fa-check bg-green-600 text-white rounded-full w-5 h-5 mr-1 flex items-center justify-center"
+                    class="flex items-center justify-center w-5 h-5 mr-1 text-white bg-green-600 rounded-full fa-solid fa-check"
                   ></i>
                   Added to cart
                 </p>
@@ -753,12 +753,12 @@
       </section>
 
       <!-- ========== SLIDER ========== -->
-      <section class="mb-4 md:w-full w-[50%] mx-4 overflow-hidden">
-        <h1 class="md:text-xl text-md font-bold mx-4 mb-3">
+      <section class="mb-4 md:w-full w-[50%] mx-4">
+        <h1 class="mx-4 mb-3 font-bold md:text-xl text-md">
           Handpicked For You
         </h1>
         <div class="swiper mySwiper md:w-[97%] h-full overflow-hidden">
-          <div class="swiper-wrapper h-full mb-3">
+          <div class="h-full mb-3 swiper-wrapper">
             <div
               class="swiper-slide bg-white shadow-sm flex flex-col justify-start items-start hover:shadow-md transition duration-150 ease-in w-[70%]"
             >
@@ -769,11 +769,11 @@
                   class="block w-full h-full"
                 />
               </a>
-              <h3 class="text-black font-semibold m-2" id="product-name">
+              <h3 class="m-2 font-semibold text-black" id="product-name">
                 Yams 5KG
               </h3>
               <div class="flex flex-col items-center justify-start m-2">
-                <p class="text-orange-500 font-semibold" id="product-price">
+                <p class="font-semibold text-orange-500" id="product-price">
                   $10.50
                 </p>
                 <p class="text-gray-500 line-through" id="product-discount">
@@ -791,11 +791,11 @@
                   class="block w-full h-full"
                 />
               </a>
-              <h3 class="text-black font-semibold m-2" id="product-name">
+              <h3 class="m-2 font-semibold text-black" id="product-name">
                 Yams 5KG
               </h3>
               <div class="flex flex-col items-center justify-start m-2">
-                <p class="text-orange-500 font-semibold" id="product-price">
+                <p class="font-semibold text-orange-500" id="product-price">
                   $10.50
                 </p>
                 <p class="text-gray-500 line-through" id="product-discount">
@@ -813,11 +813,11 @@
                   class="block w-full h-full"
                 />
               </a>
-              <h3 class="text-black font-semibold m-2" id="product-name">
+              <h3 class="m-2 font-semibold text-black" id="product-name">
                 Yams 5KG
               </h3>
               <div class="flex flex-col items-center justify-start m-2">
-                <p class="text-orange-500 font-semibold" id="product-price">
+                <p class="font-semibold text-orange-500" id="product-price">
                   $10.50
                 </p>
                 <p class="text-gray-500 line-through" id="product-discount">
@@ -835,11 +835,11 @@
                   class="block w-full h-full"
                 />
               </a>
-              <h3 class="text-black font-semibold m-2" id="product-name">
+              <h3 class="m-2 font-semibold text-black" id="product-name">
                 Yams 5KG
               </h3>
               <div class="flex flex-col items-center justify-start m-2">
-                <p class="text-orange-500 font-semibold" id="product-price">
+                <p class="font-semibold text-orange-500" id="product-price">
                   $10.50
                 </p>
                 <p class="text-gray-500 line-through" id="product-discount">
@@ -857,11 +857,11 @@
                   class="block w-full h-full"
                 />
               </a>
-              <h3 class="text-black font-semibold m-2" id="product-name">
+              <h3 class="m-2 font-semibold text-black" id="product-name">
                 Yams 5KG
               </h3>
               <div class="flex flex-col items-center justify-start m-2">
-                <p class="text-orange-500 font-semibold" id="product-price">
+                <p class="font-semibold text-orange-500" id="product-price">
                   $10.50
                 </p>
                 <p class="text-gray-500 line-through" id="product-discount">
@@ -879,11 +879,11 @@
                   class="block w-full h-full"
                 />
               </a>
-              <h3 class="text-black font-semibold m-2" id="product-name">
+              <h3 class="m-2 font-semibold text-black" id="product-name">
                 Yams 5KG
               </h3>
               <div class="flex flex-col items-center justify-start m-2">
-                <p class="text-orange-500 font-semibold" id="product-price">
+                <p class="font-semibold text-orange-500" id="product-price">
                   $10.50
                 </p>
                 <p class="text-gray-500 line-through" id="product-discount">
@@ -901,11 +901,11 @@
                   class="block w-full h-full"
                 />
               </a>
-              <h3 class="text-black font-semibold m-2" id="product-name">
+              <h3 class="m-2 font-semibold text-black" id="product-name">
                 Yams 5KG
               </h3>
               <div class="flex flex-col items-center justify-start m-2">
-                <p class="text-orange-500 font-semibold" id="product-price">
+                <p class="font-semibold text-orange-500" id="product-price">
                   $10.50
                 </p>
                 <p class="text-gray-500 line-through" id="product-discount">
@@ -923,11 +923,11 @@
                   class="block w-full h-full"
                 />
               </a>
-              <h3 class="text-black font-semibold m-2" id="product-name">
+              <h3 class="m-2 font-semibold text-black" id="product-name">
                 Yams 5KG
               </h3>
               <div class="flex flex-col items-center justify-start m-2">
-                <p class="text-orange-500 font-semibold" id="product-price">
+                <p class="font-semibold text-orange-500" id="product-price">
                   $10.50
                 </p>
                 <p class="text-gray-500 line-through" id="product-discount">
@@ -945,11 +945,11 @@
                   class="block w-full h-full"
                 />
               </a>
-              <h3 class="text-black font-semibold m-2" id="product-name">
+              <h3 class="m-2 font-semibold text-black" id="product-name">
                 Yams 5KG
               </h3>
               <div class="flex flex-col items-center justify-start m-2">
-                <p class="text-orange-500 font-semibold" id="product-price">
+                <p class="font-semibold text-orange-500" id="product-price">
                   $10.50
                 </p>
                 <p class="text-gray-500 line-through" id="product-discount">
@@ -967,11 +967,11 @@
                   class="block w-full h-full"
                 />
               </a>
-              <h3 class="text-black font-semibold m-2" id="product-name">
+              <h3 class="m-2 font-semibold text-black" id="product-name">
                 Yams 5KG
               </h3>
               <div class="flex flex-col items-center justify-start m-2">
-                <p class="text-orange-500 font-semibold" id="product-price">
+                <p class="font-semibold text-orange-500" id="product-price">
                   $10.50
                 </p>
                 <p class="text-gray-500 line-through" id="product-discount">
@@ -989,11 +989,11 @@
                   class="block w-full h-full"
                 />
               </a>
-              <h3 class="text-black font-semibold m-2" id="product-name">
+              <h3 class="m-2 font-semibold text-black" id="product-name">
                 Yams 5KG
               </h3>
               <div class="flex flex-col items-center justify-start m-2">
-                <p class="text-orange-500 font-semibold" id="product-price">
+                <p class="font-semibold text-orange-500" id="product-price">
                   $10.50
                 </p>
                 <p class="text-gray-500 line-through" id="product-discount">
@@ -1011,11 +1011,11 @@
                   class="block w-full h-full"
                 />
               </a>
-              <h3 class="text-black font-semibold m-2" id="product-name">
+              <h3 class="m-2 font-semibold text-black" id="product-name">
                 Yams 5KG
               </h3>
               <div class="flex flex-col items-center justify-start m-2">
-                <p class="text-orange-500 font-semibold" id="product-price">
+                <p class="font-semibold text-orange-500" id="product-price">
                   $10.50
                 </p>
                 <p class="text-gray-500 line-through" id="product-discount">
@@ -1027,21 +1027,21 @@
 
           <!-- Navigation btns -->
           <div
-            class="swiper-button-next bg-gray-600 text-white rounded-full flex justify-center items-center p-2 w-8 h-8 top-1/2 right-4 transform -translate-y-1/2 hover:bg-gray-500 hover:scale-110 transition duration-300 ease-in-out"
+            class="flex items-center justify-center w-8 h-8 p-2 text-white transition duration-300 ease-in-out transform -translate-y-1/2 bg-gray-600 rounded-full swiper-button-next top-1/2 right-4 hover:bg-gray-500 hover:scale-110"
           ></div>
           <div
-            class="swiper-button-prev bg-gray-600 text-white rounded-full flex justify-center items-center p-2 w-8 h-8 top-1/2 left-4 transform -translate-y-1/2 hover:bg-gray-500 hover:scale-110 transition duration-300 ease-in-out"
+            class="flex items-center justify-center w-8 h-8 p-2 text-white transition duration-300 ease-in-out transform -translate-y-1/2 bg-gray-600 rounded-full swiper-button-prev top-1/2 left-4 hover:bg-gray-500 hover:scale-110"
           ></div>
         </div>
       </section>
 
       <!-- ========== PRODUCTS ========== -->
-      <section class="mb-5 mt-5">
-        <h1 class="md:text-xl text-md font-bold mx-4 mb-3">Green Groceries</h1>
+      <section class="mb-5 ml-5">
+        <h1 class="mx-4 mb-3 font-bold md:text-xl text-md">Green Groceries</h1>
 
         <!-- Product Container -->
         <div
-          class="flex justify-start items-center gap-3 space-y-1 flex-wrap px-5"
+          class="flex flex-wrap items-center justify-start gap-3 px-5 space-y-1"
         >
           <!-- Product 1 -->
           <div
@@ -1058,11 +1058,11 @@
               </a>
             </div>
             <div class="p-3">
-              <h3 class="text-black font-semibold" id="product-name">
+              <h3 class="font-semibold text-black" id="product-name">
                 Yams 5KG
               </h3>
-              <div class="flex space-x-4 items-center justify-start">
-                <p class="text-orange-500 font-semibold" id="product-price">
+              <div class="flex items-center justify-start space-x-4">
+                <p class="font-semibold text-orange-500" id="product-price">
                   $10.50
                 </p>
                 <p class="text-gray-500 line-through" id="product-discount">
@@ -1070,7 +1070,7 @@
                 </p>
               </div>
               <p
-                class="text-gray-500 text-sm select-none"
+                class="text-sm text-gray-500 select-none"
                 id="product-description"
               >
                 Farm-fresh organic yam perfect for your daily meals
@@ -1084,11 +1084,11 @@
                   >Add to Cart</a
                 >
                 <p
-                  class="text-sm text-green-600 mt-2 flex items-center"
+                  class="flex items-center mt-2 text-sm text-green-600"
                   id="add-to-cart-msg"
                 >
                   <i
-                    class="fa-solid fa-check bg-green-600 text-white rounded-full w-5 h-5 mr-1 flex items-center justify-center"
+                    class="flex items-center justify-center w-5 h-5 mr-1 text-white bg-green-600 rounded-full fa-solid fa-check"
                   ></i>
                   Added to cart
                 </p>
@@ -1110,11 +1110,11 @@
               </a>
             </div>
             <div class="p-3">
-              <h3 class="text-black font-semibold" id="product-name">
+              <h3 class="font-semibold text-black" id="product-name">
                 Yams 5KG
               </h3>
-              <div class="flex space-x-4 items-center justify-start">
-                <p class="text-orange-500 font-semibold" id="product-price">
+              <div class="flex items-center justify-start space-x-4">
+                <p class="font-semibold text-orange-500" id="product-price">
                   $10.50
                 </p>
                 <p class="text-gray-500 line-through" id="product-discount">
@@ -1122,7 +1122,7 @@
                 </p>
               </div>
               <p
-                class="text-gray-500 text-sm select-none"
+                class="text-sm text-gray-500 select-none"
                 id="product-description"
               >
                 Farm-fresh organic yam perfect for your daily meals
@@ -1136,11 +1136,11 @@
                   >Add to Cart</a
                 >
                 <p
-                  class="text-sm text-green-600 mt-2 flex items-center"
+                  class="flex items-center mt-2 text-sm text-green-600"
                   id="add-to-cart-msg"
                 >
                   <i
-                    class="fa-solid fa-check bg-green-600 text-white rounded-full w-5 h-5 mr-1 flex items-center justify-center"
+                    class="flex items-center justify-center w-5 h-5 mr-1 text-white bg-green-600 rounded-full fa-solid fa-check"
                   ></i>
                   Added to cart
                 </p>
@@ -1161,11 +1161,11 @@
               </a>
             </div>
             <div class="p-3">
-              <h3 class="text-black font-semibold" id="product-name">
+              <h3 class="font-semibold text-black" id="product-name">
                 Yams 5KG
               </h3>
-              <div class="flex space-x-4 items-center justify-start">
-                <p class="text-orange-500 font-semibold" id="product-price">
+              <div class="flex items-center justify-start space-x-4">
+                <p class="font-semibold text-orange-500" id="product-price">
                   $10.50
                 </p>
                 <p class="text-gray-500 line-through" id="product-discount">
@@ -1173,7 +1173,7 @@
                 </p>
               </div>
               <p
-                class="text-gray-500 text-sm select-none"
+                class="text-sm text-gray-500 select-none"
                 id="product-description"
               >
                 Farm-fresh organic yam perfect for your daily meals
@@ -1187,11 +1187,11 @@
                   >Add to Cart</a
                 >
                 <p
-                  class="text-sm text-green-600 mt-2 flex items-center"
+                  class="flex items-center mt-2 text-sm text-green-600"
                   id="add-to-cart-msg"
                 >
                   <i
-                    class="fa-solid fa-check bg-green-600 text-white rounded-full w-5 h-5 mr-1 flex items-center justify-center"
+                    class="flex items-center justify-center w-5 h-5 mr-1 text-white bg-green-600 rounded-full fa-solid fa-check"
                   ></i>
                   Added to cart
                 </p>
@@ -1212,11 +1212,11 @@
               </a>
             </div>
             <div class="p-3">
-              <h3 class="text-black font-semibold" id="product-name">
+              <h3 class="font-semibold text-black" id="product-name">
                 Yams 5KG
               </h3>
-              <div class="flex space-x-4 items-center justify-start">
-                <p class="text-orange-500 font-semibold" id="product-price">
+              <div class="flex items-center justify-start space-x-4">
+                <p class="font-semibold text-orange-500" id="product-price">
                   $10.50
                 </p>
                 <p class="text-gray-500 line-through" id="product-discount">
@@ -1224,7 +1224,7 @@
                 </p>
               </div>
               <p
-                class="text-gray-500 text-sm select-none"
+                class="text-sm text-gray-500 select-none"
                 id="product-description"
               >
                 Farm-fresh organic yam perfect for your daily meals
@@ -1238,11 +1238,11 @@
                   >Add to Cart</a
                 >
                 <p
-                  class="text-sm text-green-600 mt-2 flex items-center"
+                  class="flex items-center mt-2 text-sm text-green-600"
                   id="add-to-cart-msg"
                 >
                   <i
-                    class="fa-solid fa-check bg-green-600 text-white rounded-full w-5 h-5 mr-1 flex items-center justify-center"
+                    class="flex items-center justify-center w-5 h-5 mr-1 text-white bg-green-600 rounded-full fa-solid fa-check"
                   ></i>
                   Added to cart
                 </p>
@@ -1263,11 +1263,11 @@
               </a>
             </div>
             <div class="p-3">
-              <h3 class="text-black font-semibold" id="product-name">
+              <h3 class="font-semibold text-black" id="product-name">
                 Yams 5KG
               </h3>
-              <div class="flex space-x-4 items-center justify-start">
-                <p class="text-orange-500 font-semibold" id="product-price">
+              <div class="flex items-center justify-start space-x-4">
+                <p class="font-semibold text-orange-500" id="product-price">
                   $10.50
                 </p>
                 <p class="text-gray-500 line-through" id="product-discount">
@@ -1275,7 +1275,7 @@
                 </p>
               </div>
               <p
-                class="text-gray-500 text-sm select-none"
+                class="text-sm text-gray-500 select-none"
                 id="product-description"
               >
                 Farm-fresh organic yam perfect for your daily meals
@@ -1289,11 +1289,11 @@
                   >Add to Cart</a
                 >
                 <p
-                  class="text-sm text-green-600 mt-2 flex items-center"
+                  class="flex items-center mt-2 text-sm text-green-600"
                   id="add-to-cart-msg"
                 >
                   <i
-                    class="fa-solid fa-check bg-green-600 text-white rounded-full w-5 h-5 mr-1 flex items-center justify-center"
+                    class="flex items-center justify-center w-5 h-5 mr-1 text-white bg-green-600 rounded-full fa-solid fa-check"
                   ></i>
                   Added to cart
                 </p>
@@ -1314,11 +1314,11 @@
               </a>
             </div>
             <div class="p-3">
-              <h3 class="text-black font-semibold" id="product-name">
+              <h3 class="font-semibold text-black" id="product-name">
                 Yams 5KG
               </h3>
-              <div class="flex space-x-4 items-center justify-start">
-                <p class="text-orange-500 font-semibold" id="product-price">
+              <div class="flex items-center justify-start space-x-4">
+                <p class="font-semibold text-orange-500" id="product-price">
                   $10.50
                 </p>
                 <p class="text-gray-500 line-through" id="product-discount">
@@ -1326,7 +1326,7 @@
                 </p>
               </div>
               <p
-                class="text-gray-500 text-sm select-none"
+                class="text-sm text-gray-500 select-none"
                 id="product-description"
               >
                 Farm-fresh organic yam perfect for your daily meals
@@ -1340,11 +1340,11 @@
                   >Add to Cart</a
                 >
                 <p
-                  class="text-sm text-green-600 mt-2 flex items-center"
+                  class="flex items-center mt-2 text-sm text-green-600"
                   id="add-to-cart-msg"
                 >
                   <i
-                    class="fa-solid fa-check bg-green-600 text-white rounded-full w-5 h-5 mr-1 flex items-center justify-center"
+                    class="flex items-center justify-center w-5 h-5 mr-1 text-white bg-green-600 rounded-full fa-solid fa-check"
                   ></i>
                   Added to cart
                 </p>
@@ -1365,11 +1365,11 @@
               </a>
             </div>
             <div class="p-3">
-              <h3 class="text-black font-semibold" id="product-name">
+              <h3 class="font-semibold text-black" id="product-name">
                 Yams 5KG
               </h3>
-              <div class="flex space-x-4 items-center justify-start">
-                <p class="text-orange-500 font-semibold" id="product-price">
+              <div class="flex items-center justify-start space-x-4">
+                <p class="font-semibold text-orange-500" id="product-price">
                   $10.50
                 </p>
                 <p class="text-gray-500 line-through" id="product-discount">
@@ -1377,7 +1377,7 @@
                 </p>
               </div>
               <p
-                class="text-gray-500 text-sm select-none"
+                class="text-sm text-gray-500 select-none"
                 id="product-description"
               >
                 Farm-fresh organic yam perfect for your daily meals
@@ -1391,11 +1391,11 @@
                   >Add to Cart</a
                 >
                 <p
-                  class="text-sm text-green-600 mt-2 flex items-center"
+                  class="flex items-center mt-2 text-sm text-green-600"
                   id="add-to-cart-msg"
                 >
                   <i
-                    class="fa-solid fa-check bg-green-600 text-white rounded-full w-5 h-5 mr-1 flex items-center justify-center"
+                    class="flex items-center justify-center w-5 h-5 mr-1 text-white bg-green-600 rounded-full fa-solid fa-check"
                   ></i>
                   Added to cart
                 </p>
@@ -1416,11 +1416,11 @@
               </a>
             </div>
             <div class="p-3">
-              <h3 class="text-black font-semibold" id="product-name">
+              <h3 class="font-semibold text-black" id="product-name">
                 Yams 5KG
               </h3>
-              <div class="flex space-x-4 items-center justify-start">
-                <p class="text-orange-500 font-semibold" id="product-price">
+              <div class="flex items-center justify-start space-x-4">
+                <p class="font-semibold text-orange-500" id="product-price">
                   $10.50
                 </p>
                 <p class="text-gray-500 line-through" id="product-discount">
@@ -1428,7 +1428,7 @@
                 </p>
               </div>
               <p
-                class="text-gray-500 text-sm select-none"
+                class="text-sm text-gray-500 select-none"
                 id="product-description"
               >
                 Farm-fresh organic yam perfect for your daily meals
@@ -1442,11 +1442,11 @@
                   >Add to Cart</a
                 >
                 <p
-                  class="text-sm text-green-600 mt-2 flex items-center"
+                  class="flex items-center mt-2 text-sm text-green-600"
                   id="add-to-cart-msg"
                 >
                   <i
-                    class="fa-solid fa-check bg-green-600 text-white rounded-full w-5 h-5 mr-1 flex items-center justify-center"
+                    class="flex items-center justify-center w-5 h-5 mr-1 text-white bg-green-600 rounded-full fa-solid fa-check"
                   ></i>
                   Added to cart
                 </p>
@@ -1467,11 +1467,11 @@
               </a>
             </div>
             <div class="p-3">
-              <h3 class="text-black font-semibold" id="product-name">
+              <h3 class="font-semibold text-black" id="product-name">
                 Yams 5KG
               </h3>
-              <div class="flex space-x-4 items-center justify-start">
-                <p class="text-orange-500 font-semibold" id="product-price">
+              <div class="flex items-center justify-start space-x-4">
+                <p class="font-semibold text-orange-500" id="product-price">
                   $10.50
                 </p>
                 <p class="text-gray-500 line-through" id="product-discount">
@@ -1479,7 +1479,7 @@
                 </p>
               </div>
               <p
-                class="text-gray-500 text-sm select-none"
+                class="text-sm text-gray-500 select-none"
                 id="product-description"
               >
                 Farm-fresh organic yam perfect for your daily meals
@@ -1493,11 +1493,11 @@
                   >Add to Cart</a
                 >
                 <p
-                  class="text-sm text-green-600 mt-2 flex items-center"
+                  class="flex items-center mt-2 text-sm text-green-600"
                   id="add-to-cart-msg"
                 >
                   <i
-                    class="fa-solid fa-check bg-green-600 text-white rounded-full w-5 h-5 mr-1 flex items-center justify-center"
+                    class="flex items-center justify-center w-5 h-5 mr-1 text-white bg-green-600 rounded-full fa-solid fa-check"
                   ></i>
                   Added to cart
                 </p>
@@ -1518,11 +1518,11 @@
               </a>
             </div>
             <div class="p-3">
-              <h3 class="text-black font-semibold" id="product-name">
+              <h3 class="font-semibold text-black" id="product-name">
                 Yams 5KG
               </h3>
-              <div class="flex space-x-4 items-center justify-start">
-                <p class="text-orange-500 font-semibold" id="product-price">
+              <div class="flex items-center justify-start space-x-4">
+                <p class="font-semibold text-orange-500" id="product-price">
                   $10.50
                 </p>
                 <p class="text-gray-500 line-through" id="product-discount">
@@ -1530,7 +1530,7 @@
                 </p>
               </div>
               <p
-                class="text-gray-500 text-sm select-none"
+                class="text-sm text-gray-500 select-none"
                 id="product-description"
               >
                 Farm-fresh organic yam perfect for your daily meals
@@ -1544,11 +1544,11 @@
                   >Add to Cart</a
                 >
                 <p
-                  class="text-sm text-green-600 mt-2 flex items-center"
+                  class="flex items-center mt-2 text-sm text-green-600"
                   id="add-to-cart-msg"
                 >
                   <i
-                    class="fa-solid fa-check bg-green-600 text-white rounded-full w-5 h-5 mr-1 flex items-center justify-center"
+                    class="flex items-center justify-center w-5 h-5 mr-1 text-white bg-green-600 rounded-full fa-solid fa-check"
                   ></i>
                   Added to cart
                 </p>
@@ -1560,76 +1560,76 @@
     </main>
 
     <!-- ========== FOOTER ========== -->
-    <footer class="bg-slate-800 text-white py-12">
+    <footer class="py-12 text-white bg-slate-800">
       <div class="container px-6 md:px-6">
         <div class="flex flex-wrap px-3">
           <!-- Get to know us Section -->
-          <div class="flex mb-5 flex-col space-y-3 w-full md:w-1/3">
+          <div class="flex flex-col w-full mb-5 space-y-3 md:w-1/3">
             <h2 class="text-xl font-bold">Get to know us</h2>
             <a
               href="/contact-us"
-              class="text-gray-300 hover:underline transition duration-150 ease-in-out"
+              class="text-gray-300 transition duration-150 ease-in-out hover:underline"
               >Contact Us</a
             >
             <a
               href="/about-us"
-              class="text-gray-300 hover:underline transition duration-150 ease-in-out"
+              class="text-gray-300 transition duration-150 ease-in-out hover:underline"
               >About Us</a
             >
             <a
               href="#"
-              class="text-gray-300 hover:underline transition duration-150 ease-in-out"
+              class="text-gray-300 transition duration-150 ease-in-out hover:underline"
               >Careers</a
             >
           </div>
 
           <!-- Quick Links Section -->
-          <div class="flex mb-5 flex-col space-y-3 w-full md:w-1/3">
+          <div class="flex flex-col w-full mb-5 space-y-3 md:w-1/3">
             <h2 class="text-xl font-bold">Quick Links</h2>
             <a
               href="#"
-              class="text-gray-300 hover:underline transition duration-150 ease-in-out"
+              class="text-gray-300 transition duration-150 ease-in-out hover:underline"
               >Privacy Policy</a
             >
             <a
               href="#"
-              class="text-gray-300 hover:underline transition duration-150 ease-in-out"
+              class="text-gray-300 transition duration-150 ease-in-out hover:underline"
               >Terms & Conditions</a
             >
             <a
               href="#"
-              class="text-gray-300 hover:underline transition duration-150 ease-in-out"
+              class="text-gray-300 transition duration-150 ease-in-out hover:underline"
               >FAQ</a
             >
           </div>
 
           <!-- Social Media Links Section -->
-          <div class="flex mb-5 flex-col space-y-3 w-full md:w-1/3">
+          <div class="flex flex-col w-full mb-5 space-y-3 md:w-1/3">
             <h2 class="text-xl font-bold">Follow Us</h2>
             <a
               href="https://facebook.com/AgroHub"
               target="_blank"
-              class="text-gray-300 hover:underline transition duration-150 ease-in-out"
+              class="text-gray-300 transition duration-150 ease-in-out hover:underline"
               >Facebook</a
             >
             <a
               href="https://twitter.com/AgroHub"
               target="_blank"
-              class="text-gray-300 hover:underline transition duration-150 ease-in-out"
+              class="text-gray-300 transition duration-150 ease-in-out hover:underline"
               >Twitter</a
             >
             <a
               href="https://linkedin.com/company/AgroHub"
               target="_blank"
-              class="text-gray-300 hover:underline transition duration-150 ease-in-out"
+              class="text-gray-300 transition duration-150 ease-in-out hover:underline"
               >LinkedIn</a
             >
           </div>
         </div>
 
         <!-- Footnote -->
-        <hr class="border-t border-gray-700 mt-6 w-full" />
-        <div class="mt-8 text-center text-sm text-gray-400">
+        <hr class="w-full mt-6 border-t border-gray-700" />
+        <div class="mt-8 text-sm text-center text-gray-400">
           <p>&copy; 2024 AgroHub. All rights reserved.</p>
         </div>
       </div>
