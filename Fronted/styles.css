@@ -32,6 +32,8 @@ img {
   gap: 0.7rem;
 }
 
+
+
 /* ========== MEDIUM SCREEN ========== */
 @media (max-width: 746px) {
   #menuToggle {
