@@ -31,17 +31,15 @@ router.post(
 
 router.get('/products', getAllProduct);
 
-router.put('/edit', [
+router.put('/edit', upload.single('image_data'), [
   check("product_name", "Product name is required").not().isEmpty(), //checking that name is not empty
     check("product_group", "Product group is required").not().isEmpty(), //checking that name is not empty
     check("product_class", "Product class is required").not().isEmpty(), //checking that name is not empty
     check("description", "Description is required").not().isEmpty(), //checking that name is not empty
     check("price", "Price is required").not().isEmpty(), //checking if email is valid
     check("discount", "Discount is required").not().isEmpty(), //checking password length
-    check("status", "Status is required").not().isEmpty(), //checking that name is not empty
-    check("image_data", "Image is required").not().isEmpty(), //checking that name is not empty
-    check("image_name", "Image name is required").not().isEmpty(), //checking that name is not empty
-], upload.single('image_data'), editProduct
+    check("status", "Status is required").not().isEmpty() //checking that name is not empty
+], editProduct
 )
 
 router.delete('/delete',[

@@ -128,7 +128,7 @@ exports.getAllProduct = async (req, res) => {
 
     let imageData;
     let allProducts = [];
-    
+
     //convert image data to url
     await products.forEach((product) => {
       imageData = product.image_data.toString("base64");
@@ -146,7 +146,6 @@ exports.getAllProduct = async (req, res) => {
         image_name: product.image_name,
       });
     });
-    
 
     return res.status(200).json({
       status: 200,
@@ -232,7 +231,7 @@ exports.editProduct = async (req, res) => {
     }
 
     await db.execute(
-      "UPDATE products SET product_name = ?, product_group =?, product_class = ?, farm_size = ?, phone_number = ?, country = ?, state = ?, LGA =?, description = ?, price = ?, discount = ?, status = ?, image_data = ?, image_name = ? WHERE product_id = ?",
+      "UPDATE products SET product_name = ?, product_group =?, product_class = ?, description = ?, price = ?, discount = ?, status = ?, image_data = ?, image_name = ? WHERE product_id = ?",
       [
         product_name,
         product_group,
@@ -307,7 +306,7 @@ exports.removeProduct = async (req, res) => {
       });
     }
 
-    await db.execute("DELET FROM products WHERE product_id = ?", [product_id]);
+    await db.execute("DELETE FROM products WHERE product_id = ?", [product_id]);
 
     return res.status(200).json({
       status: 200,
