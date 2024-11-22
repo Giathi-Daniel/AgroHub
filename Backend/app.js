@@ -52,8 +52,8 @@ app.use("/agrohub/api/admin", require("./routes/adminRoutes"));
 
 //configure routes for requests
 // app.use("/agrohub/api/req/buyer", require("./routes/buyersReqRoutes"));
-// app.use("/agrohub/api/req/farmer", require("./routes/farmersReqRoutes"));
-// app.use("/agrohub/api/req/admin", require("./routes/adminReqRoutes"));
+app.use("/agrohub/api/req/farmer", require("./routes/farmersReqRoutes"));
+app.use("/agrohub/api/req/admin", require("./routes/adminReqRoutes"));
 
 app.get("*", (req, res) => {
   // res.status(200).send("Welcome to AgroHub Backend");

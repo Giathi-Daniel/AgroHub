@@ -42,8 +42,8 @@ exports.registerBuyer = async (req, res) => {
     if (buyer.length > 0) {
       //if user exist
       return res
-        .status(400)
-        .json({ status: 400, success: false, message: "User already exist" });
+        .status(409)
+        .json({ status: 409, success: false, message: "User already exist" });
     }
 
     //if user does not exist
@@ -142,7 +142,7 @@ exports.loginBuyer = async (req, res) => {
 
     //if password match
     req.session.buyer = buyer[0]; //user session object to hold users data
-    req.session.cart = [] //user session object to hold cart for buyer's purchase
+    req.session.cart = []; //user session object to hold cart for buyer's purchase
     return res.status(200).json({
       status: 200,
       success: true,

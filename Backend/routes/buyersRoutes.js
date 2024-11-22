@@ -22,7 +22,7 @@ router.post(
       
     }), //checking password length
     check("phone_number", "Phone number is required").not().isEmpty(), //checking that name is not empty
-    check("coutry", "Country is required").not().isEmpty(), //checking that name is not empty
+    check("country", "Country is required").not().isEmpty(), //checking that name is not empty
     check("state", "State is required").not().isEmpty(), //checking that name is not empty
     check("LGA", "LGA is required").not().isEmpty(), //checking that name is not empty
     check("address", "Address is required").not().isEmpty(), //checking that name is not empty
@@ -53,7 +53,7 @@ router.put(
     check("first_name", "Name is required").not().isEmpty(), //checking that name is not empty
     check("last_name", "Name is required").not().isEmpty(), //checking that name is not empty
     check("phone_number", "Phone number is required").not().isEmpty(), //checking that name is not empty
-    check("coutry", "Country is required").not().isEmpty(), //checking that name is not empty
+    check("country", "Country is required").not().isEmpty(), //checking that name is not empty
     check("state", "State is required").not().isEmpty(), //checking that name is not empty
     check("LGA", "LGA is required").not().isEmpty(), //checking that name is not empty
     check("address", "Address is required").not().isEmpty(), //checking that name is not empty

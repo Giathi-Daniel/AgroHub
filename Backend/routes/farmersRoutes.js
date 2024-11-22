@@ -21,10 +21,9 @@ router.post(
     check("email", "Please provide a valid email").isEmail(), //checking if email is valid
     check("password", "Password must be 6 charcters or more").isLength({
       min: 6,
-      
     }), //checking password length
     check("phone_number", "Phone number is required").not().isEmpty(), //checking that name is not empty
-    check("coutry", "Country is required").not().isEmpty(), //checking that name is not empty
+    check("country", "Country is required").not().isEmpty(), //checking that name is not empty
     check("state", "State is required").not().isEmpty(), //checking that name is not empty
     check("LGA", "LGA is required").not().isEmpty(), //checking that name is not empty
     check("address", "Address is required").not().isEmpty(), //checking that name is not empty
@@ -39,7 +38,6 @@ router.post(
     check("email", "Please provide a valid email").isEmail(), //checking if email is valid
     check("password", "Password must be 6 charcters or more").isLength({
       min: 6,
-      
     }), //checking password length
   ],
   loginFarmer
@@ -57,7 +55,7 @@ router.put(
     check("farm_name", "Name is required").not().isEmpty(), //checking that name is not empty
     check("farm_size", "Name is required").not().isEmpty(), //checking that name is not empty
     check("phone_number", "Phone number is required").not().isEmpty(), //checking that name is not empty
-    check("coutry", "Country is required").not().isEmpty(), //checking that name is not empty
+    check("country", "Country is required").not().isEmpty(), //checking that name is not empty
     check("state", "State is required").not().isEmpty(), //checking that name is not empty
     check("LGA", "LGA is required").not().isEmpty(), //checking that name is not empty
     check("address", "Address is required").not().isEmpty(), //checking that name is not empty

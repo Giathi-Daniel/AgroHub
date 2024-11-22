@@ -19,13 +19,26 @@ exports.registerFarmer = async (req, res) => {
   }
 
   //if no error is present in validation
-  const { first_name, last_name, farm_name, farm_size, email, password, phone_number, country, state, LGA, address, terms } = req.body; //fetching the input parameter from the request body
-  ;
+  const {
+    first_name,
+    last_name,
+    farm_name,
+    farm_size,
+    email,
+    password,
+    phone_number,
+    country,
+    state,
+    LGA,
+    address,
+    terms,
+  } = req.body; //fetching the input parameter from the request body
   try {
     //checking if a user exist in database
-    const [farmer] = await db.execute("SELECT email FROM farmers WHERE email = ?", [
-      email,
-    ]);
+    const [farmer] = await db.execute(
+      "SELECT email FROM farmers WHERE email = ?",
+      [email]
+    );
 
     //statement to check if the email exist
     if (farmer.length > 0) {
@@ -41,8 +54,23 @@ exports.registerFarmer = async (req, res) => {
     //salt - random characters added to the password during the hashing process to make it more secure
 
     //insert the user record to the database
-    const sql = "INSERT INTO farmers (first_name, last_name, farm_name, farm_size, email, password_hash, phone_number, country, state, LGA, address, terms, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    const value = [first_name, last_name, farm_name, farm_size, email, password_hash, phone_number, country, state, LGA, address, terms, 'Pending'];
+    const sql =
+      "INSERT INTO farmers (first_name, last_name, farm_name, farm_size, email, password_hash, phone_number, country, state, LGA, address, terms, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    const value = [
+      first_name,
+      last_name,
+      farm_name,
+      farm_size,
+      email,
+      password_hash,
+      phone_number,
+      country,
+      state,
+      LGA,
+      address,
+      terms,
+      "Pending",
+    ];
     await db.execute(sql, value);
     return res.status(201).json({
       status: 201,
@@ -95,11 +123,20 @@ exports.loginFarmer = async (req, res) => {
     }
 
     //if farmers account is disabled
-    if (farmer[0].status === 'Disabled'){
+    if (farmer[0].status === "Disabled") {
       return res.status(400).json({
         status: 400,
         success: false,
         message: "Account disabled",
+      });
+    }
+
+    //if farmers account is pending
+    if (farmer[0].status === "Pending") {
+      return res.status(400).json({
+        status: 400,
+        success: false,
+        message: "Account verification in progress...",
       });
     }
 
@@ -195,13 +232,24 @@ exports.editFarmer = async (req, res) => {
   }
 
   //if no error is present in validation ans user is logged in
-  const { first_name, last_name, farm_name, farm_size, phone_number, country, state, LGA, address} = req.body; //fetching the input parameter from the request body
+  const {
+    first_name,
+    last_name,
+    farm_name,
+    farm_size,
+    phone_number,
+    country,
+    state,
+    LGA,
+    address,
+  } = req.body; //fetching the input parameter from the request body
 
   try {
     //checking if a user exist in database
-    const [farmer] = await db.execute("SELECT * FROM farmers WHERE farmer_id = ?", [
-      req.session.farmer.farmer_id,
-    ]);
+    const [farmer] = await db.execute(
+      "SELECT * FROM farmers WHERE farmer_id = ?",
+      [req.session.farmer.farmer_id]
+    );
 
     //statement to check if the email exist
     if (!farmer.length > 0) {
@@ -215,7 +263,18 @@ exports.editFarmer = async (req, res) => {
 
     await db.execute(
       "UPDATE farmers SET first_name = ?, last_name =?, farm_name = ?, farm_size = ?, phone_number = ?, country = ?, state = ?, LGA =?, address = ? WHERE farmer_id = ?",
-      [first_name, last_name, farm_name, farm_size, phone_number, country, state, LGA, address, req.session.farmer.farmer_id]
+      [
+        first_name,
+        last_name,
+        farm_name,
+        farm_size,
+        phone_number,
+        country,
+        state,
+        LGA,
+        address,
+        req.session.farmer.farmer_id,
+      ]
     );
 
     return res.status(200).json({

@@ -19,7 +19,7 @@ exports.up = async knex => {
         table.decimal('price', 8, 2).notNullable();
         table.decimal('discount', 8, 2).notNullable();
         table.string('status', 20).notNullable();
-        table.binary('image_data').notNullable();
+        table.specificType('image_data', 'LONGBLOB').notNullable();
         table.text('image_name')
       })
       console.log('products table created successfully');

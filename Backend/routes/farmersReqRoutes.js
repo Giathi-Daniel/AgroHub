@@ -8,10 +8,15 @@ const {
 } = require("../controllers/farmersReqController");
 const { check } = require("express-validator"); //for server side validation
 const router = express.Router(); //helps to set up routes
+const multer = require('multer') //for upload
+
+//configure multer storage
+const multerStorage = multer.memoryStorage()
+const upload = multer({storage: multerStorage})
 
 //register user route
 router.post(
-  "/upload",
+  "/upload", upload.single('image_data'),
   [
     check("product_name", "Product name is required").not().isEmpty(), //checking that name is not empty
     check("product_group", "Product group is required").not().isEmpty(), //checking that name is not empty
@@ -19,11 +24,9 @@ router.post(
     check("description", "Description is required").not().isEmpty(), //checking that name is not empty
     check("price", "Price is required").not().isEmpty(), //checking if email is valid
     check("discount", "Discount is required").not().isEmpty(), //checking password length
-    check("status", "Status is required").not().isEmpty(), //checking that name is not empty
-    check("image_data", "Image is required").not().isEmpty(), //checking that name is not empty
-    check("image_name", "Image name is required").not().isEmpty(), //checking that name is not empty
+    check("status", "Status is required").not().isEmpty() //checking that name is not empty
   ],
-  upload.single('image_data'), uploadProduct
+   uploadProduct
 ); //confirm if upload.single() parameter will be accepted
 
 router.get('/products', getAllProduct);
@@ -46,3 +49,6 @@ router.delete('/delete',[
 ],
    removeProduct
   );
+
+
+  module.exports = router;

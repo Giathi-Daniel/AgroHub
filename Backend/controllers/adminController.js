@@ -43,8 +43,8 @@ exports.registerAdmin = async (req, res) => {
     if (admin.length > 0) {
       //if user exist
       return res
-        .status(400)
-        .json({ status: 400, success: false, message: "Admin already exist" });
+        .status(409)
+        .json({ status: 409, success: false, message: "Admin already exist" });
     }
 
     //if user does not exist
@@ -54,7 +54,7 @@ exports.registerAdmin = async (req, res) => {
 
     //insert the user record to the database
     const sql =
-      "INSERT INTO admin (first_name, last_name, email, password_hash, phone_number, country, state, LGA, address, terms, access_level, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+      "INSERT INTO admin (first_name, last_name, email, password_hash, phone_number, country, state, LGA, address, terms, access_level, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     const value = [
       first_name,
       last_name,
