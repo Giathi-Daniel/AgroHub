@@ -72,7 +72,7 @@ AgriHub is not just a platform—it’s a gateway to modernizing agriculture, em
      - **Create:** Farmers can upload products.
      - **Read:** Users and Admin can view all products, Farmers can view their products.
      - **Update:** Farmers can update product information.
-     - **Delete:** Farmers and admon can delete products.
+     - **Delete:** Farmers and admin can delete products.
 
    - **Cart:**
 

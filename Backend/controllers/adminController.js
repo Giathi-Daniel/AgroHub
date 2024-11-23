@@ -5,6 +5,25 @@ const { validationResult } = require("express-validator");
 
 //register user
 exports.registerAdmin = async (req, res) => {
+   //check if user is logged in
+ if (!req.session.admin) {
+  //if user is not logged in
+  return res.status(401).json({
+    status: 401,
+    success: false,
+    message: "Unauthorised! farmer not logged in",
+  });
+ }
+ 
+ //check if admin has access
+ if(req.session.admin.access_level !== 1){
+   return res.status(401).json({
+     status: 401,
+     success: false,
+     message: "Unauthorised! admin access denied",
+   });
+ }
+
   //configure the variable to hold the errors
   const errors = validationResult(req); //validation will be carried out on the route
 
@@ -70,6 +89,10 @@ exports.registerAdmin = async (req, res) => {
       "Active",
     ];
     await db.execute(sql, value);
+
+    //log admin activity
+    await db.execute('INSERT INTO admin_log(admin_id, action) VALUES (?, ?)', [req.session.admin.admin_id, `REGISTERED a new admin ${first_name} @ level: ${access_level}`])
+    
     return res.status(201).json({
       status: 201,
       success: true,

@@ -1,7 +1,7 @@
 //import necessary dependencies
 const db = require("../config/database");
 const bcrypt = require("bcryptjs");
-const { validationResult } = require("express-validator");
+const { validationResult, check } = require("express-validator");
 
 //register user
 exports.registerBuyer = async (req, res) => {
@@ -287,3 +287,48 @@ exports.logoutBuyer = (req, res) => {
     });
   });
 };
+
+//delete buyers account
+exports.deleteBuyer = async (req, res) => {
+   //check if user is logged in
+  if (!req.session.buyer) {
+    //if user is not logged in
+    return res.status(401).json({
+      status: 401,
+      success: false,
+      message: "Unauthorised! user not logged in",
+    });
+
+  }
+
+  //configure the variable to hold the server side validation errors
+  const errors = validationResult(req); //validation will be carried out on the route
+
+  //check if any error is present in validation
+  if (!errors.isEmpty()) {
+    return res.status(400).json({
+      status: 400,
+      success: false,
+      message: "Please correct input errors",
+      errors: errors.array(),
+    });
+  }
+
+  try {
+    //delete buyers account
+    await db.execute('DELETE FROM buyers WHERE buyer_id = ?', [req.session.buyer.buyer_id])
+    return res.status(200).json({
+      status: 200,
+      success: true,
+      message: "Account deleted successfully!"
+    });
+  } catch (error){
+    console.error(error)
+    return res.status(500).json({
+      status: 500,
+      success: false,
+      message: "Error deleting account!",
+      error: error
+    });
+  }
+}

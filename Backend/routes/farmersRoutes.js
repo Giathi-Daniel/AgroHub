@@ -6,6 +6,7 @@ const {
   getFarmer,
   editFarmer,
   logoutFarmer,
+  deleteFarmer
 } = require("../controllers/farmersController");
 const { check } = require("express-validator"); //for server side validation
 const router = express.Router(); //helps to set up routes
@@ -65,5 +66,8 @@ router.put(
 
 //log out user
 router.get("/logout", logoutFarmer);
+
+//delete farmer
+router.delete('/delete', deleteFarmer)
 
 module.exports = router;

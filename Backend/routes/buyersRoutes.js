@@ -6,6 +6,7 @@ const {
   getBuyer,
   editBuyer,
   logoutBuyer,
+  deleteBuyer
 } = require("../controllers/buyersController");
 const { check } = require("express-validator"); //for server side validation
 const router = express.Router(); //helps to set up routes
@@ -63,5 +64,8 @@ router.put(
 
 //log out user
 router.get("/logout", logoutBuyer);
+
+//delete buyer 
+router.delete('/delete', deleteBuyer)
 
 module.exports = router;

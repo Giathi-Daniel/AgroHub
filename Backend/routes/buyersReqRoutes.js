@@ -8,6 +8,9 @@ const {
   removeFromCart,
   clearCart,
   countCart,
+  checkOut,
+  checkOutHistory,
+  cancelOrder
 } = require("../controllers/buyersReqController");
 const { check } = require("express-validator"); //for server side validation
 const router = express.Router(); //helps to set up routes
@@ -23,7 +26,7 @@ router.post(
 );
 
 router.post(
-  "/add-cart",
+  "/cart/add",
   [
     //check if fields are empty
     check("product_id", "Product ID is required").not().isEmpty(),
@@ -37,14 +40,22 @@ router.post(
 
 router.get("/cart", viewCart);
 
-router.post(
-  "/remove-item",
+router.delete(
+  "/cart/remove",
   [check("productId", "Product ID is required").not().isEmpty()],
   removeFromCart
 );
 
-router.get("/cart/clear", clearCart);
+router.delete("/cart/clear", clearCart);
 
 router.get("/cart/count", countCart);
+
+router.get('/cart/checkout', checkOut)
+
+router.get('/shipments', checkOutHistory)
+
+router.post('/shipments/cancel', [
+  check('shipping_id', 'Shipping ID is required').not().isEmpty()
+], cancelOrder)
 
 module.exports = router;

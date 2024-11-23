@@ -51,7 +51,7 @@ app.use("/agrohub/api/farmer", require("./routes/farmersRoutes"));
 app.use("/agrohub/api/admin", require("./routes/adminRoutes"));
 
 //configure routes for requests
-// app.use("/agrohub/api/req/buyer", require("./routes/buyersReqRoutes"));
+app.use("/agrohub/api/req/buyer", require("./routes/buyersReqRoutes"));
 app.use("/agrohub/api/req/farmer", require("./routes/farmersReqRoutes"));
 app.use("/agrohub/api/req/admin", require("./routes/adminReqRoutes"));
 
