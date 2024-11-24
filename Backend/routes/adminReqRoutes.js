@@ -3,23 +3,27 @@ const express = require("express");
 const {
   activateFarmer,
   deactivateFarmer,
+  viewFarmers,
+  deleteFarmer,
   getAllProduct,
   searchProducts,
   getBuyers,
   getBuyersByID,
   getBuyersByName,
+  getBuyersByEmail,
   callBackShipment,
   reviewShipment,
   cancelledShipments,
   viewAdmin,
   activateAdmin,
-  deactivateAdmin
+  deactivateAdmin,
+  deleteAdmin
 } = require("../controllers/adminReqController");
 const { check } = require("express-validator"); //for server side validation
 const router = express.Router(); //helps to set up routes
 
 router.put(
-  "/activate",
+  "/farmers/activate",
   [
     check("farmer_id", "Farmer Id is required").not().isEmpty(), //checking that name is not empty
   ],
@@ -27,12 +31,18 @@ router.put(
 );
 
 router.put(
-  "/deactivate",
+  "/farmers/deactivate",
   [
     check("farmer_id", "Farmer Id is required").not().isEmpty(), //checking that name is not empty
   ],
   deactivateFarmer
 );
+
+router.get('/farmers/view', viewFarmers)
+
+router.delete('/farmers/delete', [
+  check("farmer_id", "Farmer ID is required").not().isEmpty(), //checking that ID is not empty
+], deleteFarmer)
 
 router.get("/products", getAllProduct);
 
@@ -54,6 +64,10 @@ router.post('/buyers/name', [
   check('product_name', 'Prouct Name is required').not().isEmpty()
 ], getBuyersByName)
 
+router.post('/buyers/email', [
+  check('email', 'Email is required').not().isEmpty()
+], getBuyersByEmail)
+
 router.get('/shipments/call-back', callBackShipment)
 
 router.put('/shipments/review', [
@@ -71,5 +85,9 @@ router.post('/admin/activate', [
 router.post('/admin/deactivate', [
   check('admin_id', 'Admin ID required').not().isEmpty()
 ], deactivateAdmin)
+
+router.delete('/admin/delete', [
+  check('admin_id', 'Admin ID is required').not().isEmpty(), //checking that ID is not empty
+], deleteAdmin)
 
 module.exports = router;
