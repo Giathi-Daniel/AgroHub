@@ -11,7 +11,7 @@ exports.registerAdmin = async (req, res) => {
   return res.status(401).json({
     status: 401,
     success: false,
-    message: "Unauthorised! farmer not logged in",
+    message: "Unauthorised! admin not logged in",
   });
  }
  
