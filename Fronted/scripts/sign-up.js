@@ -133,7 +133,7 @@ async function registerBuyer() {
   }
 
   try {
-    const response = await fetch('/api/farmer/register', {
+    const response = await fetch('/api/buyer/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
