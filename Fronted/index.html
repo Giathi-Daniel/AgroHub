@@ -35,25 +35,33 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+
     <!-- ========== HEADER ========== -->
     <header
-      class="relative flex items-center justify-between w-full px-6 py-4 text-white bg-green-600 shadow-lg"
+      class="relative flex flex-col justify-start w-full px-6 py-4 text-white bg-green-600 shadow-lg md:items-center md:gap-4 md:flex-row"
     >
-      <!-- logo and site Name -->
-      <div class="flex items-center space-x-2">
-        <img src="images/logo.jpeg" class="w-5 h-5 md:h-9 md:w-9" />
-        <h1 class="font-bold md:text-2xl text-md">AgroHub</h1>
+      <!-- Logo and Site Name -->
+      <div class="flex items-center mb-4 space-x-1 md:mb-0">
+        <img src="images/logo.png" class="h-7 w-7 md:h-10 md:w-10" />
+        <h1 class="text-2xl font-bold">AgroHub</h1>
       </div>
 
       <!-- Search bar -->
-      <div class="flex-grow mx-3 md:mx-6">
+      <div class="flex flex-grow w-full max-w-2xl bg-white rounded">
         <input
           type="text"
           name="search"
           id="search"
-          class="w-full px-4 py-2 text-gray-400 rounded-md focus:outline-none"
+          class="flex-grow px-4 py-2 text-gray-400 rounded-l-md bg-none focus:outline-none"
           placeholder="Search Products..."
         />
+        <button
+          type="submit"
+          id="searchBtn"
+          class="flex items-center justify-center w-auto px-4 font-bold text-white transition duration-150 ease-in bg-orange-500 rounded-tr rounded-br hover:bg-orange-600"
+        >
+          Go
+        </button>
       </div>
 
       <!-- Auth Buttons and Icons -->
