@@ -55,7 +55,11 @@ app.use("/agrohub/api/req/buyer", require("./routes/buyersReqRoutes"));
 app.use("/agrohub/api/req/farmer", require("./routes/farmersReqRoutes"));
 app.use("/agrohub/api/req/admin", require("./routes/adminReqRoutes"));
 
-app.get("*", (req, res) => {
+//configure public routes
+app.use('/agrohub/pub', require('./routes/publicRoutes'))
+
+//routes for landing page
+app.get("/", (req, res) => {
   // res.status(200).send("Welcome to AgroHub Backend");
   res.sendFile(path.join(__dirname, "..", "Fronted", "index.html"));
 });

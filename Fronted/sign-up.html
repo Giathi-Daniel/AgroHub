@@ -26,7 +26,7 @@
     >
       <div class="w-full max-w-sm p-3 border rounded-md">
         <img
-          src="images/logo.jpeg"
+          src="/images/logo.jpeg"
           alt="our-logo"
           class="w-20 h-20 mx-auto mb-4"
         />
@@ -34,6 +34,8 @@
 
         <!-- Sign Up Form -->
         <form action="">
+          <label for="name" class="block mb-2 text-sm">Your name</label>
+        <form id="loginForm">
           <label for="name" class="block mb-2 text-sm">Your name</label>
           <input
             type="name"
@@ -138,9 +140,12 @@
         <a
           href="/sign-in"
           class="block text-center text-blue-500 transition duration-150 ease-out hover:scale-100"
+          href="/login"
+          class="block text-center text-blue-500 transition duration-150 ease-out hover:scale-100"
           >Sign in</a
         >
       </div>
     </section>
+    <script src="/scripts/sign-up.js"></script>
   </body>
 </html>
