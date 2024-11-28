@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Not Found</title>
+
+    <!-- ========== LATO FONT ========== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Montserrat:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ========== FONTAWESOME CDN ========== -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- ========== TAILWINDCSS CDN ========== -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <!-- ========== HEADER ========== -->
+    <header
+      class="relative flex flex-col justify-start w-full px-6 py-4 text-white bg-green-600 shadow-lg md:items-center md:gap-4 md:flex-row"
+    >
+      <!-- Logo and Site Name -->
+      <div class="flex items-center mb-4 space-x-1 md:mb-0">
+        <img src="images/logo.png" class="h-7 w-7 md:h-10 md:w-10" />
+        <h1 class="text-2xl font-bold">AgroHub</h1>
+      </div>
+
+      <!-- Search bar -->
+      <div class="flex flex-grow w-full max-w-2xl bg-white rounded">
+        <input
+          type="text"
+          name="search"
+          id="search"
+          class="flex-grow px-4 py-2 text-gray-400 rounded-l-md bg-none focus:outline-none"
+          placeholder="Search Products..."
+        />
+        <button
+          type="submit"
+          id="searchBtn"
+          class="flex items-center justify-center w-auto px-4 font-bold text-white transition duration-150 ease-in bg-orange-500 rounded-tr rounded-br hover:bg-orange-600"
+        >
+          Go
+        </button>
+      </div>
+    </header>
+
+    <!-- ========== Not Found ========== -->
+    <main
+      class="flex flex-col items-center justify-center h-screen px-6 bg-gray-100"
+    >
+      <img
+        src="images/not-found.png"
+        alt="Page Not Found"
+        class="w-full max-w-md"
+      />
+      <h1 class="mt-8 text-3xl font-extrabold text-green-600">
+        Oops! Page Not Found.
+      </h1>
+      <p class="mt-4 text-gray-600 text-md md:text-lg">
+        The page you are looking for doesn't exist or has been moved.
+      </p>
+      <a
+        href="/"
+        class="px-6 py-3 mt-6 text-white transition duration-150 ease-in-out bg-green-600 rounded-md shadow-md hover:bg-green-700"
+      >
+        Back to Homepage
+      </a>
+    </main>
+  </body>
+</html>
