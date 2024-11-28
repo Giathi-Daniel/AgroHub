@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AgroHub | Sign In</title>
+    <link rel="icon" href="images/logo.png" type="image/png" />
 
     <!-- ========== LATO FONT ========== -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -21,62 +22,62 @@
   </head>
   <body>
     <section
-      class="flex flex-col justify-center items-center min-h-screen mx-auto mt-3"
+      class="flex flex-col items-center justify-center min-h-screen mx-auto mt-3"
     >
-      <div class="border rounded-md p-3 w-full max-w-sm">
+      <div class="w-full max-w-sm p-3 border rounded-md">
         <img
           src="images/logo.jpeg"
           alt="our-logo"
           class="w-20 h-20 mx-auto mb-4"
         />
-        <h1 class="text-lg font-bold mb-1">Sign In</h1>
-        <h1 class="text-sm font-bold mb-4">Welcome to AgroHub</h1>
+        <h1 class="mb-1 text-lg font-bold">Sign In</h1>
+        <h1 class="mb-4 text-sm font-bold">Welcome to AgroHub</h1>
 
         <!-- Sign In Form -->
         <form action="">
-          <label for="email" class="block text-sm mb-2"
+          <label for="email" class="block mb-2 text-sm"
             >Enter your Email Address</label
           >
           <input
             type="email"
             name="email"
             id="email"
-            class="w-full border border-gray-300 rounded-md px-3 py-2 mb-4"
+            class="w-full px-3 py-2 mb-4 border border-gray-300 rounded-md"
           />
 
-          <label for="password" class="block text-sm mb-2"
+          <label for="password" class="block mb-2 text-sm"
             >Enter your Password</label
           >
           <input
             type="password"
             name="password"
             id="password"
-            class="w-full border border-gray-300 rounded-md px-3 py-2 mb-4"
+            class="w-full px-3 py-2 mb-4 border border-gray-300 rounded-md"
           />
 
           <input
             type="submit"
             value="Log In"
-            class="w-full text-white bg-orange-500 rounded-md cursor-pointer hover:bg-orange-600 transition duration-150 ease-out py-2"
+            class="w-full py-2 text-white transition duration-150 ease-out bg-orange-500 rounded-md cursor-pointer hover:bg-orange-600"
           />
         </form>
-        <p class="text-sm text-black text-center mt-4">
+        <p class="mt-4 text-sm text-center text-black">
           By continuing, you agree to AgroHub's
-          <a href="#" class="underline text-blue-500">Conditions of Use</a> and
-          <a href="#" class="underline text-blue-500">Privacy Notice.</a>
+          <a href="#" class="text-blue-500 underline">Conditions of Use</a> and
+          <a href="#" class="text-blue-500 underline">Privacy Notice.</a>
         </p>
       </div>
 
-      <div class="flex justify-center items-center mt-3">
+      <div class="flex items-center justify-center mt-3">
         <div class="flex items-center space-x-2">
-          <div class="border-t border-gray-300 flex-grow"></div>
-          <p class="text-sm mx-4">New to AgroHub?</p>
-          <div class="border-t border-gray-300 flex-grow"></div>
+          <div class="flex-grow border-t border-gray-300"></div>
+          <p class="mx-4 text-sm">New to AgroHub?</p>
+          <div class="flex-grow border-t border-gray-300"></div>
         </div>
 
         <a
           href="/sign-up"
-          class="text-blue-500 text-center block hover:scale-100 transition duration-150 ease-out"
+          class="block text-center text-blue-500 transition duration-150 ease-out hover:scale-100"
           >Create account</a
         >
       </div>

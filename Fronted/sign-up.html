@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AgroHub | Sign In</title>
+    <link rel="icon" href="images/logo.png" type="image/png" />
 
     <!-- ========== LATO FONT ========== -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -21,28 +22,28 @@
   </head>
   <body>
     <section
-      class="flex flex-col justify-center items-center min-h-screen mx-auto mt-3"
+      class="flex flex-col items-center justify-center min-h-screen mx-auto mt-3"
     >
-      <div class="border rounded-md p-3 w-full max-w-sm">
+      <div class="w-full max-w-sm p-3 border rounded-md">
         <img
           src="images/logo.jpeg"
           alt="our-logo"
           class="w-20 h-20 mx-auto mb-4"
         />
-        <h1 class="text-lg font-bold mb-1">Create account</h1>
+        <h1 class="mb-1 text-lg font-bold">Create account</h1>
 
         <!-- Sign Up Form -->
         <form action="">
-          <label for="name" class="block text-sm mb-2">Your name</label>
+          <label for="name" class="block mb-2 text-sm">Your name</label>
           <input
             type="name"
             name="name"
             id="name"
             placeholder="First and last name"
-            class="w-full border border-gray-300 rounded-md px-3 py-2 mb-4"
+            class="w-full px-3 py-2 mb-4 border border-gray-300 rounded-md"
           />
 
-          <label for="phone_number" class="block text-sm mb-2"
+          <label for="phone_number" class="block mb-2 text-sm"
             >Phone Number</label
           >
           <input
@@ -50,89 +51,93 @@
             name="phone_number"
             id="phone_number"
             placeholder="phone number"
-            class="w-full border border-gray-300 rounded-md px-3 py-2 mb-4"
+            class="w-full px-3 py-2 mb-4 border border-gray-300 rounded-md"
           />
 
-          <label for="email" class="block text-sm mb-2">Your email</label>
+          <label for="email" class="block mb-2 text-sm">Your email</label>
           <input
             type="email"
             name="email"
             id="email"
             placeholder="email address"
-            class="w-full border border-gray-300 rounded-md px-3 py-2 mb-4"
+            class="w-full px-3 py-2 mb-4 border border-gray-300 rounded-md"
           />
 
-          <label for="password" class="block text-sm mb-2">Password</label>
+          <label for="password" class="block mb-2 text-sm">Password</label>
           <input
             type="password"
             name="password"
             id="password"
             placeholder="At least 6 characters"
-            class="w-full border border-gray-300 rounded-md px-3 py-2 mb-4"
+            class="w-full px-3 py-2 mb-4 border border-gray-300 rounded-md"
           />
 
-          <div class="flex justify-center items-center gap-3">
+          <div class="flex items-center justify-center gap-3">
             <div>
-              <label for="country" class="block text-sm mb-2">Country</label>
+              <label for="country" class="block mb-2 text-sm">Country</label>
               <input
                 type="text"
                 name="country"
                 id="country"
                 placeholder="e.g Kenya"
-                class="w-full border border-gray-300 rounded-md px-3 py-2 mb-4"
+                class="w-full px-3 py-2 mb-4 border border-gray-300 rounded-md"
               />
             </div>
             <div>
-              <label for="state" class="block text-sm mb-2">County / State</label>
+              <label for="state" class="block mb-2 text-sm"
+                >County / State</label
+              >
               <input
                 type="text"
                 name="state"
                 id="state"
                 placeholder="e.g. Nairobi"
-                class="w-full border border-gray-300 rounded-md px-3 py-2 mb-4"
+                class="w-full px-3 py-2 mb-4 border border-gray-300 rounded-md"
               />
             </div>
           </div>
 
-          <label for="LGA/District" class="block text-sm mb-2">LGA / District</label>
+          <label for="LGA/District" class="block mb-2 text-sm"
+            >LGA / District</label
+          >
           <input
             type="text"
             name="LGA"
             id="LGA"
             placeholder="e.g Karen, Umoja"
-            class="w-full border border-gray-300 rounded-md px-3 py-2 mb-4"
+            class="w-full px-3 py-2 mb-4 border border-gray-300 rounded-md"
           />
 
           <div>
-            <label for="address" class="block text-sm mb-2">Address</label>
+            <label for="address" class="block mb-2 text-sm">Address</label>
             <input
               type="text"
               name="address"
               id="address"
               placeholder="e.g 12, Waiyaki Way, Suite"
-              class="w-full border border-gray-300 rounded-md px-3 py-2 mb-4"
+              class="w-full px-3 py-2 mb-4 border border-gray-300 rounded-md"
             />
           </div>
 
           <input
             type="submit"
             value="Register"
-            class="w-full text-white bg-orange-500 rounded-md cursor-pointer hover:bg-orange-600 transition duration-150 ease-out py-2"
+            class="w-full py-2 text-white transition duration-150 ease-out bg-orange-500 rounded-md cursor-pointer hover:bg-orange-600"
           />
         </form>
-        <p class="text-sm text-black text-center mt-4">
+        <p class="mt-4 text-sm text-center text-black">
           By creating an account, you agree to AgroHub's
-          <a href="#" class="underline text-blue-500">Conditions of Use</a> and
-          <a href="#" class="underline text-blue-500">Privacy Notice.</a>
+          <a href="#" class="text-blue-500 underline">Conditions of Use</a> and
+          <a href="#" class="text-blue-500 underline">Privacy Notice.</a>
         </p>
       </div>
 
-      <div class="flex justify-center items-center mt-3 mb-4">
-        <p class="text-sm mx-4">Already have an account?</p>
+      <div class="flex items-center justify-center mt-3 mb-4">
+        <p class="mx-4 text-sm">Already have an account?</p>
 
         <a
           href="/sign-in"
-          class="text-blue-500 text-center block hover:scale-100 transition duration-150 ease-out"
+          class="block text-center text-blue-500 transition duration-150 ease-out hover:scale-100"
           >Sign in</a
         >
       </div>
