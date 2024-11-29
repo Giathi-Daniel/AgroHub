@@ -80,45 +80,56 @@ form.addEventListener('submit', (e) => {
   //validate phone number input field
   if (phone_number.value === ''|| phone_number.value === null){
     valid = false
-    showValidation(valid, password)
+    showValidation(valid, password, "Phone number is required")
   }else if (isNaN(phone_number.value)){
     valid = false
-    showValidation(valid, phone_number)
+    showValidation(valid, phone_number, "Phone number cannot be text")
   }
 
   //validate country input field
   if (country.value === ''|| country.value === null){
     valid = false
-    showValidation(valid, country)
+    showValidation(valid, country, "Country is required")
   }else if (!isNaN(country.value)){
     valid = false
-    showValidation(valid, country)
+    showValidation(valid, country, "Country cannot be number")
   }
 
   //validate state input field
   if (state.value === ''|| state.value === null){
     valid = false
-    showValidation(valid, state)
+    showValidation(valid, state, "State/County is required")
   }else if (!isNaN(state.value)){
     valid = false
-    showValidation(valid, state)
+    showValidation(valid, state, "State/County cannot be number")
   }
 
   //validate LGA input field
   if (LGA.value === ''|| LGA.value === null){
     valid = false
-    showValidation(valid, LGA)
+    showValidation(valid, LGA, "LGA/District is required")
   }else if (!isNaN(LGA.value)){
     valid = false
-    showValidation(valid, LGA)
+    showValidation(valid, LGA, "LGA/District cannot be number")
   }
 
   //validate address input field
   if (address.value === ''|| address.value === null){
     valid = false
-    showValidation(valid, address)
+    showValidation(valid, address, "Address is required")
   }
 
+  //validate farm_name input field
+  if (farm_name.value === ''|| farm_name.value === null){
+    valid = false
+    showValidation(valid, farm_name, "Farm name is required")
+  }
+
+  //validate farm_size input field
+  if (farm_size.value === ''|| farm_size.value === null){
+    valid = false
+    showValidation(valid, farm_size, "Farm size is required")
+  }
 
   //check validation
   if (!valid) {
