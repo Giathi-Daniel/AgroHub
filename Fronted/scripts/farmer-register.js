@@ -14,60 +14,62 @@ const country = document.getElementById('country');
 const state = document.getElementById('state');
 const LGA = document.getElementById('LGA');
 const address = document.getElementById('address');
+const farm_name = document.getElementById('farmName');
+const farm_size = document.getElementById('farmSize');
 
 nextBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  let valid = true
+  let valid = true;
+
+  // Clear all previous errors
+  const errorSpans = document.querySelectorAll('.text-red-500');
+  errorSpans.forEach(span => span.classList.add('hidden')); // Hide all error spans initially
 
   // Validate first name input field
-  if (first_name.value === ''||first_name.value === null){
-    valid = false
-    showValidation(valid, first_name)
-  }else if (!isNaN(first_name.value)){
-    valid = false
-    showValidation(valid, first_name)
-  }else {
-    showValidation(valid, first_name)
+  if (first_name.value === '' || first_name.value === null) {
+    valid = false;
+    showValidation(valid, first_name, "First Name is required");
+  } else if (!isNaN(first_name.value)) {
+    valid = false;
+    showValidation(valid, first_name, "First Name cannot be a number");
+  } else {
+    showValidation(valid, first_name);
   }
 
-  // Validate last name last name input field
-  if (last_name.value === ''||last_name.value === null){
-    valid = false
-    showValidation(valid, last_name)
-  }else if (!isNaN(last_name.value)){
-    valid = false
-    showValidation(valid, last_name)
-  }else {
-    showValidation(valid, last_name)
+  // Validate last name input field
+  if (last_name.value === '' || last_name.value === null) {
+    valid = false;
+    showValidation(valid, last_name, "Last Name is required");
+  } else if (!isNaN(last_name.value)) {
+    valid = false;
+    showValidation(valid, last_name, "Last Name cannot be a number");
+  } else {
+    showValidation(valid, last_name);
   }
 
-  //validate email input field
+  // Validate email input field
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email.value)){
-    valid = false
-    showValidation(valid, email)
+  if (!emailRegex.test(email.value)) {
+    valid = false;
+    showValidation(valid, email, "Please enter a valid email address");
   } else {
-    showValidation(valid, email)
+    showValidation(valid, email);
   }
 
-  //validate password input field
+  // Validate password input field
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
-  if (!passwordRegex.test(password.value)){
-    valid = false
-    showValidation(valid, password)
+  if (!passwordRegex.test(password.value)) {
+    valid = false;
+    showValidation(valid, password, "Password must be at least 6 characters long, contain an uppercase letter, a number, and a special character.");
   } else {
-    showValidation(valid, password)
+    showValidation(valid, password);
   }
 
-  //check validation to move to next page
+  // If all fields are valid, proceed to section 2
   if (valid) {
-    section1.classList.add("hidden"); // Hide section 1
-    section2.classList.remove("hidden"); // Show section 2
-  }else {
-    return false
+    document.getElementById('section1').classList.add("hidden"); // Hide section 1
+    document.getElementById('section2').classList.remove("hidden"); // Show section 2
   }
-  // section1.classList.add("hidden"); // Hide section 1
-  // section2.classList.remove("hidden"); // Show section 2
 });
 
 
@@ -130,16 +132,19 @@ form.addEventListener('submit', (e) => {
 })
 
 //function to change input field color on validation
-function showValidation(valid, field){
-  if(valid){
-    field.style.backgroundColor = 'lightgreen'
+function showValidation(valid, inputField, message) {
+  const errorSpan = document.getElementById(inputField.id + 'Error');
+  
+  if (valid) {
+    errorSpan.classList.add('hidden'); // Hide error if valid
   } else {
-    field.style.backgroundColor = 'pink'
+    errorSpan.classList.remove('hidden'); // Show error if invalid
+    inputField.style.borderColor = 'red'
+    errorSpan.textContent = message; // Update error message
   }
 }
 
 //function to register farmer
-
 async function registerFarmer() {
   const data = {
     first_name: first_name.value,
@@ -175,14 +180,11 @@ async function registerFarmer() {
 }
 
 //function to show response message
-
 function showResponse(success, message){
-  const responseDiv = document.getElementById('response');
+  const responseDiv = document.getElementById('responseDiv');
   responseDiv.innerHTML = '';
 
   if(success){
-    responseDiv.style.backgroundColor = 'lightgreen'
-    responseDiv.style.color = 'green'
     responseDiv.textContent = message; //might change
     setTimeout(() => {
       responseDiv.style.display = 'none'
