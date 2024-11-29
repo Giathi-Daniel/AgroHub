@@ -30,23 +30,25 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <!-- ========== HEADER ========== -->
+    <!-- ========== Main ========== -->
     <div
-      class="flex flex-wrap items-center justify-center min-h-screen py-10 mx-8 space-x-4 bg-gray-50 sm:flex-nowrap"
+      class="flex flex-wrap items-center justify-center min-h-screen py-10 md:mx-8 mx-3 gap-4 bg-gray-50 sm:flex-nowrap"
     >
       <!-- banner image -->
       <div
-        class="w-full sm:w-[50%] h-[30rem] sm:h-auto flex items-center justify-center mt-6"
+        class="w-full md:w-[50%] h-[20rem] md:h-[30rem] flex items-center justify-center mt-6"
       >
         <img
-          src="/images/farmer-register.webp"
+          src="images/farmer-register.webp"
           alt="register-banner"
-          class="object-cover w-full mb-4 h-[30rem]"
+          class="object-cover block w-full h-full mb-4 md:h-[30rem]"
         />
       </div>
 
       <!-- Form Container -->
-      <div class="w-full max-w-3xl p-8 bg-white rounded-lg shadow-lg sm:p-12">
+      <div
+        class="relative w-full max-w-3xl p-8 bg-white rounded-lg shadow-lg sm:p-12"
+      >
         <div class="mb-8 text-center">
           <h1 class="text-3xl font-semibold text-gray-800">Sell on AgroHub</h1>
           <p class="mt-2 text-gray-600">
@@ -55,9 +57,9 @@
         </div>
 
         <!-- Form -->
-        <form class="flex flex-col gap-6" id="farmerReg">
+        <form class="flex flex-col gap-6 relative" id="farmerReg">
           <div id="section1">
-            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
                 <label
                   for="first_name"
@@ -71,6 +73,7 @@
                   placeholder="First Name"
                   class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                 />
+                <span id="fNameError" class="text-red-500 text-sm mt-1"></span>
               </div>
               <div>
                 <label
@@ -85,6 +88,7 @@
                   placeholder="Last Name"
                   class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                 />
+                <span id="lNameError" class="text-red-500 text-sm mt-1"></span>
               </div>
             </div>
 
@@ -99,6 +103,10 @@
                 placeholder="Email Address"
                 class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
               />
+              <span
+                id="emailError"
+                class="text-red-500 text-sm mt-1 hidden"
+              ></span>
             </div>
 
             <div class="mt-4">
@@ -114,12 +122,16 @@
                 placeholder="At least 6 characters"
                 class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
               />
+              <span
+                id="passwordError"
+                class="text-red-500 text-sm mt-1 hidden"
+              ></span>
             </div>
 
             <button
               type="button"
               id="nextBtn"
-              class="w-full px-6 py-3 mt-6 text-white transition duration-200 bg-orange-500 rounded-lg hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-300"
+              class="w-full px-6 py-3 mt-6 mb-4 text-white transition duration-200 bg-orange-500 rounded-lg hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-300"
             >
               Next
             </button>
@@ -135,7 +147,7 @@
 
           <!-- Section 2 (Initially Hidden) -->
           <div id="section2" class="hidden h-auto">
-            <div class="mt-4">
+            <div>
               <label
                 for="phone_number"
                 class="block text-sm font-medium text-gray-700"
@@ -148,9 +160,13 @@
                 placeholder="Enter phone number"
                 class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
               />
+              <span
+                id="phoneNumberError"
+                class="text-red-500 text-sm mt-1"
+              ></span>
             </div>
 
-            <div class="flex items-center justify-between gap-6">
+            <div class="flex items-center justify-between gap-4">
               <div class="w-[50%] mt-4">
                 <label
                   for="country"
@@ -164,6 +180,10 @@
                   placeholder="Enter Country"
                   class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                 />
+                <span
+                  id="countryError"
+                  class="text-red-500 text-sm mt-1"
+                ></span>
               </div>
 
               <div class="mt-4 w-[50%]">
@@ -179,6 +199,47 @@
                   placeholder="Enter State"
                   class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                 />
+                <span id="stateError" class="text-red-500 text-sm mt-1"></span>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between gap-4">
+              <div class="w-[50%] mt-6">
+                <label
+                  for="farmName"
+                  class="block text-sm font-medium text-gray-700"
+                  >Farm Name</label
+                >
+                <input
+                  type="text"
+                  name="farm_name"
+                  id="farmName"
+                  placeholder="Enter Farm Name"
+                  class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                />
+                <span
+                  id="farmNameError"
+                  class="text-red-500 text-sm mt-1"
+                ></span>
+              </div>
+
+              <div class="mt-6 w-[50%]">
+                <label
+                  for="farmSize"
+                  class="block text-sm font-medium text-gray-700"
+                  >Farm Size</label
+                >
+                <input
+                  type="text"
+                  name="farm_size"
+                  id="farmSize"
+                  placeholder="e.g 1/2 Acre"
+                  class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                />
+                <span
+                  id="farmSizeError"
+                  class="text-red-500 text-sm mt-1"
+                ></span>
               </div>
             </div>
 
@@ -193,6 +254,7 @@
                 placeholder="Enter LGA"
                 class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
               />
+              <span id="LGAError" class="text-red-500 text-sm mt-1"></span>
             </div>
 
             <div class="mt-4">
@@ -208,6 +270,7 @@
                 placeholder="123 Street, City"
                 class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
               />
+              <span id="addressError" class="text-red-500 text-sm mt-1"></span>
             </div>
 
             <button
@@ -218,6 +281,12 @@
             </button>
           </div>
         </form>
+        <div
+          class="bg-green-800 text-white font-bold rounded w-fit px-4 py-2 absolute md:mt-[-30rem] mt-[-60rem] right-6"
+          id="responseDiv"
+        >
+          Successful
+        </div>
       </div>
     </div>
 
