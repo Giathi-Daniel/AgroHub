@@ -412,7 +412,7 @@ exports.viewFarmers = async (req, res) => {
   return res.status(401).json({
     status: 401,
     success: false,
-    message: "Unauthorised! farmer not logged in",
+    message: "Unauthorised! admin not logged in",
   });
  }
 
@@ -453,7 +453,7 @@ exports.getBuyers = async (req, res) => {
     return res.status(401).json({
       status: 401,
       success: false,
-      message: "Unauthorised! user not logged in",
+      message: "Unauthorised! admin not logged in",
     });
   }
 
@@ -500,7 +500,7 @@ exports.getBuyersByID = async (req, res) => {
     return res.status(401).json({
       status: 401,
       success: false,
-      message: "Unauthorised! user not logged in",
+      message: "Unauthorised! admin not logged in",
     });
   }
 
@@ -568,7 +568,7 @@ exports.getBuyersByName = async (req, res) => {
     return res.status(401).json({
       status: 401,
       success: false,
-      message: "Unauthorised! user not logged in",
+      message: "Unauthorised! admin not logged in",
     });
   }
 
@@ -696,7 +696,7 @@ exports.getAllProduct = async (req, res) => {
     return res.status(401).json({
       status: 401,
       success: false,
-      message: "Unauthorised! user not logged in",
+      message: "Unauthorised! admin not logged in",
     });
   }
   
@@ -734,7 +734,7 @@ exports.searchProducts = async (req, res) => {
     return res.status(401).json({
       status: 401,
       success: false,
-      message: "Unauthorised! user not logged in",
+      message: "Unauthorised! admin not logged in",
     });
   }
 
@@ -777,7 +777,7 @@ exports.deleteFarmer = async (req, res) => {
    return res.status(401).json({
      status: 401,
      success: false,
-     message: "Unauthorised! farmer not logged in",
+     message: "Unauthorised! admin not logged in",
    });
   }
 
@@ -878,7 +878,7 @@ exports.reviewShipment = async (req, res) => {
   return res.status(401).json({
     status: 401,
     success: false,
-    message: "Unauthorised! farmer not logged in",
+    message: "Unauthorised! admin not logged in",
   });
  }
 
@@ -969,7 +969,7 @@ exports.viewAdmin = async (req, res) => {
   return res.status(401).json({
     status: 401,
     success: false,
-    message: "Unauthorised! farmer not logged in",
+    message: "Unauthorised! admin not logged in",
   });
  }
  

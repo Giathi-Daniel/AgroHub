@@ -114,7 +114,7 @@ exports.loginBuyer = async (req, res) => {
       return res.status(400).json({
         status: 400,
         success: false,
-        message: "User does not exist exist",
+        message: "User does not exist",
       });
     }
 
@@ -123,7 +123,7 @@ exports.loginBuyer = async (req, res) => {
       return res.status(400).json({
         status: 400,
         success: false,
-        message: "Account disabled",
+        message: "Account disabled. Please contact admin on contact us page for reactivation.",
       });
     }
 

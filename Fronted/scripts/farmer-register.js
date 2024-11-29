@@ -139,7 +139,6 @@ function showValidation(valid, field){
 }
 
 //function to register farmer
-
 async function registerFarmer() {
   const data = {
     first_name: first_name.value,
@@ -154,7 +153,7 @@ async function registerFarmer() {
   }
 
   try {
-    const response = await fetch('/api/farmer/register', {
+    const response = await fetch('/agrohub/api/farmer/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -175,7 +174,6 @@ async function registerFarmer() {
 }
 
 //function to show response message
-
 function showResponse(success, message){
   const responseDiv = document.getElementById('response');
   responseDiv.innerHTML = '';
