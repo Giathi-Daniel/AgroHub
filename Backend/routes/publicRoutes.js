@@ -3,13 +3,13 @@ const express = require("express");
 const router = express.Router(); //helps to set up routes
 const path = require('path')
 
-//route to buyer register page
-router.get("/register", (req, res) => {
+//route to buyer signup page
+router.get("/signup", (req, res) => {
 
   res.sendFile(path.join(__dirname, "../..", "Fronted", "sign-up.html"));
 });
 
-//route to buyer register page
+//route to buyer login page
 router.get("/login", (req, res) => {
 
   res.sendFile(path.join(__dirname, "../..", "Fronted", "sign-in.html"));

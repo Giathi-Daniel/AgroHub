@@ -159,7 +159,7 @@ async function registerFarmer() {
   }
 
   try {
-    const response = await fetch('/api/farmer/register', {
+    const response = await fetch('/agrohub/api/farmer/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
