@@ -12,7 +12,7 @@ form.addEventListener('submit', (e) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email.value)){
     valid = false
-    showValidation(valid, email)
+    showValidation(valid, email, "Email is required")
   } else {
     showValidation(valid, email)
   }
@@ -21,7 +21,7 @@ form.addEventListener('submit', (e) => {
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
   if (!passwordRegex.test(password.value)){
     valid = false
-    showValidation(valid, password)
+    showValidation(valid, password, "Password must be 6 or more characters long with at least a number, a capital letter and a special character")
   } else {
     showValidation(valid, password)
   }
@@ -36,11 +36,15 @@ form.addEventListener('submit', (e) => {
 })
 
 //function to change input field color on validation
-function showValidation(valid, field){
+function showValidation(valid, field, message){
+  const spanError = document.getElementById(field.id + "Error")
   if(valid){
-    field.style.backgroundColor = 'lightgreen'
+    field.style.borderColor = 'lightgreen'
+    spanError.classList.add('hidden')
   } else {
-    field.style.backgroundColor = 'pink'
+    field.style.borderColor = 'red'
+    spanError.classList.remove('hidden')
+    spanError.textContent = message
   }
 }
 

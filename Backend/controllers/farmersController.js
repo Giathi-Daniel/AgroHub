@@ -68,7 +68,7 @@ exports.registerFarmer = async (req, res) => {
       state,
       LGA,
       address,
-      terms,
+      "Accepted",
       "Pending",
     ];
     await db.execute(sql, value);

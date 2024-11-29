@@ -9,7 +9,7 @@ const first_name = document.getElementById('fName');
 const last_name = document.getElementById('lName');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
-const phone_number = document.getElementById('phone_number');
+const phone_number = document.getElementById('phoneNumber');
 const country = document.getElementById('country');
 const state = document.getElementById('state');
 const LGA = document.getElementById('LGA');
@@ -147,6 +147,7 @@ function showValidation(valid, inputField, message) {
   const errorSpan = document.getElementById(inputField.id + 'Error');
   
   if (valid) {
+    inputField.style.borderColor = "lightgreen"
     errorSpan.classList.add('hidden'); // Hide error if valid
   } else {
     errorSpan.classList.remove('hidden'); // Show error if invalid
@@ -160,6 +161,11 @@ async function registerFarmer() {
   const data = {
     first_name: first_name.value,
     last_name: last_name.value,
+    farm_name: farm_name.value,
+    farm_size: farm_size.value,
+    email: email.value,
+    password: password.value,
+    phone_number: phone_number.value,
     email: email.value,
     password: password.value,
     phone_number: phone_number.value,

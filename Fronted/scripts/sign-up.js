@@ -1,7 +1,6 @@
 //fetch input fields from form
-const form = document.getElementById('loginForm');
-const first_name = document.getElementById('fName');
-const last_name = document.getElementById('lName');
+const form = document.getElementById('signupForm');
+const buyerName = document.getElementById('name');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 const phone_number = document.getElementById('phone_number');
@@ -16,14 +15,14 @@ form.addEventListener('submit', (e) => {
   let valid = true;
 
   // Validate first name input field
-  if (first_name.value === ''||first_name.value === null){
+  if (buyerName.value === ''||buyerName.value === null){
     valid = false
-    showValidation(valid, first_name)
-  }else if (!isNaN(first_name.value)){
+    showValidation(valid, buyerName, "Name is required e.g John Doe")
+  }else if (!isNaN(buyerName.value)){
     valid = false
-    showValidation(valid, first_name)
+    showValidation(valid, buyerName)
   }else {
-    showValidation(valid, first_name)
+    showValidation(valid, buyerName)
   }
 
   // Validate last name last name input field
