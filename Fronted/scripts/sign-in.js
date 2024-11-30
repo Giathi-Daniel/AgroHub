@@ -12,7 +12,7 @@ form.addEventListener('submit', (e) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email.value)){
     valid = false
-    showValidation(valid, email)
+    showValidation(valid, email, 'Please enter a valid email e.g john@example.com')
   } else {
     showValidation(valid, email)
   }
@@ -21,7 +21,7 @@ form.addEventListener('submit', (e) => {
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
   if (!passwordRegex.test(password.value)){
     valid = false
-    showValidation(valid, password)
+    showValidation(valid, password, "Please enter a password with at least 6 characters, one uppercase, one lowercase and one special character!")
   } else {
     showValidation(valid, password)
   }
@@ -36,11 +36,16 @@ form.addEventListener('submit', (e) => {
 })
 
 //function to change input field color on validation
-function showValidation(valid, field){
+function showValidation(valid, field, message){
+  const spanError = document.getElementById(field.id + 'Error');
+  spanError.textContent = '';
   if(valid){
-    field.style.backgroundColor = 'lightgreen'
+    field.style.borderColor = 'lightgreen'
+    
   } else {
-    field.style.backgroundColor = 'pink'
+    field.style.borderColor = 'red'
+    spanError.classList.remove('hidden')
+    spanError.textContent = message; //update error message
   }
 }
 
@@ -61,7 +66,7 @@ async function loginBuyer() {
     })
 
     const result = await response.json()
-
+    console.log(result)
     //show response message
     showResponse(result.success, result.message)
   
@@ -74,27 +79,34 @@ async function loginBuyer() {
 
 //function to show response message
 function showResponse(success, message){
-  // const responseDiv = document.getElementById('response');
-  // responseDiv.innerHTML = '';
+  const responseDiv = document.getElementById('responseDiv');
+  responseDiv.textContent = '';
 
   if(success){
-    // responseDiv.style.backgroundColor = 'lightgreen'
-    // responseDiv.style.color = 'green'
-    // responseDiv.textContent = message; //might change
-    // setTimeout(() => {
-    //   responseDiv.style.display = 'none'
-    // }, 5000) //timout for 5secs
-    alert(message)
-    //redirect to main page
-    // window.location.href = '/'
+    responseDiv.classList.remove('hidden')
+    responseDiv.classList.add('bg-green-500');
+    responseDiv.classList.add('text-white-800');
+    responseDiv.textContent = message; //might change
+    setTimeout(() => {
+      responseDiv.classList.add('hidden');
+      responseDiv.classList.remove('bg-green-500');
+      responseDiv.classList.remove('text-white-800');
+      responseDiv.textContent = ''; //clear message after 5 secs
+    }, 5000) //timout for 5secs
+    // redirect to main page
+    window.location.href = '/'
   } else {
-    alert(message)
-    // responseDiv.style.backgroundColor = 'pink'
-    // responseDiv.style.color = 'red'
-    // responseDiv.textContent = message; //might change
-    // setTimeout(() => {
-    //   responseDiv.style.display = 'none'
-    // }, 5000) //timout for 5secs
+    alert('hello')
+    responseDiv.classList.remove('hidden')
+    responseDiv.classList.add('bg-pink-500');
+    responseDiv.classList.add('text-red-800')
+    responseDiv.textContent = message; //might change
+    setTimeout(() => {
+      responseDiv.classList.add('hidden')
+      responseDiv.classList.remove('bg-pink-500');
+      responseDiv.classList.remove('text-red-800');
+      responseDiv.textContent = ''; //clear message after 5 secs
+    }, 5000) //timout for 5secs
   }
 
 }

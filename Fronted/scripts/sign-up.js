@@ -9,7 +9,10 @@ const state = document.getElementById('state');
 const LGA = document.getElementById('LGA');
 const address = document.getElementById('address');
 
+let first_name;
+let last_name;
 
+//listen on submit event
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   let valid = true;
@@ -20,27 +23,44 @@ form.addEventListener('submit', (e) => {
     showValidation(valid, buyerName, "Name is required e.g John Doe")
   }else if (!isNaN(buyerName.value)){
     valid = false
-    showValidation(valid, buyerName)
+    showValidation(valid, buyerName, "Name cannot be number")
   }else {
     showValidation(valid, buyerName)
   }
 
-  // Validate last name last name input field
-  if (last_name.value === ''||last_name.value === null){
-    valid = false
-    showValidation(valid, last_name)
-  }else if (!isNaN(last_name.value)){
-    valid = false
-    showValidation(valid, last_name)
+  //trim for whitespace in the name field
+  buyerName.value = buyerName.value.trim();
+
+  //seperate first name from last name
+  const index = buyerName.value.search(' ');
+  if (index < 0){
+    valid = false;
+    showValidation(valid, buyerName, "Enter name in this format: John Doe")
   }else {
-    showValidation(valid, last_name)
+    first_name = buyerName.value.slice(0, index);
+    last_name = buyerName.value.slice(index + 1);
+
+    //check if name has only one letter or one character
+    if (last_name.length === 1 || !first_name.length === 1){
+      valid = false;
+      showValidation(valid, buyerName, "Name cannot be one character ")
+    }
+  }
+
+  //validate phone number input field
+  if (phone_number.value === ''|| phone_number.value === null){
+    valid = false
+    showValidation(valid, phone_number, "Phone number is required")
+  }else if (isNaN(phone_number.value)){
+    valid = false
+    showValidation(valid, phone_number, "Phone cannot be text")
   }
 
   //validate email input field
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email.value)){
     valid = false
-    showValidation(valid, email)
+    showValidation(valid, email, "Please enter a valid email e.g john@example.com")
   } else {
     showValidation(valid, email)
   }
@@ -49,51 +69,48 @@ form.addEventListener('submit', (e) => {
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
   if (!passwordRegex.test(password.value)){
     valid = false
-    showValidation(valid, password)
+    showValidation(valid, password, "Please enter a password with at least 6 characters, one uppercase, one lowercase and one special character!")
   } else {
     showValidation(valid, password)
-  }
-
-  //validate phone number input field
-  if (phone_number.value === ''|| phone_number.value === null){
-    valid = false
-    showValidation(valid, password)
-  }else if (isNaN(phone_number.value)){
-    valid = false
-    showValidation(valid, phone_number)
   }
 
   //validate country input field
   if (country.value === ''|| country.value === null){
     valid = false
-    showValidation(valid, country)
+    showValidation(valid, country, "Country is required")
   }else if (!isNaN(country.value)){
     valid = false
+    showValidation(valid, country, "Country cannot be number")
+  } else {
     showValidation(valid, country)
   }
 
   //validate state input field
   if (state.value === ''|| state.value === null){
     valid = false
-    showValidation(valid, state)
+    showValidation(valid, state, "County/State is required")
   }else if (!isNaN(state.value)){
     valid = false
+    showValidation(valid, state, "County/State cannot be number")
+  }else {
     showValidation(valid, state)
   }
 
   //validate LGA input field
   if (LGA.value === ''|| LGA.value === null){
     valid = false
-    showValidation(valid, LGA)
+    showValidation(valid, LGA, "LGA/District is required")
   }else if (!isNaN(LGA.value)){
     valid = false
+    showValidation(valid, LGA, "LGA/District cannot be number")
+  }else {
     showValidation(valid, LGA)
   }
 
   //validate address input field
   if (address.value === ''|| address.value === null){
     valid = false
-    showValidation(valid, address)
+    showValidation(valid, address, "Address is required")
   }
 
   //check validation
@@ -108,11 +125,14 @@ form.addEventListener('submit', (e) => {
 })
 
 //function to change input field color on validation
-function showValidation(valid, field){
+function showValidation(valid, field, message){
+  const spanError = document.getElementById(field.id + "Error");
   if(valid){
-    field.style.backgroundColor = 'lightgreen'
+    field.style.borderColor = 'lightgreen'
   } else {
-    field.style.backgroundColor = 'pink'
+    field.style.borderColor = 'red'
+    spanError.classList.remove('hidden')
+    spanError.textContent = message; // Update error message
   }
 }
 
@@ -120,8 +140,8 @@ function showValidation(valid, field){
 
 async function registerBuyer() {
   const data = {
-    first_name: first_name.value,
-    last_name: last_name.value,
+    first_name: first_name,
+    last_name: last_name,
     email: email.value,
     password: password.value,
     phone_number: phone_number.value,
@@ -132,7 +152,7 @@ async function registerBuyer() {
   }
 
   try {
-    const response = await fetch('/api/buyer/register', {
+    const response = await fetch('/agrohub/api/buyer/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -146,7 +166,7 @@ async function registerBuyer() {
     showResponse(result.success, result.message)
   
   } catch(error){
-    confirm.error(error)
+    console.error(error)
     showResponse(false, error) //show error message in case of failure
   }
   
@@ -155,22 +175,30 @@ async function registerBuyer() {
 //function to show response message
 
 function showResponse(success, message){
-  const responseDiv = document.getElementById('response');
-  responseDiv.innerHTML = '';
+  const responseDiv = document.getElementById('responseDiv');
+  responseDiv.textContent = ''
 
   if(success){
-    responseDiv.style.backgroundColor = 'lightgreen'
-    responseDiv.style.color = 'green'
+    responseDiv.classList.remove('hidden')
+    responseDiv.classList.add('bg-green-500');
+    responseDiv.classList.add('text-white-800');
     responseDiv.textContent = message; //might change
     setTimeout(() => {
-      responseDiv.style.display = 'none'
+      responseDiv.classList.add('hidden');
+      responseDiv.classList.remove('bg-green-500');
+      responseDiv.classList.remove('text-white-800');
+      responseDiv.textContent = ''; //clear message after 5 secs
     }, 5000) //timout for 5secs
   } else {
-    responseDiv.style.backgroundColor = 'pink'
-    responseDiv.style.color = 'red'
+    responseDiv.classList.remove('hidden')
+    responseDiv.classList.add('bg-pink-500');
+    responseDiv.classList.add('text-red-800')
     responseDiv.textContent = message; //might change
     setTimeout(() => {
-      responseDiv.style.display = 'none'
+      responseDiv.classList.add('hidden')
+      responseDiv.classList.remove('bg-pink-500');
+      responseDiv.classList.remove('text-red-800');
+      responseDiv.textContent = ''; //clear message after 5 secs
     }, 5000) //timout for 5secs
   }
 

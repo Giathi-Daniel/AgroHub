@@ -202,16 +202,26 @@ function showResponse(success, message){
   responseDiv.innerHTML = '';
 
   if(success){
+    responseDiv.classList.remove('hidden')
+    responseDiv.classList.add('bg-green-500');
+    responseDiv.classList.add('text-white-800');
     responseDiv.textContent = message; //might change
     setTimeout(() => {
-      responseDiv.style.display = 'none'
+      responseDiv.classList.add('hidden');
+      responseDiv.classList.remove('bg-green-500');
+      responseDiv.classList.remove('text-white-800');
+      responseDiv.textContent = ''; //clear message after 5 secs
     }, 5000) //timout for 5secs
   } else {
-    responseDiv.style.backgroundColor = 'pink'
-    responseDiv.style.color = 'red'
+    responseDiv.classList.remove('hidden')
+    responseDiv.classList.add('bg-pink-500');
+    responseDiv.classList.add('text-red-800')
     responseDiv.textContent = message; //might change
     setTimeout(() => {
-      responseDiv.style.display = 'none'
+      responseDiv.classList.add('hidden')
+      responseDiv.classList.remove('bg-pink-500');
+      responseDiv.classList.remove('text-red-800');
+      responseDiv.textContent = ''; //clear message after 5 secs
     }, 5000) //timout for 5secs
   }
 

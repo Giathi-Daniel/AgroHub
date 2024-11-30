@@ -78,27 +78,31 @@ async function loginFarmer() {
 
 //function to show response message
 function showResponse(success, message){
-  // const responseDiv = document.getElementById('response');
-  // responseDiv.innerHTML = '';
+  const responseDiv = document.getElementById('response');
+  responseDiv.innerHTML = '';
 
   if(success){
-    // responseDiv.style.backgroundColor = 'lightgreen'
-    // responseDiv.style.color = 'green'
-    // responseDiv.textContent = message; //might change
-    // setTimeout(() => {
-    //   responseDiv.style.display = 'none'
-    // }, 5000) //timout for 5secs
-    alert(message)
-    //redirect to main page
-    // window.location.href = '/'
+    responseDiv.classList.remove('hidden')
+    responseDiv.classList.add('bg-green-500');
+    responseDiv.classList.add('text-white-800');
+    responseDiv.textContent = message; //might change
+    setTimeout(() => {
+      responseDiv.classList.add('hidden');
+      responseDiv.classList.remove('bg-green-500');
+      responseDiv.classList.remove('text-white-800');
+      responseDiv.textContent = ''; //clear message after 5 secs
+    }, 5000) //timout for 5secs
   } else {
-    alert(message)
-    // responseDiv.style.backgroundColor = 'pink'
-    // responseDiv.style.color = 'red'
-    // responseDiv.textContent = message; //might change
-    // setTimeout(() => {
-    //   responseDiv.style.display = 'none'
-    // }, 5000) //timout for 5secs
+    responseDiv.classList.remove('hidden')
+    responseDiv.classList.add('bg-pink-500');
+    responseDiv.classList.add('text-red-800')
+    responseDiv.textContent = message; //might change
+    setTimeout(() => {
+      responseDiv.classList.add('hidden')
+      responseDiv.classList.remove('bg-pink-500');
+      responseDiv.classList.remove('text-red-800');
+      responseDiv.textContent = ''; //clear message after 5 secs
+    }, 5000) //timout for 5secs
   }
 
 }

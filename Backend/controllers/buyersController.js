@@ -64,7 +64,7 @@ exports.registerBuyer = async (req, res) => {
       state,
       LGA,
       address,
-      terms,
+      'Accepted',
       "Active",
     ];
     await db.execute(sql, value);
