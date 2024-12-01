@@ -70,7 +70,7 @@ async function loginFarmer() {
     showResponse(result.success, result.message)
   
   } catch(error){
-    confirm.error(error)
+    console.log(error)
     showResponse(false, error) //show error message in case of failure
   }
   
