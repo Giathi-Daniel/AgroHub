@@ -190,7 +190,7 @@ async function registerFarmer() {
     showResponse(result.success, result.message)
   
   } catch(error){
-    confirm.error(error)
+    console.error(error)
     showResponse(false, error) //show error message in case of failure
   }
   

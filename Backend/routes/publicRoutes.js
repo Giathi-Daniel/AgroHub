@@ -1,7 +1,9 @@
 //import necessary dependencies
 const express = require("express");
 const router = express.Router(); //helps to set up routes
-const path = require('path')
+const path = require('path');
+const { contact } = require('../controllers/pubController')
+const { check } = require("express-validator");
 
 //route to buyer signup page
 router.get("/signup", (req, res) => {
@@ -26,5 +28,24 @@ router.get("/farmer/register", (req, res) => {
 
   res.sendFile(path.join(__dirname, "../..", "Fronted", "farmer-register.html"));
 });
+
+//route to contact us page
+router.get("/contact", (req, res) => {
+
+  res.sendFile(path.join(__dirname, "../..", "Fronted", "contact-us.html"));
+});
+
+//route to about  us page
+router.get('/about', (req, res) => {
+  res.sendFile(path.join(__dirname, "../..", "Fronted", "about-us.html"));
+})
+
+//route to receive contact us message
+router.post('/contact', [
+  check('name').notEmpty().withMessage('Name is required'),
+  check('email').isEmail().withMessage('Please enter a valid email'),
+  check('subject').notEmpty().withMessage('Subject is required'),
+  check('message').notEmpty().withMessage('Message is required')
+], contact)
 
 module.exports = router;

@@ -17,7 +17,10 @@ const {
   viewAdmin,
   activateAdmin,
   deactivateAdmin,
-  deleteAdmin
+  deleteAdmin,
+  getMessage,
+  getUnread,
+  readMessage
 } = require("../controllers/adminReqController");
 const { check } = require("express-validator"); //for server side validation
 const router = express.Router(); //helps to set up routes
@@ -89,5 +92,13 @@ router.post('/admin/deactivate', [
 router.delete('/admin/delete', [
   check('admin_id', 'Admin ID is required').not().isEmpty(), //checking that ID is not empty
 ], deleteAdmin)
+
+router.get('/message', getMessage);
+
+router.get('message/unread', getUnread);
+
+router.put('message/read', [
+  check('message_id', 'Message ID is required').not().isEmpty()
+], readMessage)
 
 module.exports = router;

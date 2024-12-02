@@ -78,27 +78,41 @@ async function loginFarmer() {
 
 //function to show response message
 function showResponse(success, message){
-  const responseDiv = document.getElementById('response');
-  responseDiv.innerHTML = '';
+  const responseDiv = document.getElementById('responseDiv');
+  responseDiv.textContent = '';
 
   if(success){
-    responseDiv.classList.remove('hidden')
+    // responseDiv.classList.remove('hidden')
+    responseDiv.style.display = 'block';
     responseDiv.classList.add('bg-green-500');
     responseDiv.classList.add('text-white-800');
     responseDiv.textContent = message; //might change
     setTimeout(() => {
-      responseDiv.classList.add('hidden');
+      // responseDiv.classList.add('hidden');
+      responseDiv.style.display = 'block';
+      responseDiv.classList.remove('bg-green-500');
+      responseDiv.classList.remove('text-white-800');
+      responseDiv.textContent = ''; //clear message after 5 secs
+    }, 5000) //timout for 5 secs
+    responseDiv.classList.add('bg-green-500');
+    responseDiv.classList.add('text-white-800');
+    responseDiv.textContent = message; //might change
+    setTimeout(() => {
+      // responseDiv.classList.add('hidden');
+      responseDiv.style.display = 'none';
       responseDiv.classList.remove('bg-green-500');
       responseDiv.classList.remove('text-white-800');
       responseDiv.textContent = ''; //clear message after 5 secs
     }, 5000) //timout for 5secs
   } else {
-    responseDiv.classList.remove('hidden')
+    // responseDiv.classList.remove('hidden')
+    responseDiv.style.display = 'block';
     responseDiv.classList.add('bg-pink-500');
     responseDiv.classList.add('text-red-800')
     responseDiv.textContent = message; //might change
     setTimeout(() => {
-      responseDiv.classList.add('hidden')
+      // responseDiv.classList.add('hidden')
+      responseDiv.style.display = 'none';
       responseDiv.classList.remove('bg-pink-500');
       responseDiv.classList.remove('text-red-800');
       responseDiv.textContent = ''; //clear message after 5 secs

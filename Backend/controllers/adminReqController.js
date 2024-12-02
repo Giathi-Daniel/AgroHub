@@ -994,6 +994,9 @@ exports.viewAdmin = async (req, res) => {
     });
   }
 
+  //log admin activity
+  await db.execute('INSERT INTO admin_log(admin_id, action) VALUES (?, ?)', [req.session.admin.admin_id, `SEARCH all admin`])
+
   return res.status(200).json({
     status: 200,
     success: true,
@@ -1008,5 +1011,147 @@ exports.viewAdmin = async (req, res) => {
     success: false,
     message: "Error retrieving admin data",
   });
+ }
+}
+
+//view all message
+exports.getMessage = async (req, res) => {
+  //check if user is logged in
+ if (!req.session.admin) {
+  //if user is not logged in
+  return res.status(401).json({
+    status: 401,
+    success: false,
+    message: "Unauthorised! admin not logged in",
+  });
+ }
+
+ try{
+  const [message] = await db.execute('SELECT contact_us_id, name, email, subject FROM contact_us');
+  //check if messages are in record
+  if (!message.length > 0) {
+    return res.status(400).json({
+      status: 400,
+      success: false,
+      message: "No messages found",
+    });
+  }
+
+  await db.execute('INSERT INTO admin_log(admin_id, action) VALUES (?, ?)', [req.session.admin.admin_id, `SEARCH all contact_us messages`])
+
+  return res.status(200).json({
+    status: 200,
+    success: true,
+    message: "Message retrieved successfully",
+    message: message
+  });
+
+ }catch(error){
+   console.error(error)
+   return res.status(500).json({
+     status: 500,
+     success: false,
+     message: "Error retrieving messages",
+   });
+ }
+}
+
+exports.getUnread = async (req, res) => {
+  //check if user is logged in
+ if (!req.session.admin) {
+  //if user is not logged in
+  return res.status(401).json({
+    status: 401,
+    success: false,
+    message: "Unauthorised! admin not logged in",
+  });
+ }
+
+ //get data from database
+ try{
+  const [message] = await db.execute('SELECT contact_us_id, name, email, subject FROM contact_us WHERE status = ?', ['Unread']);
+  //check if messages are in record
+  if (!message.length > 0) {
+    return res.status(400).json({
+      status: 400,
+      success: false,
+      message: "No messages found",
+    });
+  }
+
+  await db.execute('INSERT INTO admin_log(admin_id, action) VALUES (?, ?)', [req.session.admin.admin_id, `SEARCH Unread contact_us messages`])
+
+  return res.status(200).json({
+    status: 200,
+    success: true,
+    message: "Message retrieved successfully",
+    message: message
+  });
+
+ }catch(error){
+   console.error(error)
+   return res.status(500).json({
+     status: 500,
+     success: false,
+     message: "Error retrieving messages",
+   });
+ }
+}
+
+exports.readMessage = async (req, res) => {
+  //check if user is logged in
+ if (!req.session.admin) {
+  //if user is not logged in
+  return res.status(401).json({
+    status: 401,
+    success: false,
+    message: "Unauthorised! admin not logged in",
+  });
+ }
+
+ const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({
+      status: 400,
+      success: false,
+      message: "Please correct input errors",
+      errors: errors.array(),
+    });
+  }
+  //store the contact us message in the database
+  const { contact_us_id } = req.body
+
+ //get data from database
+ try{
+
+  const [message] = await db.execute('SELECT * FROM contact_us WHERE contact_us_id = ?', [contact_us_id]);
+  //check if messages are in record
+  if (!message.length > 0) {
+    return res.status(400).json({
+      status: 400,
+      success: false,
+      message: "No messages found",
+    });
+  }
+
+  //set message to read
+  await db.execute('UPDATE contact_us SET status = ? WHERE contact_us_id = ?', ['Read', contact_us_id]);
+
+  await db.execute('INSERT INTO admin_log(admin_id, action) VALUES (?, ?)', [req.session.admin.admin_id, `READ Unread contact_us messages`])
+
+  return res.status(200).json({
+    status: 200,
+    success: true,
+    message: "Message retrieved successfully",
+    message: message
+  });
+
+ }catch(error){
+   console.error(error)
+   return res.status(500).json({
+     status: 500,
+     success: false,
+     message: "Error retrieving messages",
+   });
  }
 }

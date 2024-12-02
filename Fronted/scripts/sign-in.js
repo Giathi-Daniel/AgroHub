@@ -71,7 +71,7 @@ async function loginBuyer() {
     showResponse(result.success, result.message)
   
   } catch(error){
-    confirm.error(error)
+    console.error(error)
     showResponse(false, error) //show error message in case of failure
   }
   
@@ -83,12 +83,14 @@ function showResponse(success, message){
   responseDiv.textContent = '';
 
   if(success){
-    responseDiv.classList.remove('hidden')
+    // responseDiv.classList.remove('hidden')
+    responseDiv.style.display = 'block';
     responseDiv.classList.add('bg-green-500');
     responseDiv.classList.add('text-white-800');
     responseDiv.textContent = message; //might change
     setTimeout(() => {
-      responseDiv.classList.add('hidden');
+      // responseDiv.classList.add('hidden');
+      responseDiv.style.display = 'none';
       responseDiv.classList.remove('bg-green-500');
       responseDiv.classList.remove('text-white-800');
       responseDiv.textContent = ''; //clear message after 5 secs
@@ -97,12 +99,14 @@ function showResponse(success, message){
     window.location.href = '/'
   } else {
     alert('hello')
-    responseDiv.classList.remove('hidden')
+    // responseDiv.classList.remove('hidden')
+    responseDiv.style.display = 'block';
     responseDiv.classList.add('bg-pink-500');
     responseDiv.classList.add('text-red-800')
     responseDiv.textContent = message; //might change
     setTimeout(() => {
-      responseDiv.classList.add('hidden')
+      // responseDiv.classList.add('hidden')
+      responseDiv.style.display = 'none';
       responseDiv.classList.remove('bg-pink-500');
       responseDiv.classList.remove('text-red-800');
       responseDiv.textContent = ''; //clear message after 5 secs

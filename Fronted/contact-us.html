@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AgroHub | Contact Us</title>
-    <link rel="icon" href="images/logo.png" type="image/png" />
+    <link rel="icon" href="/images/logo.png" type="image/png" />
 
     <!-- ========== LATO FONT ========== -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -27,7 +27,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- ========== STYLESHEET ========== -->
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="/styles/styles.css" />
   </head>
   <body>
     <!-- ========== HEADER ========== -->
@@ -36,7 +36,7 @@
     >
       <!-- Logo and Site Name -->
       <div class="flex items-center mb-4 space-x-1 md:mb-0">
-        <img src="images/logo.png" class="h-7 w-7 md:h-10 md:w-10" />
+        <img src="/images/logo.png" class="h-7 w-7 md:h-10 md:w-10" />
         <h1 class="text-2xl font-bold">AgroHub</h1>
       </div>
 
@@ -62,12 +62,12 @@
       <div class="flex items-center space-x-4">
         <div class="flex items-center space-x-4" id="authBtns">
           <a
-            href="/login"
+            href="/agrohub/pub/login"
             class="px-3 py-1 transition duration-150 ease-in bg-orange-500 rounded-lg hover:bg-orange-600"
             >Login</a
           >
           <a
-            href="/signup"
+            href="/agrohub/pub/signup"
             class="px-3 py-1 transition duration-150 ease-in bg-orange-500 rounded-lg hover:bg-orange-600"
             >Sign Up</a
           >
@@ -75,7 +75,7 @@
 
         <!-- Cart Icon -->
         <a
-          href="/cart"
+          href="/agrohub/pub/cart"
           class="relative text-black transition duration-150 ease-in hover:bg-orange-600"
         >
           <i class="text-xl fa-solid fa-cart-shopping"></i>
@@ -100,7 +100,7 @@
 
     <!-- ========== HERO ========== -->
     <section
-      class="relative bg-cover h-[15rem] bg-center bg-[url('./images/contact-us.png')]"
+      class="relative bg-cover h-[15rem] bg-center bg-[url('/images/contact-us.png')]"
     >
       <div class="absolute inset-0 z-10 bg-black bg-opacity-40"></div>
 
@@ -167,7 +167,7 @@
         </div>
 
         <!-- Form -->
-        <form action="mailto:agrohub.com" class="w-full lg:w-[45%] space-y-3">
+        <form id="messageForm" class="w-full lg:w-[45%] space-y-3">
           <div class="grid grid-cols-1 gap-3 lg:grid-cols-2">
             <input
               type="text"
@@ -176,6 +176,7 @@
               placeholder="Your Name"
               class="px-2 py-2 text-gray-400 bg-white border border-orange-400 rounded-md text-md focus:border-orange-500"
             />
+            
             <input
               type="email"
               name="email"
@@ -183,6 +184,14 @@
               placeholder="Your Email"
               class="px-2 py-2 text-gray-400 bg-white border border-orange-400 rounded-md text-md focus:border-orange-500"
             />
+            <span
+                id="nameError"
+                class="text-red-500 text-sm mt-1 hidden"
+              ></span>
+            <span
+              id="emailError"
+              class="text-red-500 text-sm mt-1 hidden"
+            ></span>
           </div>
           <input
             type="text"
@@ -191,18 +200,30 @@
             placeholder="Your Subject"
             class="w-full px-2 py-2 text-gray-400 bg-white border border-orange-400 rounded-md text-md focus:border-orange-500"
           />
+          <span
+            id="subjectError"
+            class="text-red-500 text-sm mt-1 hidden"
+          ></span>
           <textarea
             name="message"
             id="message"
             placeholder="Your Message"
             class="w-full h-20 px-2 py-2 text-gray-400 bg-white border border-orange-400 rounded-md resize-none text-md focus:border-orange-500"
           ></textarea>
+          <span
+            id="messageError"
+            class="text-red-500 text-sm mt-1 hidden"
+          ></span>
           <input
             type="submit"
             value="Submit Form"
             class="flex items-center justify-center w-auto px-3 py-2 text-white transition duration-150 ease-in bg-orange-500 rounded-md cursor-pointer hover:scale-110"
           />
         </form>
+        <div
+          class="font-bold rounded w-fit px-4 py-2 absolute md:mt-[-28rem] mt-[-29rem] right-6"
+          id="responseDiv"
+        ></div>
       </section>
     </main>
 
@@ -214,12 +235,12 @@
           <div class="flex flex-col w-full mb-5 space-y-3 md:w-1/3">
             <h2 class="text-xl font-bold">Get to know us</h2>
             <a
-              href="/contact-us"
+              href="/agrohub/pub/contact-us"
               class="text-gray-300 transition duration-150 ease-in-out hover:underline"
               >Contact Us</a
             >
             <a
-              href="/about-us"
+              href="/agrohub/pub/about-us"
               class="text-gray-300 transition duration-150 ease-in-out hover:underline"
               >About Us</a
             >
@@ -281,5 +302,6 @@
         </div>
       </div>
     </footer>
+    <script src="/scripts/contact-us.js"></script>
   </body>
 </html>
