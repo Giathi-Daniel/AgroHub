@@ -108,6 +108,12 @@ function showResponse(success, message){
     responseDiv.classList.add('bg-green-500');
     responseDiv.classList.add('text-white-800');
     responseDiv.textContent = message; //might change
+
+    //clear messages
+    client.value = ''
+    email.value = ''
+    subject.value = ''
+    message.value = ''
     setTimeout(() => {
       responseDiv.style.display = 'none'
       responseDiv.classList.remove('bg-green-500');

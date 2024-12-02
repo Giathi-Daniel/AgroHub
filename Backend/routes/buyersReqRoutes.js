@@ -14,6 +14,7 @@ const {
 } = require("../controllers/buyersReqController");
 const { check } = require("express-validator"); //for server side validation
 const router = express.Router(); //helps to set up routes
+const path = require('path')
 
 router.get("/products", getAllProduct);
 
@@ -24,6 +25,14 @@ router.post(
   ],
   searchProducts
 );
+
+//access to cart page
+router.get('/cart', (req, res) => {
+  if (!req.session.buyer){
+    return res.redirect('/agrohub/pub/login');
+  }
+  res.sendFile(path.join(__dirname, "../..", "Fronted", "cart.html"));
+})
 
 router.post(
   "/cart/add",
@@ -38,7 +47,7 @@ router.post(
   addToCart
 );
 
-router.get("/cart", viewCart);
+router.get("/cart/items", viewCart);
 
 router.delete(
   "/cart/remove",

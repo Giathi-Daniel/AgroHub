@@ -75,7 +75,7 @@
 
         <!-- Cart Icon -->
         <a
-          href="/agrohub/pub/cart"
+          href="/agrohub/api/req/buyer"
           class="relative text-black transition duration-150 ease-in hover:bg-orange-600"
         >
           <i class="text-xl fa-solid fa-cart-shopping"></i>
@@ -176,7 +176,7 @@
               placeholder="Your Name"
               class="px-2 py-2 text-gray-400 bg-white border border-orange-400 rounded-md text-md focus:border-orange-500"
             />
-            
+
             <input
               type="email"
               name="email"
@@ -185,9 +185,9 @@
               class="px-2 py-2 text-gray-400 bg-white border border-orange-400 rounded-md text-md focus:border-orange-500"
             />
             <span
-                id="nameError"
-                class="text-red-500 text-sm mt-1 hidden"
-              ></span>
+              id="nameError"
+              class="text-red-500 text-sm mt-1 hidden"
+            ></span>
             <span
               id="emailError"
               class="text-red-500 text-sm mt-1 hidden"
@@ -220,11 +220,12 @@
             class="flex items-center justify-center w-auto px-3 py-2 text-white transition duration-150 ease-in bg-orange-500 rounded-md cursor-pointer hover:scale-110"
           />
         </form>
-        <div
+        
+      </section>
+      <div
           class="font-bold rounded w-fit px-4 py-2 absolute md:mt-[-28rem] mt-[-29rem] right-6"
           id="responseDiv"
         ></div>
-      </section>
     </main>
 
     <!-- ========== FOOTER ========== -->
