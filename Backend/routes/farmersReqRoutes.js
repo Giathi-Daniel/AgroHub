@@ -27,7 +27,7 @@ router.post(
     check("status", "Status is required").not().isEmpty() //checking that name is not empty
   ],
    uploadProduct
-); //confirm if upload.single() parameter will be accepted
+); 
 
 router.get('/products', getAllProduct);
 

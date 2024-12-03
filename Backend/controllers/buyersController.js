@@ -170,6 +170,13 @@ exports.getBuyer = (req, res) => {
       message: "Unauthorised! user not logged in",
     });
   }
+
+  //convert image blob to url
+  const imageBlob = req.session.farmer.image_data; // Adjust this line based on actual data structure
+
+  // Convert the blob to an image URL
+  const image_url = URL.createObjectURL(imageBlob);
+
   //if user is not logged in
   const buyer = {
     buyer_id: req.session.buyer.buyer_id,
@@ -182,6 +189,8 @@ exports.getBuyer = (req, res) => {
     LGA: req.session.buyer.LGA,
     address: req.session.buyer.address,
     terms: req.session.buyer.terms,
+    image_data: image_url,
+    date_joined: req.session.buyer.created_at
   };
 
   return res.status(200).json({
@@ -217,6 +226,20 @@ exports.editBuyer = async (req, res) => {
     });
   }
 
+   //convert file with buffer
+   const image_data = req.file.buffer; //get file data as a buffer
+   const image_name = req.file.originalname;
+ 
+   //check if file exist
+   if (!image_data) {
+     return res.status(400).json({
+       status: 400,
+       success: false,
+       message: "Please upload an image",
+     });
+   }
+ 
+
   //if no error is present in validation ans user is logged in
   const { first_name, last_name, phone_number, country, state, LGA, address } =
     req.body; //fetching the input parameter from the request body
@@ -239,7 +262,7 @@ exports.editBuyer = async (req, res) => {
     }
 
     await db.execute(
-      "UPDATE buyers SET first_name = ?, last_name =?, phone_number = ?, country = ?, state = ?, LGA =?, address = ? WHERE buyer_id = ?",
+      "UPDATE buyers SET first_name = ?, last_name =?, phone_number = ?, country = ?, state = ?, LGA =?, address = ?, image_data = ?, image_name = ? WHERE buyer_id = ?",
       [
         first_name,
         last_name,
@@ -248,6 +271,8 @@ exports.editBuyer = async (req, res) => {
         state,
         LGA,
         address,
+        image_data,
+        image_name,
         req.session.buyer.buyer_id,
       ]
     );
@@ -280,11 +305,7 @@ exports.logoutBuyer = (req, res) => {
         error: err,
       });
     }
-    res.status(200).json({
-      status: 200,
-      success: true,
-      message: "logout successful!",
-    });
+    res.redirect('')
   });
 };
 

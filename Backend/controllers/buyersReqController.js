@@ -449,8 +449,10 @@ exports.checkOutHistory = async (req, res) => {
         sd.quantity, 
         sd.price_per_unit, 
         sd.price, 
-        f.farm_name, 
-        s.shipping_address
+        f.farm_name,
+        s.created_at, 
+        s.shipping_address,
+        s.shipping_status
       FROM shipping s
       JOIN shipping_details sd
       ON s.shipping_id = sd.shipping_id
@@ -458,7 +460,9 @@ exports.checkOutHistory = async (req, res) => {
       ON sd.product_id = p.product_id
       JOIN farmers f
       ON p.farmer_id = f.farmer_id
-      WHERE s.buyer_id = ?;
+      WHERE s.buyer_id = ?
+      ORDER BY s.created_at DESC 
+      LIMIT 10;
     `
     const [shipments] = await db.execute(sql, [req.session.buyer.buyer_id])
 

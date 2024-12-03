@@ -182,6 +182,13 @@ exports.getFarmer = (req, res) => {
       message: "Unauthorised! user not logged in",
     });
   }
+
+  //convert image blob to url
+  const imageBlob = req.session.farmer.image_data; // Adjust this line based on actual data structure
+
+    // Convert the blob to an image URL
+    const image_url = URL.createObjectURL(imageBlob);
+
   //if user is not logged in
   const farmer = {
     farmer_id: req.session.farmer.farmer_id,
@@ -196,6 +203,8 @@ exports.getFarmer = (req, res) => {
     LGA: req.session.farmer.LGA,
     address: req.session.farmer.address,
     terms: req.session.farmer.terms,
+    image_data: image_url,
+    date_joined: req.session.farmer.created_at
   };
 
   return res.status(200).json({
@@ -231,6 +240,20 @@ exports.editFarmer = async (req, res) => {
     });
   }
 
+    //convert file with buffer
+    const image_data = req.file.buffer; //get file data as a buffer
+    const image_name = req.file.originalname;
+  
+    //check if file exist
+    if (!image_data) {
+      return res.status(400).json({
+        status: 400,
+        success: false,
+        message: "Please upload an image",
+      });
+    }
+  
+
   //if no error is present in validation ans user is logged in
   const {
     first_name,
@@ -262,7 +285,7 @@ exports.editFarmer = async (req, res) => {
     }
 
     await db.execute(
-      "UPDATE farmers SET first_name = ?, last_name =?, farm_name = ?, farm_size = ?, phone_number = ?, country = ?, state = ?, LGA =?, address = ? WHERE farmer_id = ?",
+      "UPDATE farmers SET first_name = ?, last_name =?, farm_name = ?, farm_size = ?, phone_number = ?, country = ?, state = ?, LGA =?, address = ?, image_data = ?, image_name = ? WHERE farmer_id = ?",
       [
         first_name,
         last_name,
@@ -273,6 +296,8 @@ exports.editFarmer = async (req, res) => {
         state,
         LGA,
         address,
+        image_data,
+        image_name,
         req.session.farmer.farmer_id,
       ]
     );
@@ -305,11 +330,7 @@ exports.logoutFarmer = (req, res) => {
         error: err,
       });
     }
-    res.status(200).json({
-      status: 200,
-      success: true,
-      message: "logout successful!",
-    });
+    res.redirect('/agrohub/pub/farmer/login')
   });
 };
 
