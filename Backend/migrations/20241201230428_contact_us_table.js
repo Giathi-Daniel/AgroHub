@@ -10,7 +10,7 @@ exports.up = async knex => {
       console.log('creating contact_us table...');
       await knex.schema.createTable('contact_us', table => {
         table.increments('contact_us_id').primary();
-        table.string('name', 505).notNullable();
+        table.string('name', 100).notNullable();
         table.string('email', 100).notNullable();
         table.string('subject', 255).notNullable();
         table.text('message').notNullable();

@@ -163,17 +163,21 @@ exports.addToCart = (req, res) => {
     });
   }
 
-  const { product_id, product_name, price, discount, quantity } = req.body;
+  // const { product_id, product_name, price, discount, quantity, image_data } = req.body;
+  const { cart } = req.body; //cart should be an object
 
   //if cart is empty, insert directly
   if (req.session.cart.length === 0) {
-    req.session.cart.push({
-      product_id: product_id,
-      product_name: product_name,
-      price: price,
-      discount: discount,
-      quantity: quantity,
-    });
+    // req.session.cart.push({
+    //   product_id: product_id,
+    //   product_name: product_name,
+    //   price: price,
+    //   discount: discount,
+    //   quantity: quantity,
+    //   image_data: image_data,
+    // });
+    req.session.cart.push(cart);
+    
     return res.status(200).json({
       status: 200,
       success: true,
@@ -183,7 +187,28 @@ exports.addToCart = (req, res) => {
     });
   }
 
-  //if cart is not empty check if an item already exist
+  return res.status(200).json({
+    status: 200,
+    success: true,
+    message: "Items added to cart sucessfully",
+    cart: req.session.cart,
+    itemCount: req.session.cart.length,
+  });
+};
+
+exports.updateCart = (req, res) => {
+  //check if a user is logged in
+  if (!req.session.buyer) {
+    //if user is not logged in
+    return res.status(401).json({
+      status: 401,
+      success: false,
+      message: "Unauthorised! user not logged in",
+    });
+  }
+
+  const { product_id, quantity } = req.body; //========> validate this in buyerReqRoute
+
   let itemFound = false;
   let index;
 
@@ -196,27 +221,25 @@ exports.addToCart = (req, res) => {
     });
   }
 
-  //if item is in cart increment quantity
+  //if item is in cart update quantity
   if (itemFound) {
-    req.session.cart[index].quantity += quantity;
+    req.session.cart[index].quantity = quantity;
   } else {
-    req.session.cart.push({
-      product_id: product_id,
-      product_name: product_name,
-      price: price,
-      discount: discount,
-      quantity: quantity,
+    return res.status(404).json({
+      status: 404,
+      success: false,
+      message: "Product not found in cart",
     });
   }
 
   return res.status(200).json({
     status: 200,
     success: true,
-    message: "Items added to cart sucessfully",
+    message: "Cart updated successfully",
     cart: req.session.cart,
     itemCount: req.session.cart.length,
   });
-};
+}
 
 exports.viewCart = (req, res) => {
   //check if a user is logged in
@@ -341,7 +364,15 @@ exports.checkOut = async (req, res) => {
   let agro_discount = 0.0;
   let final_price = 0.0;
 
+  //check if cart has items
   const cart = req.session.cart;
+  if (cart.length === 0){
+    return res.status(400).json({
+      status: 400,
+      success: false,
+      message: "Please add items to cart...",
+    });
+  }
   cart.forEach((product) => {
     products_price += product.price * product.quantity;
   });

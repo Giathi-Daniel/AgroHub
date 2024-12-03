@@ -1,12 +1,18 @@
 //fetch DOM element
-const cart_items = document.getElementById('cart_items')
+const cart_items = document.getElementById('cart_items');
+const checkOutBtn = document.getElementById('checkOutBtn');
 
-//declare cart variable
-let cart;
-let count;
+//clear items from display
+cart_items.innerHTML = ''
 
 //get cart items from server
 getCartItem();
+
+//checkout cart
+checkOutBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  checkout();
+})
 
 
 //function to get cart items from server
@@ -15,26 +21,29 @@ async function getCartItem () {
 
   const result = await response.json()
 
-  cart = result.cart
-  count = result.itemCount
+  const cart = result.cart
+  const count = result.itemCount
 
-  if (cart.length === 0 || count === 0){
-    return cart_items.innerHTML = `<h3 class="text-3xl font-bold text-gray-900">Cart is empty.</h3>`
+  if (count === 0){
+    return cart_items.innerHTML = `<div class="text-center text-gray-600">Your cart is empty.</div>`
   }
+  //summarize cart
+  summarizeCart(cart)
+
   //continue from here
   cart.forEach(item => {
     const product = `
       <div class="flex items-center space-x-4">
         <img
-          src="https://cdn.pixabay.com/photo/2019/07/03/20/56/tomatoes-4315442_640.png"
+          src= ${item.image_data}
           alt="Product Image"
           class="object-cover w-16 h-16 rounded-lg"
         />
         <div>
           <h3 class="font-semibold text-gray-800">
-            Organic Fresh Tomatoes
+            ${item.product_name}
           </h3>
-          <p class="text-gray-600">Price: $19.99 / kg</p>
+          <p class="text-gray-600">Price: ${item.price}</p>
         </div>
       </div>
 
@@ -42,26 +51,127 @@ async function getCartItem () {
         <div class="flex items-center space-x-2">
           <button
             class="px-2 py-1 text-sm text-gray-600 border rounded hover:bg-gray-200"
+            id="${item.product_id}-rm"
           >
             -
           </button>
           <input
+            id="${item.product_id}-qty"
             type="number"
             value="1"
             min="1"
             class="w-12 text-center border rounded"
           />
           <button
+            id="${item.product_id}-add"
             class="px-2 py-1 text-sm text-gray-600 border rounded hover:bg-gray-200"
           >
             +
           </button>
         </div>
 
-        <button class="text-sm text-red-600 hover:underline">
+        <button id="${item.product_id}-remove" class="text-sm text-red-600 hover:underline">
           Remove
         </button>
       </div>
     </div>`
+
+    cart_items.innerHTML += product;
+    
+    //update cart when button is clicked
+    document.getElementById(`${item.product_id}-add`).addEventListener('click', () => {
+      updateCart(item.product_id, parseInt(document.getElementById(`${item.product_id}-qty`).value) + 1)
+      document.getElementById(`${item.product_id}-qty`).value += 1; 
+    })
+
+    document.getElementById(`${item.product_id}-rm`).addEventListener('click', () => {
+      updateCart(item.product_id, parseInt(document.getElementById(`${item.product_id}-qty`).value) - 1)
+      document.getElementById(`${item.product_id}-qty`).value -= 1; 
+    })
+
+    document.getElementById(`${item.product_id}-remove`).addEventListener('click', () => {
+      removeCartItem(item.product_id)
+    })
+
+    //update quantity when input is changed manualy
+    document.getElementById(`${item.product_id}-qty`).addEventListener('change', () => {
+      updateCart(item.product_id, parseInt(document.getElementById(`${item.product_id}-qty`).value))
+    })
+
+
   })
+}
+
+//function to update cart on server
+async function updateCart (productId, quantity) {
+  const response = await fetch(`/agrohub/api/req/buyer/cart/update`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({product_id: productId, quantity: quantity})
+  })
+
+  const result = await response.json()
+
+  if (result.success) {
+    getCartItem() //reload the page 
+  } else {
+    alert('Failed to update cart')
+  }
+}
+
+//function to remove cart item on server
+async function removeCartItem (productId) {
+  const response = await fetch(`/agrohub/api/req/buyer/cart/remove`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({product_id: productId})
+  })
+
+  const result = await response.json()
+
+  if (result.success) {
+    getCartItem()
+  } else {
+    alert('Failed to remove item from cart')
+  }
+}
+
+//summarize cart
+function summarizeCart (cart) {
+  const subtotal = document.getElementById('subtotal');
+  const itemNum = document.getElementById('count');
+  const total_price = document.getElementById('total_price');
+
+  let totalPrice = 0;
+
+  cart.forEach(item => {
+    totalPrice += item.price * item.quantity
+  })
+
+  subtotal.innerHTML = `$${totalPrice.toFixed(2)}`;
+  itemNum.innerHTML = `${cart.length}`
+  total_price.innerHTML = `$${totalPrice.toFixed(2)}`
+
+  // return `Total items: ${count}, Total price: $${totalPrice.toFixed(2)}`
+}
+
+// document.getElementById('summary').innerHTML = summarizeCart()
+
+//function to checkout
+async function checkout () {
+  const response = await fetch(`/agrohub/api/req/buyer/cart/checkout`)
+
+  const result = await response.json()
+
+  if (result.success) {
+    alert('Successfully checked out')
+    cart_items.innerHTML = `<h3 class="text-3xl font-bold text-gray-900">Cart is empty.</h3>`
+    count = 0
+  } else {
+    alert('Failed to checkout')
+  }
 }

@@ -5,6 +5,7 @@ const {
   searchProducts,
   addToCart,
   viewCart,
+  updateCart,
   removeFromCart,
   clearCart,
   countCart,
@@ -38,16 +39,22 @@ router.post(
   "/cart/add",
   [
     //check if fields are empty
-    check("product_id", "Product ID is required").not().isEmpty(),
-    check("product_name", "Product Name is required").not().isEmpty(),
-    check("price", "Price is required").not().isEmpty(),
-    check("discount", "Discount is required").not().isEmpty(),
-    check("quatity", "Quatity is required").not().isEmpty(),
+    check("cart", "Cart is required").not().isEmpty(),
+    // check("product_id", "Product ID is required").not().isEmpty(),
+    // check("product_name", "Product Name is required").not().isEmpty(),
+    // check("price", "Price is required").not().isEmpty(),
+    // check("discount", "Discount is required").not().isEmpty(),
+    // check("quatity", "Quatity is required").not().isEmpty(),
   ],
   addToCart
 );
 
 router.get("/cart/items", viewCart);
+
+router.put("/cart/update",[
+  check("product-id", "Product ID is required").not().isEmpty(),
+  check("quantity", "Quantity is required").not().isEmpty(),
+], updateCart);
 
 router.delete(
   "/cart/remove",

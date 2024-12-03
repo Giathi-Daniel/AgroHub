@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AgroHub | Cart</title>
-    <link rel="icon" href="images/logo.png" type="image/png" />
+    <link rel="icon" href="/images/logo.png" type="image/png" />
 
     <!-- ========== LATO FONT ========== -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -33,7 +33,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- ========== STYLESHEET ========== -->
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="/styles/styles.css" />
   </head>
   <body>
     <!-- ========== HEADER ========== -->
@@ -42,7 +42,7 @@
     >
       <!-- Logo and Site Name -->
       <div class="flex items-center mb-4 space-x-1 md:mb-0">
-        <img src="images/logo.png" class="h-7 w-7 md:h-10 md:w-10" />
+        <img src="/images/logo.png" class="h-7 w-7 md:h-10 md:w-10" />
         <h1 class="text-2xl font-bold">AgroHub</h1>
       </div>
 
@@ -102,7 +102,10 @@
           <h2 class="text-3xl font-bold text-gray-900">Your Cart</h2>
 
           <!-- Cart Item -->
-          <div class="flex items-center justify-between p-4 border-b" id="cart_items">
+          <div
+            class="flex items-center justify-between p-4 border-b"
+            id="cart_items"
+          >
             <div class="flex items-center space-x-4">
               <img
                 src="https://cdn.pixabay.com/photo/2019/07/03/20/56/tomatoes-4315442_640.png"
@@ -143,7 +146,7 @@
             </div>
           </div>
 
-          <div class="flex items-center justify-between p-4 border-b">
+          <!-- <div class="flex items-center justify-between p-4 border-b">
             <div class="flex items-center space-x-4">
               <img
                 src="https://media.istockphoto.com/id/1475113258/photo/raw-potatoes-freshly-cut-in-half-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=xDNuQsCL21UAN0gRFw1kFoaxev9zlkbn7Ji5rTmu9Hw="
@@ -178,7 +181,7 @@
                 Remove
               </button>
             </div>
-          </div>
+          </div> -->
 
           <!-- Empty Cart Message -->
           <!-- <div class="text-center text-gray-600">Your cart is empty.</div> -->
@@ -192,7 +195,13 @@
             <!-- Subtotal -->
             <div class="flex justify-between text-gray-700">
               <span class="font-semibold">Subtotal</span>
-              <span>$49.97</span>
+              <span id="subtotal">$49.97</span>
+            </div>
+
+            <!-- Item Count -->
+            <div class="flex justify-between text-gray-700">
+              <span class="font-semibold">Count</span>
+              <span id="count">0</span>
             </div>
 
             <!-- Shipping -->
@@ -204,13 +213,14 @@
             <!-- Total -->
             <div class="flex justify-between text-2xl font-bold text-gray-900">
               <span>Total</span>
-              <span>$49.97</span>
+              <span id="total_price">$49.97</span>
             </div>
           </div>
 
           <!-- Checkout Button -->
           <div class="mt-6">
             <button
+              id="checkOutBtn"
               class="w-full py-3 font-semibold text-white transition duration-200 bg-green-600 rounded-md hover:bg-green-700"
             >
               Proceed to Checkout
@@ -292,6 +302,6 @@
     </footer>
 
     <!-- ========== SCRIPT JS ========== -->
-     <script src="/scripts/cart.js"></script>
+    <script src="/scripts/cart.js"></script>
   </body>
 </html>
