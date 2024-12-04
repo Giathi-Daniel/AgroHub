@@ -65,43 +65,9 @@
         </button>
       </div>
 
-      <!-- Auth Buttons and Icons -->
-      <div class="flex items-center space-x-4">
-        <div class="flex items-center space-x-4" id="authBtns">
-          <a
-            href="/agrohub/pub/login"
-            class="px-3 py-1 transition duration-150 ease-in bg-orange-500 rounded-lg hover:bg-orange-600"
-            >Login</a
-          >
-          <a
-            href="/agrohub/pub/signup"
-            class="px-3 py-1 transition duration-150 ease-in bg-orange-500 rounded-lg hover:bg-orange-600"
-            >Sign Up</a
-          >
-        </div>
-
-        <!-- Cart Icon -->
-        <a
-          href="/agrohub/api/req/buyer/cart"
-          class="relative text-black transition duration-150 ease-in hover:text-lg"
-        >
-          <i class="text-xl fa-solid fa-cart-shopping"></i>
-          <span
-            class="bg-orange-400 rounded-full absolute flex items-center justify-center w-5 h-5 text-sm text-white top-[-.6rem] left-3"
-            id="cart_msg"
-            >0</span
-          >
-        </a>
-
-        <!-- Menu Icon -->
-        <div class="flex items-center justify-center space-x-2" id="menuToggle">
-          <i
-            class="text-xl transition duration-150 ease-in cursor-pointer fa-solid fa-bars hover:font-bold"
-          ></i>
-          <i
-            class="hidden text-xl transition duration-150 ease-in cursor-pointer fa-solid fa-close hover:font-bold"
-          ></i>
-        </div>
+      <!-- Dynamic Auth Buttons and Icons -->
+      <div class="flex items-center space-x-4" id="authSection">
+        
       </div>
     </header>
 
@@ -1649,5 +1615,6 @@
 
     <!-- ========== SCRIPT JS ========== -->
     <script src="main.js"></script>
+    <script src="scripts/sign-in.js"></script>
   </body>
 </html>
