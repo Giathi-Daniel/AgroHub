@@ -24,6 +24,7 @@ exports.getAllProduct = async (req, res) => {
     //convert image data to url
     await products.forEach((product) => {
       imageData = product.image_data.toString("base64");
+      const imageType = product.image_data.type
       allProducts.push({
         product_id: product.product_id,
         farmer_id: product.farmer_id,
@@ -36,6 +37,7 @@ exports.getAllProduct = async (req, res) => {
         status: product.status,
         image_data: imageData,
         image_name: product.image_name,
+        image_type: imageType
       });
     });
 
