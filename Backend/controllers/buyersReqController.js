@@ -5,14 +5,14 @@ const { validationResult } = require("express-validator");
 
 exports.getAllProduct = async (req, res) => {
   //check if a user is logged in
-  if (!req.session.buyer) {
-    //if user is not logged in
-    return res.status(401).json({
-      status: 401,
-      success: false,
-      message: "Unauthorised! user not logged in",
-    });
-  }
+  // if (!req.session.buyer) {
+  //   //if user is not logged in
+  //   return res.status(401).json({
+  //     status: 401,
+  //     success: false,
+  //     message: "Unauthorised! user not logged in",
+  //   });
+  // }
 
   try {
     //checking if a product exist in database

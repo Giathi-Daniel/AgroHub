@@ -96,11 +96,10 @@ function showResponse(success, message){
       responseDiv.textContent = ''; //clear message after 5 secs
     }, 5000) //timout for 5secs
     // redirect to main page
-    window.location.href = '/'
+    // window.location.href = '/'
     const authBtns = document.getElementById('btns').style.display = "none"
     
   } else {
-    alert('hello')
     // responseDiv.classList.remove('hidden')
     responseDiv.style.display = 'block';
     responseDiv.classList.add('bg-pink-500');
