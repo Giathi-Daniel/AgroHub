@@ -1,4 +1,4 @@
-//fetching values from input fields
+i//fetching values from input fields
 const form = document.getElementById('loginForm');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
@@ -77,6 +77,7 @@ async function loginBuyer() {
   
 }
 
+
 //function to show response message
 function showResponse(success, message){
   const responseDiv = document.getElementById('responseDiv');
@@ -115,3 +116,115 @@ function showResponse(success, message){
   }
 
 }
+
+
+// function to update the dom
+const isAuthenticated = async () => {
+  try {
+    // Check authentication status from the server
+    const response = await fetch('/agrohub/api/buyer/auth-status', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const result = await response.json();
+    return result.isAuthenticated; // true/false
+  } catch (error) {
+    console.error('Error checking authentication status:', error);
+    return false; // don't authenticate when fail
+  }
+};
+
+isAuthenticated().then((authStatus) => {
+  const authSection = document.getElementById('authSection')
+  authSection.innerHTML = ''
+
+  if(authStatus) {
+    // add profile icon
+    const profileIcon = document.createElement('a')
+    profileIcon.href = '/agrohub/api/buyer/profile';
+    profileIcon.innerHTML = `<i class="text-xl fa-solid fa-user></i>`
+    profileIcon.classList.add (
+      'relative',
+      'text-orange-500',
+      'duration-150',
+      'ease-in',
+      'hover:text-lg'
+    )
+
+    // add Logout button
+    const logoutBtn = document.createElement('button')
+    logoutBtn.textContent = 'Logout'
+    logoutBtn.classList.add(
+      'px-3',
+      'py-1',
+      'bg-red-500',
+      'text-white',
+      'rounded-lg',
+      'hover:bg-orange-600'
+    )
+    logoutBtn.addEventListener('click', () => {
+      fetch('/agrohub/api/buyer/logout', { method: 'POST' })
+      .then(() => {
+        window.location.href = '/agrohub/pub/login'
+      })
+      .catch((err) => console.error("Logout failed: ", err))
+    })
+
+    // Cart Icon
+    const cartIcon = document.createElement('a')
+    cartIcon.href = '/agrohub/api/req/buyer/cart';
+    cartIcon.innerHTML = `
+        <i class="text-xl fa-solid fa-cart-shopping"></i>
+        <span
+          class="bg-orange-400 rounded-full absolute flex items-center justify-center w-5 h-5 text-sm text-white top-[-.6rem] left-3"
+          id="cart_msg"
+          >
+            0
+        </span>
+    `
+    cartIcon.classList.add(
+      'relative',
+      'text-black',
+      'transition',
+      'duration-150',
+      'ease-in',
+      'hover:text-lg'
+    )
+
+    authSection.appendChild(profileIcon)
+    authSection.appendChild(cartIcon)
+    authSection.appendChild(logoutBtn)
+  } else {
+    // Add Sign In Button
+    const loginBtn = document.createElement('a')
+    loginBtn.href = '/agrohub/pub/login'
+    loginBtn.textContent = 'Login'
+    loginBtn.classList.add(
+      'px-3',
+      'py-1',
+      'bg-orange-500',
+      'text-white',
+      'rounded-lg',
+      'hover:bg-orange-600'
+    )
+
+    // Add Sign Up Button
+    const signUpBtn = document.createElement('a')
+    signUpBtn.href = '/agrohub/pub/signup'
+    signUpBtn.textContent = 'Sign Up'
+    signUpBtn.classList.add(
+      'px-3',
+      'py-1',
+      'bg-orange-500',
+      'text-white',
+      'rounded-lg',
+      'hover:bg-orange-600'
+    )
+
+    authSection.appendChild(loginBtn)
+    authSection.appendChild(signUpBtn)
+  }
+})
