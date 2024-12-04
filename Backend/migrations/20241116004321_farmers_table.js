@@ -21,6 +21,9 @@ exports.up = async knex => {
         table.string('state', 25).notNullable();
         table.string('LGA', 50).notNullable();
         table.string('address', 200).notNullable();
+        table.specificType('image_data', 'LONGBLOB');
+        table.text('image_name');
+        table.timestamp('created_at').defaultTo(knex.fn.now());
         table.string('terms', 10).notNullable();
         table.string('status', 10).notNullable();
       })

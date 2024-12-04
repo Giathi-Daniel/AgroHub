@@ -10,6 +10,11 @@ const {
 } = require("../controllers/buyersController");
 const { check } = require("express-validator"); //for server side validation
 const router = express.Router(); //helps to set up routes
+const multer = require('multer') //for upload
+
+//configure multer storage
+const multerStorage = multer.memoryStorage()
+const upload = multer({storage: multerStorage})
 
 //register user route
 router.post(
@@ -49,7 +54,7 @@ router.get("/profile/info", getBuyer);
 
 //edit user info
 router.put(
-  "/profile/edit",
+  "/profile/edit", upload.single('image_data'),
   [
     check("first_name", "Name is required").not().isEmpty(), //checking that name is not empty
     check("last_name", "Name is required").not().isEmpty(), //checking that name is not empty

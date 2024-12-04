@@ -98,6 +98,8 @@ function showResponse(success, message){
     }, 5000) //timout for 5secs
     // redirect to main page
     window.location.href = '/'
+    const authBtns = document.getElementById('btns').style.display = "none"
+    
   } else {
     alert('hello')
     // responseDiv.classList.remove('hidden')
