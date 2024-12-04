@@ -37,14 +37,13 @@ Make sure you have the following installed:
 
 - Node.js
 - npm or yarn
-- MongoDB (or your preferred database)
+- MySQL (Workbench) or your preferred MySQL client
 
 ### Step 1: Clone the repository
 
 ```bash
 git clone https://github.com/your-username/agrohub.git
 ```
-
 
 ### Step 2: Install dependencies
 
@@ -60,7 +59,10 @@ npm install
 Create a `.env` file in the root directory and set up the necessary environment variables for your database, payment gateway, etc.
 
 ```bash
-MONGODB_URI=your_database_url
+DB_HOST=your_database_host
+DB_USER=your_database_user
+DB_PASSWORD=your_database_password
+DB_NAME=your_database_name
 SECRET_KEY=your_secret_key
 PAYMENT_API_KEY=your_payment_api_key
 ```
@@ -94,4 +96,3 @@ We welcome contributions to AgroHub! If you'd like to improve the platform, plea
 ## License
 
 AgroHub is open-source and available under the [MIT License](LICENSE).
-````
