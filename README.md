@@ -21,9 +21,9 @@ AgroHub is a digital platform designed to seamlessly connect farmers and buyers,
 
 ## Tech Stack
 
-- **Frontend**: React.js, HTML, CSS
+- **Frontend**: HTML, CSS, JS
 - **Backend**: Node.js, Express.js
-- **Database**: MongoDB (or any other suitable database)
+- **Database**: MySQL Workbench
 - **Authentication**: JWT (JSON Web Tokens)
 - **Payment Gateway**: Stripe or PayPal API integration
 
@@ -45,7 +45,6 @@ Make sure you have the following installed:
 git clone https://github.com/your-username/agrohub.git
 ```
 
-````
 
 ### Step 2: Install dependencies
 
