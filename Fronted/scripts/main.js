@@ -79,7 +79,7 @@ async function getProducts (){
                 <div
                 class="rounded-lg shadow-md bg-white w-[13rem] h-auto hover:shadow-lg transition duration-150 ease-in">
                     <div class="w-full rounded-lg">
-                    <a href="/agrohub/api/req/buyer/product/${product.product_id}">
+                    <a href="/agrohub/pub/product/${product.product_id}">
                         <img
                         id="imageId${product.product_id}"
                         src=""

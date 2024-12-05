@@ -24,7 +24,7 @@ exports.getAllProduct = async (req, res) => {
     //convert image data to url
     await products.forEach((product) => {
       imageData = product.image_data.toString("base64");
-      const imageType = product.image_data.type
+      const imageType = product.image_data.type;
       allProducts.push({
         product_id: product.product_id,
         farmer_id: product.farmer_id,
@@ -37,7 +37,7 @@ exports.getAllProduct = async (req, res) => {
         status: product.status,
         image_data: imageData,
         image_name: product.image_name,
-        image_type: imageType
+        image_type: imageType,
       });
     });
 
@@ -69,18 +69,18 @@ exports.searchProducts = async (req, res) => {
     });
   }
 
-    //configure the variable to hold the server side validation errors
-    const errors = validationResult(req); //validation will be carried out on the route
+  //configure the variable to hold the server side validation errors
+  const errors = validationResult(req); //validation will be carried out on the route
 
-    //check if any error is present in validation
-    if (!errors.isEmpty()) {
-      return res.status(400).json({
-        status: 400,
-        success: false,
-        message: "Please correct input errors",
-        errors: errors.array(),
-      });
-    }
+  //check if any error is present in validation
+  if (!errors.isEmpty()) {
+    return res.status(400).json({
+      status: 400,
+      success: false,
+      message: "Please correct input errors",
+      errors: errors.array(),
+    });
+  }
 
   const { product } = req.body;
 
@@ -154,8 +154,60 @@ exports.searchProducts = async (req, res) => {
   }
 };
 
+exports.getProductsById = async (req, res) => {
+  //configure the variable to hold the server side validation errors
+  const errors = validationResult(req); //validation will be carried out on the route
+
+  //check if any error is present in validation
+  if (!errors.isEmpty()) {
+    return res.status(400).json({
+      status: 400,
+      success: false,
+      message: "Please correct input errors",
+      errors: errors.array(),
+    });
+  }
+
+  const { product_id } = req.body;
+
+  try {
+    //search for products in database by group
+    const [product] = await db.execute(
+      "SELECT * FROM products WHERE product_id = ?",
+      [product_id]
+    );
+
+    if (!product.length > 0) {
+      return res.status(404).json({
+        status: 404,
+        success: false,
+        message: "No product found with that ID",
+      });
+    }
+
+    //convert image data to base64
+    product[0].image_data = product[0].image_data.toString("base64");
+
+    return res.status(200).json({
+      status: 200,
+      success: true,
+      message: "Product retrieved successfully!",
+      product: product[0],
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      status: 500,
+      success: false,
+      message: "Error retrieving product",
+      error: error,
+    });
+  }
+};
+
 exports.addToCart = (req, res) => {
   //check if a user is logged in
+
   if (!req.session.buyer) {
     //if user is not logged in
     return res.status(401).json({
@@ -169,24 +221,43 @@ exports.addToCart = (req, res) => {
   const { cart } = req.body; //cart should be an object
 
   //if cart is empty, insert directly
-  if (req.session.cart.length === 0) {
-    // req.session.cart.push({
-    //   product_id: product_id,
-    //   product_name: product_name,
-    //   price: price,
-    //   discount: discount,
-    //   quantity: quantity,
-    //   image_data: image_data,
-    // });
-    req.session.cart.push(cart);
-    
-    return res.status(200).json({
-      status: 200,
-      success: true,
-      message: "Items added to cart sucessfully",
-      cart: req.session.cart,
-      itemCount: req.session.cart.length,
+  // if (req.session.cart.length === 0) {
+  //   // req.session.cart.push({
+  //   //   product_id: product_id,
+  //   //   product_name: product_name,
+  //   //   price: price,
+  //   //   discount: discount,
+  //   //   quantity: quantity,
+  //   //   image_data: image_data,
+  //   // });
+  //   req.session.cart.push(cart);
+
+  //   return res.status(200).json({
+  //     status: 200,
+  //     success: true,
+  //     message: "Items added to cart sucessfully",
+  //     cart: req.session.cart,
+  //     itemCount: req.session.cart.length,
+  //   });
+  // }
+  let itemFound = false;
+  let index;
+
+  console.log(req.session.cart);
+
+  if (req.session.cart.length > 0) {
+    req.session.cart.forEach((item) => {
+      if (item.product_id === product_id) {
+        index = req.session.cart.indexOf(item);
+        itemFound = true;
+      }
     });
+  }
+
+  if (itemFound) {
+    req.session.cart[index].quantity += 1;
+  } else {
+    req.session.cart.push(cart);
   }
 
   return res.status(200).json({
@@ -241,7 +312,7 @@ exports.updateCart = (req, res) => {
     cart: req.session.cart,
     itemCount: req.session.cart.length,
   });
-}
+};
 
 exports.viewCart = (req, res) => {
   //check if a user is logged in
@@ -274,18 +345,18 @@ exports.removeFromCart = (req, res) => {
     });
   }
 
-    //configure the variable to hold the server side validation errors
-    const errors = validationResult(req); //validation will be carried out on the route
+  //configure the variable to hold the server side validation errors
+  const errors = validationResult(req); //validation will be carried out on the route
 
-    //check if any error is present in validation
-    if (!errors.isEmpty()) {
-      return res.status(400).json({
-        status: 400,
-        success: false,
-        message: "Please correct input errors",
-        errors: errors.array(),
-      });
-    }
+  //check if any error is present in validation
+  if (!errors.isEmpty()) {
+    return res.status(400).json({
+      status: 400,
+      success: false,
+      message: "Please correct input errors",
+      errors: errors.array(),
+    });
+  }
 
   const { product_id } = req.body;
 
@@ -368,7 +439,7 @@ exports.checkOut = async (req, res) => {
 
   //check if cart has items
   const cart = req.session.cart;
-  if (cart.length === 0){
+  if (cart.length === 0) {
     return res.status(400).json({
       status: 400,
       success: false,
@@ -439,11 +510,10 @@ exports.checkOut = async (req, res) => {
       ];
 
       await db.execute(sql3, value3);
-      
     });
 
     //clear cart session after checkout
-    req.session.cart = [] 
+    req.session.cart = [];
 
     //set trigger for admin
 
@@ -496,11 +566,11 @@ exports.checkOutHistory = async (req, res) => {
       WHERE s.buyer_id = ?
       ORDER BY s.created_at DESC 
       LIMIT 10;
-    `
-    const [shipments] = await db.execute(sql, [req.session.buyer.buyer_id])
+    `;
+    const [shipments] = await db.execute(sql, [req.session.buyer.buyer_id]);
 
     //if record is null
-    if (!shipments.length > 0){
+    if (!shipments.length > 0) {
       return res.status(400).json({
         status: 400,
         success: false,
@@ -513,11 +583,10 @@ exports.checkOutHistory = async (req, res) => {
       status: 200,
       success: true,
       message: "Shipments retrieved successfully",
-      shipments: shipments[0]
+      shipments: shipments[0],
     });
-
-  }catch (error){
-    console.error(error)
+  } catch (error) {
+    console.error(error);
     return res.status(500).json({
       status: 500,
       success: false,
@@ -525,7 +594,7 @@ exports.checkOutHistory = async (req, res) => {
       error: error,
     });
   }
-}
+};
 
 exports.cancelOrder = async (req, res) => {
   //check if a user is logged in
@@ -557,11 +626,11 @@ exports.cancelOrder = async (req, res) => {
     //check if shipment exist
     const sql = `
       SELECT * FROM shipping WHERE shipping_id =? AND shipping_status = ?
-    `
-    const [shipment] = await db.execute(sql, [shipping_id, 'Purchased'])
-    
+    `;
+    const [shipment] = await db.execute(sql, [shipping_id, "Purchased"]);
+
     //if record is null
-    if (!shipment.length > 0){
+    if (!shipment.length > 0) {
       return res.status(400).json({
         status: 400,
         success: false,
@@ -570,21 +639,23 @@ exports.cancelOrder = async (req, res) => {
     }
 
     //if record is returned from database
-    await db.execute('UPDATE shipping SET shipping_status = ? WHERE shipping_id = ?', ['Call Back',shipping_id])
+    await db.execute(
+      "UPDATE shipping SET shipping_status = ? WHERE shipping_id = ?",
+      ["Call Back", shipping_id]
+    );
 
     return res.status(200).json({
       status: 200,
       success: true,
-      message: "Shipment cancelling under riview" //trigger admin
-    })
-  } catch (error){
-    console.error(error)
+      message: "Shipment cancelling under riview", //trigger admin
+    });
+  } catch (error) {
+    console.error(error);
     return res.status(500).json({
       status: 500,
       success: false,
       message: "Error cancelling shipment",
       error: error,
-    })
-
+    });
   }
-}
+};

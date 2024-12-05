@@ -48,4 +48,11 @@ router.post('/contact', [
   check('message').notEmpty().withMessage('Message is required')
 ], contact)
 
+//product description route
+router.get('/product/:id', (req, res) => {
+  res.sendFile(path.join(__dirname, "../..", "Fronted", "product-description.html"));
+});
+
+//product review route
+
 module.exports = router;

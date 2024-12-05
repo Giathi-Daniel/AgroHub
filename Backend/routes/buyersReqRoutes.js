@@ -3,6 +3,7 @@ const express = require("express");
 const {
   getAllProduct,
   searchProducts,
+  getProductsById,
   addToCart,
   viewCart,
   updateCart,
@@ -25,6 +26,14 @@ router.post(
     check("product", "Product is required").not().isEmpty(), //checkig if search filed is empty
   ],
   searchProducts
+);
+
+router.post(
+  "/product/id",
+  [
+    check("product_id", "Product is required as a number").not().isEmpty().isInt(), //checkig if search filed is empty
+  ],
+  getProductsById
 );
 
 //access to cart page
