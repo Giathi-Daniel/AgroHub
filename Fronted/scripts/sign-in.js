@@ -1,4 +1,4 @@
-i//fetching values from input fields
+//fetching values from input fields
 const form = document.getElementById('loginForm');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
@@ -98,7 +98,7 @@ function showResponse(success, message){
     }, 5000) //timout for 5secs
     // redirect to main page
     // window.location.href = '/'
-    const authBtns = document.getElementById('btns').style.display = "none"
+    // const authBtns = document.getElementById('btns').style.display = "none"
     
   } else {
     // responseDiv.classList.remove('hidden')

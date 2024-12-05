@@ -218,8 +218,23 @@ exports.addToCart = (req, res) => {
   }
 
   // const { product_id, product_name, price, discount, quantity, image_data } = req.body;
-  const { cart } = req.body; //cart should be an object
+  const {
+    product_id,
+    product_name,
+    price,
+    discount,
+    quantity,
+    image_data
+  } = req.body; //cart should be an object
 
+  const cart = {
+    product_id,
+    product_name,
+    price,
+    discount,
+    quantity,
+    image_data
+  } 
   //if cart is empty, insert directly
   // if (req.session.cart.length === 0) {
   //   // req.session.cart.push({
@@ -243,11 +258,12 @@ exports.addToCart = (req, res) => {
   let itemFound = false;
   let index;
 
-  console.log(req.session.cart);
-
-  if (req.session.cart.length > 0) {
+  // console.log(req.session.cart);
+  console.log(req.session.cart.length)
+  if (!req.session.cart.length == 0) {
+    console.log(req.session.cart.length)
     req.session.cart.forEach((item) => {
-      if (item.product_id === product_id) {
+      if (item.product_id === cart.product_id) {
         index = req.session.cart.indexOf(item);
         itemFound = true;
       }
@@ -281,11 +297,11 @@ exports.updateCart = (req, res) => {
   }
 
   const { product_id, quantity } = req.body; //========> validate this in buyerReqRoute
-
+  cartLength = parseInt(req.session.cart.length)
   let itemFound = false;
   let index;
 
-  if (req.session.cart.length > 0) {
+  if (cartLength > 0) {
     req.session.cart.forEach((item) => {
       if (item.product_id === product_id) {
         index = req.session.cart.indexOf(item);

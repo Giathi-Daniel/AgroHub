@@ -51,6 +51,7 @@ addToCartBtn.addEventListener("click", () => {
 
 //add to cart function
 async function addToCart(productObject) {
+  console.log(productObject)
   try {
     const response = await fetch("/agrohub/api/req/buyer/cart/add", {
       method: "POST",
@@ -67,6 +68,11 @@ async function addToCart(productObject) {
       console.log(result)
     } else {
       alert("Failed to add product to cart.");
+    }
+
+    //if user is not logged in redirect
+    if (result.status == 401){
+      window.location.href = '/agrohub/pub/login'
     }
   } catch (error) {
     console.error(error);
@@ -120,10 +126,11 @@ async function getProductDetails() {
 
     //pass product data to product object
     po = {
-      product_id: result.product_id,
-      product_name: result.product_name,
-      price: result.price,
-      discount: result.discount,
+      product_id: result.product.product_id,
+      product_name: result.product.product_name,
+      price: result.product.price,
+      discount: result.product.discount,
+      quantity: 1,
       image_data: image_data
     };
   } catch (error) {

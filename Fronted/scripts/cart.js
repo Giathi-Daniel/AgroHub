@@ -23,14 +23,17 @@ async function getCartItem () {
 
   const cart = result.cart
   const count = result.itemCount
-
+console.log(cart)
   if (count === 0){
     return cart_items.innerHTML = `<div class="text-center text-gray-600">Your cart is empty.</div>`
   }
   //summarize cart
   summarizeCart(cart)
 
-  //continue from here
+  //clear div area
+  cart_items.innerHTML = ''
+
+  //loop to display cart items
   cart.forEach(item => {
     const product = `
       <div class="flex items-center space-x-4">
@@ -58,7 +61,7 @@ async function getCartItem () {
           <input
             id="${item.product_id}-qty"
             type="number"
-            value="1"
+            value="${item.quantity}"
             min="1"
             class="w-12 text-center border rounded"
           />
@@ -74,19 +77,28 @@ async function getCartItem () {
           Remove
         </button>
       </div>
-    </div>`
+    </div>
+    <br>
+    `
 
     cart_items.innerHTML += product;
     
     //update cart when button is clicked
     document.getElementById(`${item.product_id}-add`).addEventListener('click', () => {
-      updateCart(item.product_id, parseInt(document.getElementById(`${item.product_id}-qty`).value) + 1)
-      document.getElementById(`${item.product_id}-qty`).value += 1; 
+      // updateCart(item.product_id, parseInt(document.getElementById(`${item.product_id}-qty`).value) + 1)
+
+      let addQty = document.getElementById(`${item.product_id}-qty`).value; 
+      addQty = parseInt(addQty)
+      addQty += 1
+      updateCart (item.product_id, addQty) //update the cart and display quatity
     })
 
     document.getElementById(`${item.product_id}-rm`).addEventListener('click', () => {
-      updateCart(item.product_id, parseInt(document.getElementById(`${item.product_id}-qty`).value) - 1)
-      document.getElementById(`${item.product_id}-qty`).value -= 1; 
+      // updateCart(item.product_id, parseInt(document.getElementById(`${item.product_id}-qty`).value) - 1)
+      let minusQty = document.getElementById(`${item.product_id}-qty`).value; 
+      minusQty = parseInt(minusQty)
+      minusQty -= 1
+      updateCart (item.product_id, minusQty) //update the cart and display quatity
     })
 
     document.getElementById(`${item.product_id}-remove`).addEventListener('click', () => {
@@ -95,7 +107,7 @@ async function getCartItem () {
 
     //update quantity when input is changed manualy
     document.getElementById(`${item.product_id}-qty`).addEventListener('change', () => {
-      updateCart(item.product_id, parseInt(document.getElementById(`${item.product_id}-qty`).value))
+      // updateCart(item.product_id, parseInt(document.getElementById(`${item.product_id}-qty`).value))
     })
 
 
@@ -152,9 +164,9 @@ function summarizeCart (cart) {
     totalPrice += item.price * item.quantity
   })
 
-  subtotal.innerHTML = `$${totalPrice.toFixed(2)}`;
+  subtotal.innerHTML = `$${parseFloat(totalPrice)}`;
   itemNum.innerHTML = `${cart.length}`
-  total_price.innerHTML = `$${totalPrice.toFixed(2)}`
+  total_price.innerHTML = `$${parseFloat(totalPrice)}`
 
   // return `Total items: ${count}, Total price: $${totalPrice.toFixed(2)}`
 }

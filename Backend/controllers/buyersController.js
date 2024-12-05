@@ -172,7 +172,7 @@ exports.getBuyer = (req, res) => {
   }
 
   //convert image blob to url
-  const imageBlob = req.session.farmer.image_data; // Adjust this line based on actual data structure
+  const imageBlob = req.session.buyer.image_data; // Adjust this line based on actual data structure
 
   // Convert the blob to an image URL
   const image_url = URL.createObjectURL(imageBlob);
@@ -305,7 +305,7 @@ exports.logoutBuyer = (req, res) => {
         error: err,
       });
     }
-    res.redirect('')
+    res.redirect('/')
   });
 };
 
