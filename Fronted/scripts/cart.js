@@ -5,13 +5,24 @@ const checkOutBtn = document.getElementById('checkOutBtn');
 //clear items from display
 cart_items.innerHTML = ''
 
+//if cart empty
+let isEmpty = true;
+
 //get cart items from server
 getCartItem();
 
 //checkout cart
 checkOutBtn.addEventListener('click', (e) => {
   e.preventDefault();
-  checkout();
+  console.log(isEmpty)
+  //navigate to check out page
+  if (isEmpty) {
+    alert('Your cart is empty, please add items first.')
+    return;
+  }
+
+  window.location.href = '/agrohub/api/req/buyer/checkout'
+  // checkout();
 })
 
 
@@ -23,10 +34,14 @@ async function getCartItem () {
 
   const cart = result.cart
   const count = result.itemCount
-console.log(cart)
+
   if (count === 0){
     return cart_items.innerHTML = `<div class="text-center text-gray-600">Your cart is empty.</div>`
   }
+
+  //cart is not empty
+  isEmpty = false;
+
   //summarize cart
   summarizeCart(cart)
 
@@ -149,6 +164,7 @@ async function removeCartItem (productId) {
   const result = await response.json()
 
   if (result.success) {
+    alert(result.message)
     getCartItem()
   } else {
     alert('Failed to remove item from cart')
@@ -172,6 +188,8 @@ function summarizeCart (cart) {
   total_price.innerHTML = `$${parseFloat(totalPrice)}`
 
   // return `Total items: ${count}, Total price: $${totalPrice.toFixed(2)}`
+
+  
 }
 
 // document.getElementById('summary').innerHTML = summarizeCart()

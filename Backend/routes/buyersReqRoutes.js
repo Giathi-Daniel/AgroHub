@@ -18,6 +18,22 @@ const { check } = require("express-validator"); //for server side validation
 const router = express.Router(); //helps to set up routes
 const path = require('path')
 
+
+//routes
+router.get('/checkout', (req, res) => {
+  //check if buyer is logged in
+  if(!req.session.buyer){
+    return res.status(402).json({
+      status: 402,
+      success: false,
+      message: 'Unathorised, user not logged in'
+    })
+  }
+
+  res.sendFile(path.join(__dirname, "../..", "Fronted", "checkout.html"));
+})
+
+
 router.get("/products", getAllProduct);
 
 router.post(
@@ -67,7 +83,7 @@ router.put("/cart/update",[
 
 router.delete(
   "/cart/remove",
-  [check("productId", "Product ID is required").not().isEmpty()],
+  [check("product_id", "Product ID is required").not().isEmpty()],
   removeFromCart
 );
 
@@ -75,12 +91,12 @@ router.delete("/cart/clear", clearCart);
 
 router.get("/cart/count", countCart);
 
-router.get('/cart/checkout', checkOut)
+router.get('/cart/checkout', checkOut);
 
-router.get('/shipments', checkOutHistory)
+router.get('/shipments', checkOutHistory);
 
 router.post('/shipments/cancel', [
   check('shipping_id', 'Shipping ID is required').not().isEmpty()
-], cancelOrder)
+], cancelOrder);
 
 module.exports = router;
