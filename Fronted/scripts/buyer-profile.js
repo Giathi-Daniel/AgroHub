@@ -28,10 +28,9 @@ async function getProfile (){
 
     buyer_name.textContent = `${result.buyer.first_name} ${result.buyer.last_name}`;
     email.textContent = `${result.buyer.email}`;
-    farmer_status.textContent = `${result.farmer.status === "Active"? "Approved" : "Not Approved"}`;
-    phone_number.textContent = `${result.farmer.phone_number}`;
-    address.textContent = `${result.farmer.address}`;
-    date_joined.textContent = 'Not Available';
+    phone_number.textContent = `${result.buyer.phone_number}`;
+    address.textContent = `${result.buyer.address}`;
+    joined_at.textContent = ' Not Available';
   } catch (error){
     console.log(error)
   }

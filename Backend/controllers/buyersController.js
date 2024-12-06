@@ -175,7 +175,7 @@ exports.getBuyer = (req, res) => {
   const imageBlob = req.session.buyer.image_data; // Adjust this line based on actual data structure
 
   // Convert the blob to an image URL
-  const image_url = URL.createObjectURL(imageBlob);
+  // const image_url = URL.createObjectURL(imageBlob);
 
   //if user is not logged in
   const buyer = {
@@ -189,7 +189,7 @@ exports.getBuyer = (req, res) => {
     LGA: req.session.buyer.LGA,
     address: req.session.buyer.address,
     terms: req.session.buyer.terms,
-    image_data: image_url,
+    // image_data: image_url,
     date_joined: req.session.buyer.created_at
   };
 

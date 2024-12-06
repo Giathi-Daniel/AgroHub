@@ -36,53 +36,56 @@ console.log(cart)
   //loop to display cart items
   cart.forEach(item => {
     const product = `
-      <div class="flex items-center space-x-4">
-        <img
-          src= ${item.image_data}
-          alt="Product Image"
-          class="object-cover w-16 h-16 rounded-lg"
-        />
-        <div>
-          <h3 class="font-semibold text-gray-800">
-            ${item.product_name}
-          </h3>
-          <p class="text-gray-600">Price: ${item.price}</p>
-        </div>
-      </div>
-
-      <div class="flex items-center space-x-4">
-        <div class="flex items-center space-x-2">
-          <button
-            class="px-2 py-1 text-sm text-gray-600 border rounded hover:bg-gray-200"
-            id="${item.product_id}-rm"
-          >
-            -
-          </button>
-          <input
-            id="${item.product_id}-qty"
-            type="number"
-            value="${item.quantity}"
-            min="1"
-            class="w-12 text-center border rounded"
+      <div>
+        <div class="flex items-center space-x-4">
+          <img
+            src= ${item.image_data}
+            alt="Product Image"
+            class="object-cover w-16 h-16 rounded-lg"
           />
-          <button
-            id="${item.product_id}-add"
-            class="px-2 py-1 text-sm text-gray-600 border rounded hover:bg-gray-200"
-          >
-            +
-          </button>
+          <div>
+            <h3 class="font-semibold text-gray-800">
+              ${item.product_name}
+            </h3>
+            <p class="text-gray-600">Price: ${item.price}</p>
+          </div>
         </div>
 
-        <button id="${item.product_id}-remove" class="text-sm text-red-600 hover:underline">
-          Remove
-        </button>
+        <div class="flex items-center space-x-4">
+          <div class="flex items-center space-x-2">
+            <button
+              class="px-2 py-1 text-sm text-gray-600 border rounded hover:bg-gray-200"
+              id="${item.product_id}-rm"
+            >
+              -
+            </button>
+            <input
+              id="${item.product_id}-qty"
+              type="number"
+              value="${item.quantity}"
+              min="1"
+              class="w-12 text-center border rounded"
+            />
+            <button
+              id="${item.product_id}-add"
+              class="px-2 py-1 text-sm text-gray-600 border rounded hover:bg-gray-200"
+            >
+              +
+            </button>
+          </div>
+
+          <button id="${item.product_id}-remove" class="text-sm text-red-600 hover:underline">
+            Remove
+          </button>
+        </div>
       </div>
-    </div>
+    </div>  
     <br>
     `
 
     cart_items.innerHTML += product;
-    
+    cart_items.style.flexDirection = 'column'
+
     //update cart when button is clicked
     document.getElementById(`${item.product_id}-add`).addEventListener('click', () => {
       // updateCart(item.product_id, parseInt(document.getElementById(`${item.product_id}-qty`).value) + 1)
@@ -107,7 +110,7 @@ console.log(cart)
 
     //update quantity when input is changed manualy
     document.getElementById(`${item.product_id}-qty`).addEventListener('change', () => {
-      // updateCart(item.product_id, parseInt(document.getElementById(`${item.product_id}-qty`).value))
+      updateCart(item.product_id, parseInt(document.getElementById(`${item.product_id}-qty`).value))
     })
 
 
