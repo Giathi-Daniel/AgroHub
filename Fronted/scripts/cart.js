@@ -14,7 +14,7 @@ getCartItem();
 //checkout cart
 checkOutBtn.addEventListener('click', (e) => {
   e.preventDefault();
-  console.log(isEmpty)
+  // console.log(isEmpty)
   //navigate to check out page
   if (isEmpty) {
     alert('Your cart is empty, please add items first.')
@@ -36,6 +36,7 @@ async function getCartItem () {
   const count = result.itemCount
 
   if (count === 0){
+    summarizeCart(cart)
     return cart_items.innerHTML = `<div class="text-center text-gray-600">Your cart is empty.</div>`
   }
 
