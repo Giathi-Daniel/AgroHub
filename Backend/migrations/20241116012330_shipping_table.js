@@ -13,6 +13,8 @@ exports.up = async knex => {
         table.integer('buyer_id').unsigned().notNullable();
         table.foreign('buyer_id').references('buyers.buyer_id');
         table.string('shipping_address', 200).notNullable();
+        table.string('shipping_method', 100).notNullable();
+        table.string('payment_method', 100).notNullable();
         table.decimal('products_price', 8, 2).notNullable();
         table.decimal('delivery_cost', 8, 2).notNullable();
         table.decimal('discount', 8, 2).notNullable();
