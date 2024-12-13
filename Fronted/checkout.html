@@ -38,7 +38,7 @@
         <h2 class="mb-6 text-2xl font-semibold">Order Summary</h2>
 
         <!-- Product List -->
-        <div class="space-y-4">
+        <div class="space-y-4" id="product_list">
           <div class="flex justify-between pb-4 border-b">
             <div class="flex items-center space-x-2">
               <img
@@ -68,7 +68,7 @@
           class="flex justify-between pt-6 mt-6 text-xl font-semibold border-t"
         >
           <p>Total</p>
-          <p>$28.48</p>
+          <p id="total-order">$28.48</p>
         </div>
       </div>
 
@@ -123,5 +123,7 @@
     <footer class="py-4 text-center text-white bg-gray-800">
       <p>&copy; 2024 AgroHub. All Rights Reserved.</p>
     </footer>
+
+    <script src="/scripts/checkout.js"></script>
   </body>
 </html>
