@@ -20,52 +20,138 @@
     <!-- ========== STYLESHEET ========== -->
     <link rel="stylesheet" href="/styles/styles.css" />
   </head>
-  <body>
-    <section class="min-h-screen p-6 mx-auto max-w-4xl">
-      <div class="text-center mb-6">
+  <body class="bg-gray-50 font-lato text-gray-800">
+    <!-- Main Container -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <!-- Header Section -->
+      <header class="text-center mb-10">
         <img
           src="/images/logo.png"
           alt="AgroHub Logo"
-          class="w-16 h-16 mx-auto"
+          class="w-20 h-20 mx-auto mb-4"
         />
-        <h1 class="text-2xl font-bold">Conditions of Use</h1>
-      </div>
-      <article class="prose prose-lg max-w-none">
+        <h1 class="text-3xl font-extrabold text-gray-900">Conditions of Use</h1>
+        <p class="text-lg text-gray-600 mt-2">
+          Please review the terms and conditions that govern your use of AgroHub
+          services.
+        </p>
+      </header>
+
+      <!-- Main Content -->
+      <main class="prose max-w-none text-gray-700">
         <p>
-          Welcome to AgroHub. By accessing or using our services, you agree to
-          the following terms and conditions. Please read them carefully.
+          Welcome to AgroHub! By using our platform, you agree to the following
+          terms and conditions. These terms are intended to protect both you,
+          the user, and AgroHub, while ensuring the best experience possible. If
+          you do not agree to these terms, please refrain from using our
+          platform.
         </p>
-        <h2>1. General</h2>
-        <p>
-          These terms apply to all users of the website, including buyers,
-          sellers, and administrators. AgroHub reserves the right to update
-          these terms at any time.
-        </p>
-        <h2>2. User Responsibilities</h2>
-        <p>
-          Users are responsible for ensuring the accuracy of their information
-          and adhering to all applicable laws when using the platform.
-        </p>
-        <h2>3. Limitations of Liability</h2>
-        <p>
-          AgroHub is not liable for any indirect or consequential losses arising
-          from the use of our platform.
-        </p>
-        <p class="mt-4">
-          For more details, contact us via our
-          <a href="/agrohub/pub/contact" class="text-blue-500 underline"
-            >Contact Page</a
-          >.
-        </p>
-      </article>
-      <div class="mt-6 text-center">
+
+        <section>
+          <h2 class="text-2xl font-semibold text-gray-900">1. General Terms</h2>
+          <p>
+            These Conditions of Use apply to all users of AgroHub, including
+            buyers, sellers, and administrators. AgroHub reserves the right to
+            modify these terms at any time, with changes posted on this page.
+            Please review this page regularly to stay informed about updates to
+            our terms.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold text-gray-900">
+            2. User Responsibilities
+          </h2>
+          <p>
+            As a user, you are responsible for maintaining the accuracy and
+            completeness of the information you provide on AgroHub. You agree to
+            comply with all relevant laws and regulations when using our
+            platform, including, but not limited to, privacy laws, data
+            protection, and anti-fraud measures.
+          </p>
+          <p>
+            You are also responsible for securing your account information. If
+            you suspect unauthorized access, you must notify AgroHub
+            immediately.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold text-gray-900">
+            3. Limitations of Liability
+          </h2>
+          <p>
+            While we strive to provide a secure and reliable service, AgroHub is
+            not responsible for any indirect, incidental, or consequential
+            damages that may arise from using the platform. We make no
+            guarantees regarding the continuous availability or uninterrupted
+            access to the platform.
+          </p>
+          <p>
+            AgroHub is not liable for the actions of third parties or for
+            user-generated content, and we recommend exercising caution when
+            engaging in transactions or interactions with other users.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold text-gray-900">
+            4. Modifications to Services
+          </h2>
+          <p>
+            AgroHub may change, update, or remove any part of the platform at
+            any time. This may include introducing new features, removing old
+            ones, or discontinuing certain services. We strive to make these
+            changes with minimal disruption to users.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold text-gray-900">
+            5. Termination of Access
+          </h2>
+          <p>
+            AgroHub reserves the right to suspend or terminate your access to
+            the platform at any time, particularly if you violate these Terms of
+            Use. If your access is terminated, certain provisions (such as
+            limitations on liability) will survive and remain in effect.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold text-gray-900">
+            6. Privacy Policy
+          </h2>
+          <p>
+            Your privacy is important to us. To understand how we collect, use,
+            and protect your data, please review our
+            <a href="/privacy-policy" class="text-blue-500 hover:underline"
+              >Privacy Policy</a
+            >.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold text-gray-900">Contact Us</h2>
+          <p>
+            If you have any questions or concerns about these Terms of Use,
+            please contact us via our
+            <a href="/agrohub/pub/contact" class="text-blue-500 hover:underline"
+              >Contact Page</a
+            >.
+          </p>
+        </section>
+      </main>
+
+      <!-- Call to Action Button -->
+      <div class="text-center mt-12">
         <a
           href="/agrohub/pub/signup"
-          class="px-4 py-2 text-white bg-orange-500 rounded hover:bg-orange-600"
+          class="inline-block px-6 py-3 text-white bg-orange-600 rounded-md text-lg hover:bg-orange-700 transition-colors"
         >
           Back to Sign Up
         </a>
       </div>
-    </section>
+    </div>
   </body>
 </html>
