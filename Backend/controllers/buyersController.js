@@ -139,11 +139,22 @@ exports.loginBuyer = async (req, res) => {
         message: "Password is incorrect",
       });
     }
+    
+    // get cart details
+    const [cart] = await db.execute("SELECT * FROM cart WHERE buyer_id = ?", [
+      buyer[0].buyer_id,
+    ])
 
+    // check is cart record exist
+    if (!cart.length > 0) {
+      await db.execute("INSERT INTO cart (buyer_id, cart_items) VALUES (?, ?)", [
+        buyer[0].buyer_id, 'No product yet'
+      ])
+    }
+    
     //if password match
     req.session.buyer = buyer[0]; //user session object to hold users data
-    req.y
-    .cart = []; //user session object to hold cart for buyer's purchase
+    req.session.cart = JSON.parse(cart[0].cart_items); //user session object to hold cart for buyer's purchase
     return res.status(200).json({
       status: 200,
       success: true,
@@ -353,4 +364,25 @@ exports.deleteBuyer = async (req, res) => {
       error: error
     });
   }
+}
+
+// check buyers authentication
+exports.isAuth = (req, res) => {
+  //check if user is logged in
+  if (!req.session.buyer) {
+    //if user is not logged in
+    return res.status(401).json({
+      status: 401,
+      success: false,
+      message: "Unauthorised! user not logged in",
+      isAuthenticated: false
+    });
+  }
+
+  return res.status(200).json({
+    status: 200,
+    success: true,
+    message: "Authorised! user logged in",
+    isAuthenticated: true
+  });
 }

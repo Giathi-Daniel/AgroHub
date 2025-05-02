@@ -6,7 +6,8 @@ const {
   getBuyer,
   editBuyer,
   logoutBuyer,
-  deleteBuyer
+  deleteBuyer,
+  isAuth
 } = require("../controllers/buyersController");
 const { check } = require("express-validator"); //for server side validation
 const router = express.Router(); //helps to set up routes
@@ -71,6 +72,9 @@ router.put(
 router.get("/logout", logoutBuyer);
 
 //delete buyer 
-router.delete('/delete', deleteBuyer)
+router.delete('/delete', deleteBuyer);
+
+// check buyer authentication
+router.get('/auth-status', isAuth)
 
 module.exports = router;

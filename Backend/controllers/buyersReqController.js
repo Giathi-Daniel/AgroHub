@@ -205,9 +205,8 @@ exports.getProductsById = async (req, res) => {
   }
 };
 
-exports.addToCart = (req, res) => {
+exports.addToCart = async (req, res) => {
   //check if a user is logged in
-
   if (!req.session.buyer) {
     //if user is not logged in
     return res.status(401).json({
@@ -217,72 +216,39 @@ exports.addToCart = (req, res) => {
     });
   }
 
-  // const { product_id, product_name, price, discount, quantity, image_data } = req.body;
+  // get prodect details from request body
   const {
-    product_id,
-    product_name,
-    price,
-    discount,
-    quantity,
-    image_data
+    cart
   } = req.body; //cart should be an object
 
-  const cart = {
-    product_id,
-    product_name,
-    price,
-    discount,
-    quantity,
-    image_data
-  } 
-  //if cart is empty, insert directly
-  // if (req.session.cart.length === 0) {
-  //   // req.session.cart.push({
-  //   //   product_id: product_id,
-  //   //   product_name: product_name,
-  //   //   price: price,
-  //   //   discount: discount,
-  //   //   quantity: quantity,
-  //   //   image_data: image_data,
-  //   // });
-  //   req.session.cart.push(cart);
+  try {
+    // update cart in database
+    await db.execute('UPDATE cart SET cart_items = ? WHERE buyer_id = ?', [JSON.stringify(cart), req.session.buyer.buyer_id])
 
-  //   return res.status(200).json({
-  //     status: 200,
-  //     success: true,
-  //     message: "Items added to cart sucessfully",
-  //     cart: req.session.cart,
-  //     itemCount: req.session.cart.length,
-  //   });
-  // }
-  let itemFound = false;
-  let index;
+    // update cart in session
+    req.session.cart = cart
 
-  // console.log(req.session.cart);
-  console.log(req.session.cart.length)
-  if (!req.session.cart.length == 0) {
-    console.log(req.session.cart.length)
-    req.session.cart.forEach((item) => {
-      if (item.product_id === cart.product_id) {
-        index = req.session.cart.indexOf(item);
-        itemFound = true;
-      }
+    // return response to client
+    return res.status(200).json({
+      status: 200,
+      success: true,
+      message: "Items added to cart sucessfully",
+      cart: req.session.cart,
+    });
+
+  } catch (error) {
+
+    console.error(error)
+
+    // return response to client
+    return res.status(500).json({
+      status: 500,
+      success: false,
+      message: "Error Adding Item to Cart",
+      error: error,
     });
   }
-
-  if (itemFound) {
-    req.session.cart[index].quantity += 1;
-  } else {
-    req.session.cart.push(cart);
-  }
-
-  return res.status(200).json({
-    status: 200,
-    success: true,
-    message: "Items added to cart sucessfully",
-    cart: req.session.cart,
-    itemCount: req.session.cart.length,
-  });
+ 
 };
 
 exports.updateCart = (req, res) => {
@@ -346,7 +312,6 @@ exports.viewCart = (req, res) => {
     success: true,
     message: "Cart retrieved sucessfully",
     cart: req.session.cart,
-    itemCount: req.session.cart.length,
   });
 };
 

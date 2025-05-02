@@ -1,3 +1,6 @@
+// import cartitems from cart.js
+import { getCartItem, sendCartToDB } from "./utils/cart_functions.js";
+
 var swiper = new Swiper(".swiper-container", {
   slidesPerView: 1,
   spaceBetween: 10,
@@ -51,32 +54,34 @@ addToCartBtn.addEventListener("click", () => {
 
 //add to cart function
 async function addToCart(productObject) {
-  console.log(productObject)
-  try {
-    const response = await fetch("/agrohub/api/req/buyer/cart/add", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(productObject),
+  // console.log(productObject)
+
+  // get cart from server
+  const cart = await getCartItem()
+
+  console.log(cart)
+
+  let itemFound = false;
+  let itemIndex;
+
+  if (!cart.length == 0) {
+    
+    cart.forEach((item) => {
+      if (item.product_id === productObject.product_id) {
+        itemIndex = cart.indexOf(item);
+        itemFound = true;
+      }
     });
-
-    const result = await response.json();
-
-    if (result.success) {
-      alert("Product added to cart successfully!");
-      console.log(result)
-    } else {
-      alert("Failed to add product to cart.");
-    }
-
-    //if user is not logged in redirect
-    if (result.status == 401){
-      window.location.href = '/agrohub/pub/login'
-    }
-  } catch (error) {
-    console.error(error);
   }
+
+  if (itemFound) {
+    cart[itemIndex].quantity += 1;
+  } else {
+    cart.push(productObject);
+  }
+
+  let message = sendCartToDB(cart)
+  alert(message)
 }
 
 //fetch product details from server
@@ -137,3 +142,4 @@ async function getProductDetails() {
     console.error(error);
   }
 }
+

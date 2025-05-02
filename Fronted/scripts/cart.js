@@ -1,3 +1,6 @@
+// import cart functions from cart_functions.js
+import { getCartItem, updateCart, removeCartItem } from "./utils/cart_functions.js";
+
 //fetch DOM element
 const cart_items = document.getElementById('cart_items');
 const checkOutBtn = document.getElementById('checkOutBtn');
@@ -8,8 +11,8 @@ cart_items.innerHTML = ''
 //if cart empty
 let isEmpty = true;
 
-//get cart items from server
-getCartItem();
+//render cart items to page
+renderCart();
 
 //checkout cart
 checkOutBtn.addEventListener('click', (e) => {
@@ -25,17 +28,13 @@ checkOutBtn.addEventListener('click', (e) => {
   // checkout();
 })
 
+// function to render cartItem
+async function renderCart() {
+  // get cart items
+  const cart = await getCartItem ()
 
-//function to get cart items from server
-async function getCartItem () {
-  const response = await fetch('/agrohub/api/req/buyer/cart/items');
-
-  const result = await response.json()
-
-  const cart = result.cart
-  const count = result.itemCount
-
-  if (count === 0){
+  // check if cart is empty
+  if (cart.length === 0){
     summarizeCart(cart)
     return cart_items.innerHTML = `<div class="text-center text-gray-600">Your cart is empty.</div>`
   }
@@ -70,7 +69,9 @@ async function getCartItem () {
         <div class="flex items-center space-x-4">
           <div class="flex items-center space-x-2">
             <button
-              class="px-2 py-1 text-sm text-gray-600 border rounded hover:bg-gray-200"
+              class="px-2 py-1 text-sm text-gray-600 border rounded hover:bg-gray-200
+              js-minus-cart-item
+              "
               id="${item.product_id}-rm"
             >
               -
@@ -80,17 +81,23 @@ async function getCartItem () {
               type="number"
               value="${item.quantity}"
               min="1"
-              class="w-12 text-center border rounded"
+              class="w-12 text-center border rounded
+              js-qty-cart-item
+              "
             />
             <button
               id="${item.product_id}-add"
-              class="px-2 py-1 text-sm text-gray-600 border rounded hover:bg-gray-200"
+              class="px-2 py-1 text-sm text-gray-600 border rounded hover:bg-gray-200
+              js-add-cart-item
+              "
             >
               +
             </button>
           </div>
 
-          <button id="${item.product_id}-remove" class="text-sm text-red-600 hover:underline">
+          <button id="${item.product_id}-remove" class="text-sm text-red-600 hover:underline
+          js-rm-cart-item
+          ">
             Remove
           </button>
         </div>
@@ -100,76 +107,68 @@ async function getCartItem () {
     `
 
     cart_items.innerHTML += product;
-    cart_items.style.flexDirection = 'column'
-
-    //update cart when button is clicked
-    document.getElementById(`${item.product_id}-add`).addEventListener('click', () => {
-      // updateCart(item.product_id, parseInt(document.getElementById(`${item.product_id}-qty`).value) + 1)
-
-      let addQty = document.getElementById(`${item.product_id}-qty`).value; 
-      addQty = parseInt(addQty)
-      addQty += 1
-      updateCart (item.product_id, addQty) //update the cart and display quatity
-    })
-
-    document.getElementById(`${item.product_id}-rm`).addEventListener('click', () => {
-      // updateCart(item.product_id, parseInt(document.getElementById(`${item.product_id}-qty`).value) - 1)
-      let minusQty = document.getElementById(`${item.product_id}-qty`).value; 
-      minusQty = parseInt(minusQty)
-      minusQty -= 1
-      updateCart (item.product_id, minusQty) //update the cart and display quatity
-    })
-
-    document.getElementById(`${item.product_id}-remove`).addEventListener('click', () => {
-      removeCartItem(item.product_id)
-    })
-
-    //update quantity when input is changed manualy
-    document.getElementById(`${item.product_id}-qty`).addEventListener('change', () => {
-      updateCart(item.product_id, parseInt(document.getElementById(`${item.product_id}-qty`).value))
-    })
-
+    cart_items.style.flexDirection = 'column';
 
   })
-}
 
-//function to update cart on server
-async function updateCart (productId, quantity) {
-  const response = await fetch(`/agrohub/api/req/buyer/cart/update`, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({product_id: productId, quantity: quantity})
-  })
+  //update cart when minus qty button is clicked
+  document.querySelectorAll('.js-minus-cart-item')
+    .forEach(minusBtn => {
+      let productId = minusBtn.id.slice(0, minusBtn.id.search('-'));
 
-  const result = await response.json()
+      minusBtn.addEventListener('click', async () => {
+        // updateCart(item.product_id, parseInt(document.getElementById(`${item.product_id}-qty`).value) + 1)
 
-  if (result.success) {
-    getCartItem() //reload the page 
-  } else {
-    alert('Failed to update cart')
-  }
-}
+        let minusQty = document.getElementById(`${productId}-qty`).value; 
+        minusQty = parseInt(minusQty)
+        minusQty -= 1
+        await updateCart (productId, minusQty) //update the cart and display quatity
+        await renderCart()
+      })
+    })
 
-//function to remove cart item on server
-async function removeCartItem (productId) {
-  const response = await fetch(`/agrohub/api/req/buyer/cart/remove`, {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({product_id: productId})
-  })
+  //update cart when qty input field is changed
+  document.querySelectorAll('.js-qty-cart-item')
+    .forEach(qtyInput => {
+      let productId = qtyInput.id.slice(0, qtyInput.id.search('-'));
 
-  const result = await response.json()
+      qtyInput.addEventListener('change', async () => {
+        // updateCart(item.product_id, parseInt(document.getElementById(`${item.product_id}-qty`).value) + 1)
 
-  if (result.success) {
-    alert(result.message)
-    getCartItem()
-  } else {
-    alert('Failed to remove item from cart')
-  }
+        await updateCart (productId, parseInt(document.getElementById(`${productId}-qty`).value)) //update the cart and display quatity
+        await renderCart()
+      })
+    })
+
+  //update cart when add qty button is clicked
+  document.querySelectorAll('.js-add-cart-item')
+    .forEach(addBtn => {
+      let productId = addBtn.id.slice(0, addBtn.id.search('-'));
+
+      addBtn.addEventListener('click', async () => {
+        // updateCart(item.product_id, parseInt(document.getElementById(`${item.product_id}-qty`).value) + 1)
+
+        let addQty = document.getElementById(`${productId}-qty`).value; 
+        addQty = parseInt(addQty)
+        addQty += 1
+        await updateCart (productId, addQty) //update the cart and display quatity
+        await renderCart()
+      })
+    })
+
+  //update cart when remove button is clicked
+  document.querySelectorAll('.js-rm-cart-item')
+    .forEach(removeBtn => {
+      let productId = removeBtn.id.slice(0, removeBtn.id.search('-'));
+
+      removeBtn.addEventListener('click', async () => {
+        // updateCart(item.product_id, parseInt(document.getElementById(`${item.product_id}-qty`).value) + 1)
+
+        await removeCartItem(productId)
+        await renderCart()
+      })
+    })
+
 }
 
 //summarize cart

@@ -60,7 +60,7 @@ router.get('/cart', (req, res) => {
   res.sendFile(path.join(__dirname, "../..", "Fronted", "cart.html"));
 })
 
-router.post(
+router.put(
   "/cart/add",
   [
     //check if fields are empty
