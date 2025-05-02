@@ -142,7 +142,8 @@ exports.loginBuyer = async (req, res) => {
 
     //if password match
     req.session.buyer = buyer[0]; //user session object to hold users data
-    req.session.cart = []; //user session object to hold cart for buyer's purchase
+    req.y
+    .cart = []; //user session object to hold cart for buyer's purchase
     return res.status(200).json({
       status: 200,
       success: true,
