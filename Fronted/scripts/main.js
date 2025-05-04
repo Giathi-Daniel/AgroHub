@@ -50,31 +50,32 @@ async function getProducts (){
         const result = await response.json();
         
         result.products.forEach(product => {
-
-            //convert image base64 to blob
-            const [metadata, base64Data] = product.image_data.split(',');
-            // console.log(base64Data)
-            // const mimeType = metadata.match(/:(.*?);/)[1]; // Extract the MIME type from the metadata
-            const byteCharacters = atob(metadata); // Decode the base64 string to binary data
+            
+            // split base64 character to extract strings
+            // const [metadata, base64Data] = product.image_data.split(',');
+            // - NOTE: the above code is note necessary as the base64 string require no splitting
+            
+            // decode Base64 strings into byte with atob()
+            const byteCharacters = atob(product.image_data); // Decode the base64 string to binary data
+            
             const byteArrays = [];
 
             // Convert binary string to byte array
             for (let offset = 0; offset < byteCharacters.length; offset++) {
+                // get the unicode of each byte character
                 const byte = byteCharacters.charCodeAt(offset);
+
+                // add unicode to the byteArray list
                 byteArrays.push(byte);
             }
 
-            // Create a blob object from the byte array
+            // Create a blob object from the byte array list
             const imageBlob = new Blob([new Uint8Array(byteArrays)], { type: product.image_type });
 
-            // const imageBlob = product.image_data; // Adjust this line based on actual data structure
-            // console.log(imageBlob)
             // Convert the blob to an image URL
             const image_data = URL.createObjectURL(imageBlob);
 
-            // Convert image data to URL
-            // const file = new File([imageBlob], "image", { type: imageBlob.type });
-            // const image_data = URL.createObjectURL(file)
+
             const productElement = `
                 <div
                 class="rounded-lg shadow-md bg-white w-[13rem] h-auto hover:shadow-lg transition duration-150 ease-in">
@@ -82,7 +83,7 @@ async function getProducts (){
                     <a href="/agrohub/pub/product/${product.product_id}">
                         <img
                         id="imageId${product.product_id}"
-                        src=""
+                        src="${image_data}"
                         alt="${product.product_name}"
                         class="w-auto rounded-t-lg hover:curso-pointer"
                         />
@@ -129,8 +130,8 @@ async function getProducts (){
             productContainer.innerHTML += productElement;
             productContainer2.innerHTML += productElement;
             //pass url to the image element src
-            const imageElement = document.getElementById(`imageId${product.product_id}`)
-            imageElement.src = image_data;
+            // const imageElement = document.getElementById(`imageId${product.product_id}`)
+            // imageElement.src = image_data;
         });
         
     } catch (error) {
